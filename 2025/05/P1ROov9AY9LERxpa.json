@@ -1,0 +1,208 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Global Constants1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Global Constants1": {
+      "main": [
+        [
+          {
+            "node": "Strapi1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Strapi1": {
+      "main": [
+        [
+          {
+            "node": "dividir entradas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "undeployar cuentas": {
+      "main": [
+        [
+          {
+            "node": "Wait 1 min",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "dividir entradas": {
+      "main": [
+        [],
+        [
+          {
+            "node": "undeployar cuentas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 1 min": {
+      "main": [
+        [
+          {
+            "node": "dividir entradas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-21T15:42:45.765Z",
+  "id": "P1ROov9AY9LERxpa",
+  "isArchived": false,
+  "meta": null,
+  "name": "Apagado Automático",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                5
+              ],
+              "triggerAtHour": 16
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a0d25d83-b816-45e0-92fa-fa3af936f7fc",
+      "name": "Schedule Trigger1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-globals.globalConstants",
+      "typeVersion": 1,
+      "position": [
+        580,
+        0
+      ],
+      "id": "e9ad2466-8f8d-4221-b635-4b665f9f7ef4",
+      "name": "Global Constants1",
+      "credentials": {
+        "globalConstantsApi": {
+          "id": "xD5yrF0WiFvNSDFv",
+          "name": "Global Constants account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "token",
+        "operation": "getAll",
+        "contentType": "challenges?populate=*&filters[$or][0][result][$eq]=progress&filters[$or][1][$and][0][result][$eq]=approved&filters[$or][1][$and][1][phase][$eq]=3",
+        "returnAll": true,
+        "options": {
+          "sort": []
+        }
+      },
+      "type": "n8n-nodes-base.strapi",
+      "typeVersion": 1,
+      "position": [
+        800,
+        0
+      ],
+      "id": "96912abb-e70e-461a-b387-7b73495cc10f",
+      "name": "Strapi1",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://mt-provisioning-api-v1.agiliumtrade.agiliumtrade.ai/users/current/accounts/{{ $json.metadata.metaId }}/undeploy",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1380,
+        20
+      ],
+      "id": "acd1186c-bec7-4de6-81b4-ef76d6915341",
+      "name": "undeployar cuentas",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "8u20dlP7ndo4urwE",
+          "name": "META API TOKEN ZEVEN"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "batchSize": 15,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1020,
+        0
+      ],
+      "id": "0afc6f1f-0b66-4fa2-a02f-df184c8eb9f2",
+      "name": "dividir entradas"
+    },
+    {
+      "parameters": {
+        "amount": 1,
+        "unit": "minutes"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1620,
+        20
+      ],
+      "id": "d47a5cbf-c928-41fb-ae7b-883053d04dee",
+      "name": "Wait 1 min",
+      "webhookId": "47ad18e0-af95-4545-b465-3b826bf9a8b0"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n_workflows",
+  "repo_owner": "EliteCodeDev",
+  "repo_path": "https://github.com/EliteCodeDev/n8n_workflows/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-21T15:48:20.000Z",
+  "versionId": "54bb735c-e0fa-4dec-a046-e0f50f0b837b"
+}
