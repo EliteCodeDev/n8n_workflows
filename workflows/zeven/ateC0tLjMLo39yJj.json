@@ -1,0 +1,630 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Global Constants",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Global Constants": {
+      "main": [
+        [
+          {
+            "node": "Comprobar Estado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Comprobar Estado": {
+      "main": [
+        [
+          {
+            "node": "result aprobado y fase 3?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crear Withdrawal": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Bloquear Challengue": {
+      "main": [
+        [
+          {
+            "node": "undeploy cuenta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Copiar Data de Challenge": {
+      "main": [
+        [
+          {
+            "node": "Obtener dia Actual",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crear Copia de Challenge": {
+      "main": [
+        [
+          {
+            "node": "Notificar Nuevo Challenge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Llama a MetaAPI": {
+      "main": [
+        [
+          {
+            "node": "Crear Copia de Challenge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "result aprobado y fase 3?": {
+      "main": [
+        [
+          {
+            "node": "Copiar Data de Challenge",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Copiar Data de Challenge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond to Webhook": {
+      "main": [
+        [
+          {
+            "node": "Notificar Solicitud de Retiro",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener dia Actual": {
+      "main": [
+        [
+          {
+            "node": "verificamos estadisticas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verificamos estadisticas": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Bloquear Challengue1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "undeploy cuenta": {
+      "main": [
+        [
+          {
+            "node": "Crear Withdrawal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Bloquear Challengue1": {
+      "main": [
+        [
+          {
+            "node": "undeploy cuenta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Bloquear Challengue",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-13T21:36:54.776Z",
+  "id": "ateC0tLjMLo39yJj",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "App: Retiro de Challenge",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "withdrawal",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        160,
+        -200
+      ],
+      "id": "f5d746e7-4d50-4f86-93db-5549bf5820d4",
+      "name": "Webhook",
+      "webhookId": "4c4dbd39-0554-4e1b-aa62-4e3c27b39434"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/challenges/{{ $json.body.challenge_id }}?populate=*",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        620,
+        -200
+      ],
+      "id": "3fbe56a5-dfc0-4c60-8401-767092ef0bd6",
+      "name": "Comprobar Estado",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-globals.globalConstants",
+      "typeVersion": 1,
+      "position": [
+        380,
+        -200
+      ],
+      "id": "fb9289b3-f211-428a-a5ec-f4bf91f1a512",
+      "name": "Global Constants",
+      "credentials": {
+        "globalConstantsApi": {
+          "id": "xD5yrF0WiFvNSDFv",
+          "name": "Global Constants account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/withdraws",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"data\":{\n    \"wallet\": \"{{ $('Webhook').item.json.body.wallet_address }}\",\n    \"amount\": {{ $('Webhook').item.json.body.amount }},\n    \"challenge\":\"{{ $('Copiar Data de Challenge').item.json.originalData.documentId }}\",\n    \"estado\": \"proceso\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3340,
+        120
+      ],
+      "id": "a7159e18-8fab-4678-9438-9c1421fff35b",
+      "name": "Crear Withdrawal",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/challenges/{{ $('Copiar Data de Challenge').item.json.originalData.documentId }}?populate=*",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "auth-token",
+              "value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsImFjY2Vzc1J1bGVzIjpbeyJpZCI6InRyYWRpbmctYWNjb3VudC1tYW5hZ2VtZW50LWFwaSIsIm1ldGhvZHMiOlsidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcmVzdC1hcGkiLCJtZXRob2RzIjpbIm1ldGFhcGktYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcnBjLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcmVhbC10aW1lLXN0cmVhbWluZy1hcGkiLCJtZXRob2RzIjpbIm1ldGFhcGktYXBpOndzOnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJtZXRhc3RhdHMtYXBpIiwibWV0aG9kcyI6WyJtZXRhc3RhdHMtYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6InJpc2stbWFuYWdlbWVudC1hcGkiLCJtZXRob2RzIjpbInJpc2stbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoiY29weWZhY3RvcnktYXBpIiwibWV0aG9kcyI6WyJjb3B5ZmFjdG9yeS1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibXQtbWFuYWdlci1hcGkiLCJtZXRob2RzIjpbIm10LW1hbmFnZXItYXBpOnJlc3Q6ZGVhbGluZzoqOioiLCJtdC1tYW5hZ2VyLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJiaWxsaW5nLWFwaSIsIm1ldGhvZHMiOlsiYmlsbGluZy1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfV0sImlnbm9yZVJhdGVMaW1pdHMiOmZhbHNlLCJ0b2tlbklkIjoiMjAyMTAyMTMiLCJpbXBlcnNvbmF0ZWQiOmZhbHNlLCJyZWFsVXNlcklkIjoiN2FiNTA2ODg5M2JhMzA3MWI3YWMxNDMyOWM0ZDVkN2YiLCJpYXQiOjE3NDE4MjI0ODF9.EgWgpWVf0qW52Q-HpUX2P130Su9h9Q7fLScrIqlstCPrArykyOdvoNlHlWLRKcb5zb2fxMt5X4E2WiVucbcVKhLsIBii-yMcLUUSSlk_Hi-_Pffgna0_wLf_J_ETC5IaKdbF7ttx-YBeFz4usGnEiYZF-JC-HGrYqG32h0My_Xo2c884TRSCJYr9CIe0eTU9T2C7jo5H1XHREVprXpWld6VLlzqRbrYI5V6PbTNs3nmn-g1sTRCSR6D3VAmrOydeWliIKPll3ONULHURoVq2Ii0VJiqXsE5BGvciU_p9DvyPnIkKwQubf6CXQahNjYhj8eUaccWXw9aW3i8Gv8h9VTDBc3xVOwxIDqJ7c3TwlKrXZrOD41NquRUuMY-xO-TJyPwloHKt-ZKWPcV-l6b-Zyv0w0Ng9Riv0bFQdHldpnXjh7bkzBs2W7AFj9naVcYpSlFqWcc5M86LgQbC6P3Ps8Le0vFsGidhFvcpb9oRQBaweEv0LgXgq_oRNKh4P7aCEPI3ngKN1diDvYKIQ68Pd0CqEF0BwNgRt-G31DY9nOhquhEXqJ208JEVO0teVeqm9JfOzfQsN69AWuxFoPLYy5HVQ53NRUDzgI7gpGRORkOPJmpQGud39oXE_Thqa-wQdGLyxsS2sQVEoU1z1K45eTz9FPzMTj_a3MoxZ45HRTA"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"data\": {\n    \"isactive\":{{$('Copiar Data de Challenge').item.json.updateData.isactive }},\n    \"endDate\":\"{{ $('Obtener dia Actual').item.json.currentDate }}\",\n    \"metadata\":{{ JSON.stringify($json.data) }}\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2600,
+        -220
+      ],
+      "id": "24b6fa42-97db-4ff9-b826-d54c28c8689c",
+      "name": "Bloquear Challengue",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Guardar los datos originales completos\nconst originalData = $input.first().json.data;\n\n// Crear copia para actualizar\nconst updateData = {\n  isactive: false,  // Bloquear el challenge\n};\n\n// Retornar tanto los datos para actualizar como los originales\nreturn {\n  json: {\n    updateData: updateData,\n    originalData: originalData\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1180,
+        -220
+      ],
+      "id": "ff87a802-0a30-49fe-8860-92bf495475ad",
+      "name": "Copiar Data de Challenge"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "{{ $('Global Constants').item.json.constants.STRAPI_URL }}/challenges/{{ $json.data.challenge_id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"data\":{\n    \"challenge_relation\":\"mismo\",\n    \"user\":\"mismo\",\n    \"broker_account\":\"nuevo\",\n    \"phase\":3,\n    \"isactive\":true\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2280,
+        440
+      ],
+      "id": "62029ef2-bb52-46d7-9d89-7c09ff0b0484",
+      "name": "Crear Copia de Challenge",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "{{ $('Global Constants').item.json.constants.EMAIL }}",
+        "toEmail": "neocapital2025@gmail.com",
+        "subject": "Creacion de nuevo Challenge",
+        "html": "<!DOCTYPE html>\n<html lang=\"es\">\n\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Notificación de Nuevo Challenge</title>\n  <style>\n    .email-container {\n      max-width: 600px;\n      margin: 20px auto;\n      background-color: #ffffff;\n      border: 1px solid #dddddd;\n      border-radius: 8px;\n      padding: 20px;\n      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\n    }\n\n    .header {\n      text-align: center;\n      margin-bottom: 20px;\n    }\n\n    .header img {\n      max-width: 150px;\n    }\n\n    .content {\n      font-size: 18px;\n      color: #333333;\n      line-height: 1.5;\n      text-align: center;\n    }\n\n    .content a {\n      display: inline-block;\n      background-color: #007bff;\n      color: #ffffff;\n      text-decoration: none;\n      padding: 10px 20px;\n      border-radius: 5px;\n      font-size: 16px;\n      font-weight: bold;\n      margin-top: 10px;\n    }\n\n    .content a:hover {\n      background-color: #0056b3;\n    }\n    \n    .details {\n      text-align: left;\n      margin: 20px 0;\n    }\n    \n    .details li {\n      margin-bottom: 8px;\n    }\n  </style>\n</head>\n\n<body>\n  <div class=\"email-container\">\n    <div class=\"header\">\n      <img src=\"https://neocapitalfunding.com/wp-content/uploads/2025/01/icono-1.png\" alt=\"Logo\">\n    </div>\n    <div class=\"content\">\n      <p style=\"font-size: 26px; font-weight: bold;\">Nuevo Challenge Creado</p>\n      <p>¡Felicidades!</p>\n      <p>Se ha creado un nuevo challenge para ti por haber retirado en un challenge de fase 3 de forma completamente gratuita.</p>\n      <p>A continuación, encontrarás los detalles de tu nueva cuenta:</p>\n      <ul class=\"details\">\n        <li><strong>ID del Nuevo Challenge:</strong> {{ $json.data.newChallengeId }}</li>\n        <li><strong>Fecha de Creación:</strong> {{ new Date($json.data.creationDate).toLocaleDateString('es-ES') }}</li>\n        <li><strong>Tipo de Challenge:</strong> Fase 3 Gratis</li>\n        <!-- Agrega aquí los datos de la nueva cuenta según necesites -->\n        <li><strong>Dato Adicional 1:</strong> [Completar]</li>\n        <li><strong>Dato Adicional 2:</strong> [Completar]</li>\n      </ul>\n      <p>Ingresa a tu dashboard para más información o para iniciar este nuevo challenge.</p>\n      <p><a href=\"https://web.neocapitalfunding.com/\" target=\"_blank\">Ir a mi Dashboard</a></p>\n    </div>\n  </div>\n</body>\n\n</html>",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        2500,
+        460
+      ],
+      "id": "5722087e-e0ac-4dac-94c0-b82152086145",
+      "name": "Notificar Nuevo Challenge",
+      "webhookId": "86c174aa-dc4c-4831-ad0b-d7ebc6556b46",
+      "credentials": {
+        "smtp": {
+          "id": "ZS9NhafTpi5LRpMH",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://risk-management-api-v1.new-york.agiliumtrade.ai/users/current/accounts/{{ $json.data[0].broker_account.idMeta }}/trackers/{{ $json.data[0].challengeId }}/statistics",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "auth-token",
+              "value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsImFjY2Vzc1J1bGVzIjpbeyJpZCI6InRyYWRpbmctYWNjb3VudC1tYW5hZ2VtZW50LWFwaSIsIm1ldGhvZHMiOlsidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcmVzdC1hcGkiLCJtZXRob2RzIjpbIm1ldGFhcGktYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcnBjLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcmVhbC10aW1lLXN0cmVhbWluZy1hcGkiLCJtZXRob2RzIjpbIm1ldGFhcGktYXBpOndzOnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJtZXRhc3RhdHMtYXBpIiwibWV0aG9kcyI6WyJtZXRhc3RhdHMtYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6InJpc2stbWFuYWdlbWVudC1hcGkiLCJtZXRob2RzIjpbInJpc2stbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoiY29weWZhY3RvcnktYXBpIiwibWV0aG9kcyI6WyJjb3B5ZmFjdG9yeS1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibXQtbWFuYWdlci1hcGkiLCJtZXRob2RzIjpbIm10LW1hbmFnZXItYXBpOnJlc3Q6ZGVhbGluZzoqOioiLCJtdC1tYW5hZ2VyLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJiaWxsaW5nLWFwaSIsIm1ldGhvZHMiOlsiYmlsbGluZy1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfV0sImlnbm9yZVJhdGVMaW1pdHMiOmZhbHNlLCJ0b2tlbklkIjoiMjAyMTAyMTMiLCJpbXBlcnNvbmF0ZWQiOmZhbHNlLCJyZWFsVXNlcklkIjoiN2FiNTA2ODg5M2JhMzA3MWI3YWMxNDMyOWM0ZDVkN2YiLCJpYXQiOjE3NDE4MjI0ODF9.EgWgpWVf0qW52Q-HpUX2P130Su9h9Q7fLScrIqlstCPrArykyOdvoNlHlWLRKcb5zb2fxMt5X4E2WiVucbcVKhLsIBii-yMcLUUSSlk_Hi-_Pffgna0_wLf_J_ETC5IaKdbF7ttx-YBeFz4usGnEiYZF-JC-HGrYqG32h0My_Xo2c884TRSCJYr9CIe0eTU9T2C7jo5H1XHREVprXpWld6VLlzqRbrYI5V6PbTNs3nmn-g1sTRCSR6D3VAmrOydeWliIKPll3ONULHURoVq2Ii0VJiqXsE5BGvciU_p9DvyPnIkKwQubf6CXQahNjYhj8eUaccWXw9aW3i8Gv8h9VTDBc3xVOwxIDqJ7c3TwlKrXZrOD41NquRUuMY-xO-TJyPwloHKt-ZKWPcV-l6b-Zyv0w0Ng9Riv0bFQdHldpnXjh7bkzBs2W7AFj9naVcYpSlFqWcc5M86LgQbC6P3Ps8Le0vFsGidhFvcpb9oRQBaweEv0LgXgq_oRNKh4P7aCEPI3ngKN1diDvYKIQ68Pd0CqEF0BwNgRt-G31DY9nOhquhEXqJ208JEVO0teVeqm9JfOzfQsN69AWuxFoPLYy5HVQ53NRUDzgI7gpGRORkOPJmpQGud39oXE_Thqa-wQdGLyxsS2sQVEoU1z1K45eTz9FPzMTj_a3MoxZ45HRTA"
+            },
+            {
+              "name": "api-version",
+              "value": "1"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2000,
+        460
+      ],
+      "id": "4bb3644d-6a49-48e1-974a-c9c8673d676a",
+      "name": "Llama a MetaAPI",
+      "notesInFlow": false,
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "content": "**guardamos los datos de meta api en la copia**",
+        "height": 80
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1500,
+        540
+      ],
+      "id": "8f7f58d6-d210-403f-9a09-55f84f08dc19",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "5416e6f5-9116-42a9-b33f-5babdecd453f",
+              "leftValue": "={{ $json.data.phase }}",
+              "rightValue": 3,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "dc614b95-259c-4596-b1ce-2d04bbcf429f",
+              "leftValue": "={{ $json.data.result }}",
+              "rightValue": "approved",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "505f0a2c-7113-4af9-89c4-2c8c19034b0a",
+              "leftValue": "={{ $json.data.isactive }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        900,
+        -200
+      ],
+      "id": "dbbc55fe-b2ec-415e-8368-7d59f8af6b9f",
+      "name": "result aprobado y fase 3?"
+    },
+    {
+      "parameters": {
+        "fromEmail": "={{ $('Global Constants').item.json.constants.EMAIL }}",
+        "toEmail": "={{ $('Comprobar Estado').item.json.data.user.email }}",
+        "subject": "Withdrawal Request Made",
+        "html": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Withdrawal Request Received - ZevenGlobal</title>\n    <style>\n        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');\n        \n        * {\n            margin: 0;\n            padding: 0;\n            box-sizing: border-box;\n            font-family: 'Montserrat', sans-serif;\n        }\n        \n        body {\n            background-color: #f0f5ff;\n            padding: 40px 20px;\n        }\n        \n        .email-container {\n            max-width: 650px;\n            margin: 0 auto;\n            background: #0a1a35;\n            border-radius: 16px;\n            overflow: hidden;\n            box-shadow: 0 12px 30px rgba(0, 65, 158, 0.2);\n        }\n        \n        .top-header {\n            background-color: #0a1730;\n            padding: 15px 0;\n            text-align: center;\n            border-bottom: 1px solid rgba(100, 150, 255, 0.2);\n        }\n        \n        .top-header img {\n            max-width: 120px;\n            height: auto;\n        }\n        \n        .hero-section {\n            background-color: #101f3d;\n            padding: 30px 20px;\n            text-align: center;\n            color: white;\n        }\n        \n        .hero-section h1 {\n            font-size: 24px;\n            margin-bottom: 10px;\n            color: #f39c12;\n            font-weight: 700;\n        }\n        \n        .hero-section p {\n            font-size: 15px;\n            line-height: 1.5;\n            max-width: 450px;\n            margin: 0 auto;\n            color: #b4c9ff;\n        }\n        \n        .content {\n            padding: 30px 25px;\n            position: relative;\n        }\n        \n        .notification-icon {\n            text-align: center;\n            margin-bottom: 15px;\n        }\n        \n        .notification-icon svg {\n            width: 40px;\n            height: 40px;\n            fill: #f39c12;\n        }\n        \n        .notification-card {\n            position: relative;\n            z-index: 1;\n            background: rgba(18, 37, 73, 0.9);\n            border-radius: 10px;\n            padding: 25px 20px;\n            margin-bottom: 25px;\n            border: 1px solid rgba(243, 156, 18, 0.3);\n            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);\n        }\n        \n        .notification-card h2 {\n            color: white;\n            font-size: 20px;\n            margin-bottom: 15px;\n            padding-bottom: 12px;\n            border-bottom: 1px solid rgba(243, 156, 18, 0.2);\n            text-align: center;\n        }\n        \n        .notification-message {\n            color: white;\n            text-align: center;\n            margin-bottom: 20px;\n            font-size: 15px;\n            line-height: 1.5;\n        }\n        \n        .info-item {\n            display: flex;\n            align-items: center;\n            padding: 12px 0;\n            border-bottom: 1px solid rgba(100, 150, 255, 0.1);\n        }\n        \n        .info-item:last-child {\n            border-bottom: none;\n        }\n        \n        .info-label {\n            color: #7e9bff;\n            font-weight: 500;\n            font-size: 14px;\n            width: 40%;\n            padding-right: 15px;\n        }\n        \n        .info-value {\n            color: white;\n            font-weight: 600;\n            font-size: 15px;\n            background-color: rgba(243, 156, 18, 0.1);\n            padding: 8px 12px;\n            border-radius: 4px;\n            border: 1px solid rgba(243, 156, 18, 0.2);\n            word-break: break-word;\n            width: 60%;\n            flex-grow: 1;\n        }\n        \n        .action-button {\n            display: block;\n            background-color: #f39c12;\n            color: white;\n            text-decoration: none;\n            padding: 14px 20px;\n            border-radius: 6px;\n            font-size: 16px;\n            font-weight: 600;\n            text-align: center;\n            margin: 20px auto 10px;\n            max-width: 250px;\n            transition: all 0.3s ease;\n            box-shadow: 0 4px 8px rgba(243, 156, 18, 0.3);\n        }\n        \n        .action-button:hover {\n            background-color: #e67e22;\n        }\n        \n        .footer {\n            background-color: #0a1730;\n            padding: 20px;\n            text-align: center;\n            color: #7e9bff;\n            font-size: 13px;\n            border-top: 1px solid rgba(100, 150, 255, 0.2);\n        }\n        \n        .social-links {\n            margin: 12px 0;\n        }\n        \n        .social-links a {\n            display: inline-block;\n            width: 30px;\n            height: 30px;\n            background-color: rgba(100, 150, 255, 0.15);\n            border-radius: 50%;\n            margin: 0 5px;\n            line-height: 30px;\n            color: #7e9bff;\n            text-align: center;\n        }\n        \n        .social-icon {\n            width: 16px;\n            height: 16px;\n            vertical-align: middle;\n        }\n        \n        @media (max-width: 480px) {\n            .email-container {\n                border-radius: 10px;\n            }\n            \n            .top-header img {\n                max-width: 100px;\n            }\n            \n            .hero-section h1 {\n                font-size: 20px;\n            }\n            \n            .hero-section p {\n                font-size: 14px;\n            }\n            \n            .notification-card {\n                padding: 20px 15px;\n            }\n            \n            .info-item {\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            \n            .info-label {\n                width: 100%;\n                margin-bottom: 6px;\n            }\n            \n            .info-value {\n                width: 100%;\n            }\n            \n            .action-button {\n                width: 100%;\n                padding: 12px 15px;\n                font-size: 15px;\n            }\n        }\n    </style>\n</head>\n<body>\n    <div class=\"email-container\">\n        <div class=\"top-header\">\n            <img src=\"{{ $('Global Constants').item.json.constants.IMAGE_URL}}\" alt=\"ZevenGlobal Logo\">\n        </div>\n        \n        <div class=\"hero-section\">\n            <h1>Withdrawal Request Received</h1>\n            <p>Your request has been received and is currently under review by our team.</p>\n        </div>\n        \n        <div class=\"content\">\n            <div class=\"notification-icon\">\n                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\">\n                    <path d=\"M256 64C150 64 64 150 64 256s86 192 192 192 192-86 192-192S362 64 256 64zm0 320a32 32 0 1 1 32-32 32 32 0 0 1-32 32zm38.2-128h-76.4c-2.5 0-4.5 2-4.5 4.4l7.3 136.1c.2 2.3 2.2 4.1 4.5 4.1h61.8c2.3 0 4.3-1.8 4.5-4.1l7.3-136.1c0-2.4-2-4.4-4.5-4.4z\"/>\n                </svg>\n            </div>\n            \n            <div class=\"notification-card\">\n                <h2>Your Request Details</h2>\n                \n                <div class=\"notification-message\">\n                    <p>We have received your withdrawal request. Our team is reviewing it and will notify you once it has been approved.</p>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Request ID</span>\n                    <span class=\"info-value\">{{ $json.data.documentId }}</span>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Request Date</span>\n                    <span class=\"info-value\">{{ new Date($json.data.createdAt).toLocaleDateString('es-ES') }}</span>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Withdrawal Amount</span>\n                    <span class=\"info-value\">{{ $json.data.amount }}</span>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Payment Method</span>\n                    <span class=\"info-value\">Crypto Wallet</span>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Status</span>\n                    <span class=\"info-value\">Under Review</span>\n                </div>\n            </div>\n            \n            <p style=\"color: white; text-align: center; margin-bottom: 15px; font-size: 14px;\">The review process may take up to 48 hours.</p>\n            \n            <a href=\"{{ $('Global Constants').item.json.constants.WEBAPP_URL }}\" target=\"_blank\" class=\"action-button\">CHECK STATUS</a>\n        </div>\n        \n        <div class=\"footer\">\n            <p>© 2025 ZevenGlobal - All rights reserved</p>\n            <div class=\"social-links\">\n                <a href=\"#\">\n                    <img class=\"social-icon\" src=\"https://cdn-icons-png.flaticon.com/512/124/124010.png\" alt=\"Facebook\">\n                </a>\n                <a href=\"#\">\n                    <img class=\"social-icon\" src=\"https://cdn-icons-png.flaticon.com/512/124/124021.png\" alt=\"Twitter\">\n                </a>\n                <a href=\"#\">\n                    <img class=\"social-icon\" src=\"https://cdn-icons-png.flaticon.com/512/174/174855.png\" alt=\"Instagram\">\n                </a>\n            </div>\n            <p>If you have any questions, contact us at <a href=\"mailto:{{ $('Global Constants').item.json.constants.EMAIL }}\" style=\"color: #3a9fff; text-decoration: none;\">{{ $('Global Constants').item.json.constants.EMAIL }}</a></p>\n        </div>\n    </div>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        3760,
+        120
+      ],
+      "id": "10976b1c-ee1a-4c56-883d-a4b32f79e4c8",
+      "name": "Notificar Solicitud de Retiro",
+      "webhookId": "0ae5a732-4f02-4c43-9610-342363016c72",
+      "credentials": {
+        "smtp": {
+          "id": "ZS9NhafTpi5LRpMH",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        3560,
+        120
+      ],
+      "id": "e81c43b8-703c-4b43-a501-374baebb8b59",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1400,
+        -220
+      ],
+      "id": "992e9e2a-f331-4947-918b-61ddc46360a0",
+      "name": "Obtener dia Actual"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.WEBAPP_INTERNAL_URL }}api/meta-stats/{{ $('Copiar Data de Challenge').item.json.originalData.broker_account.idMeta }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1780,
+        120
+      ],
+      "id": "8b2964c5-6b07-4893-b54c-fc19a92d18d2",
+      "name": "verificamos estadisticas",
+      "alwaysOutputData": false,
+      "executeOnce": false,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "8u20dlP7ndo4urwE",
+          "name": "META API TOKEN ZEVEN"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://mt-provisioning-api-v1.agiliumtrade.agiliumtrade.ai/users/current/accounts/{{ $json.data.metadata.metaId }}/undeploy ",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "auth-token",
+              "value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsInBlcm1pc3Npb25zIjpbXSwiYWNjZXNzUnVsZXMiOlt7ImlkIjoidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpIiwibWV0aG9kcyI6WyJ0cmFkaW5nLWFjY291bnQtbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZXN0LWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1ycGMtYXBpIiwibWV0aG9kcyI6WyJtZXRhYXBpLWFwaTp3czpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZWFsLXRpbWUtc3RyZWFtaW5nLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFzdGF0cy1hcGkiLCJtZXRob2RzIjpbIm1ldGFzdGF0cy1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoicmlzay1tYW5hZ2VtZW50LWFwaSIsIm1ldGhvZHMiOlsicmlzay1tYW5hZ2VtZW50LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJjb3B5ZmFjdG9yeS1hcGkiLCJtZXRob2RzIjpbImNvcHlmYWN0b3J5LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJtdC1tYW5hZ2VyLWFwaSIsIm1ldGhvZHMiOlsibXQtbWFuYWdlci1hcGk6cmVzdDpkZWFsaW5nOio6KiIsIm10LW1hbmFnZXItYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6ImJpbGxpbmctYXBpIiwibWV0aG9kcyI6WyJiaWxsaW5nLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19XSwiaWdub3JlUmF0ZUxpbWl0cyI6ZmFsc2UsInRva2VuSWQiOiIyMDIxMDIxMyIsImltcGVyc29uYXRlZCI6ZmFsc2UsInJlYWxVc2VySWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsImlhdCI6MTczNzc2MTAzNn0.JxymmDtZAD6n-IB-BwwZH4aNJbW9S9g_ksrpKfyOFfRXR2-vP1DzkTq6i0fqopgxfLNSJDFgPCX6EJhoQFWSSb85TWIEatwgNSBczhTk-CM5q1zylPv_r2zKLmyPIJs1Juav93ImWuy7yOFhUKtwDbg_jtju53XSg1UcSEqL50ojnZVMg6zEMUfT8fU-79Z_M4TB_5TUERhOXeiAhgqhW-OLh65CoU-JoH-wJNhzFNQM4_-ymRSCvvXfT5MHmVzk3oUmPiw381nn_cqmi9y9hLbxHHYoIo5GMOZZf0vNjcbPqFHTgJ6j8Uqe_i2uWqNb9ZcXv066wAkPaFn0um3PsChQUSeC_Ng05n965RPn1soGd4AKU9Kv3gim6Z1RBg6-AnN19QsT2PJluy5CiNoxcchjdu3V_s3cTUCEAhYy9xcp04MqkgIjnLGHZFpQdfEckRbdnaLISJTXt09t7Ei1aNqvwW-5KS__obio2cX1Pnj7L5tl9UzBm55hCpR9loBeIsI2mbYxlHId1UO14Cc6CPFxbh7FMVNGbxuALMxmmrEEQe1JJy3nTMKLqdDOyihYkZnU_qpfzuR-rlgwQ4XGKWRx10JHVlXnrGAuak1P75Bhw_ZD0XxC9V6i_WsJOdCXj4hrBgHTdtGskX4SW4EUpmspOvWqovJbh2ick8yTcgU"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3140,
+        120
+      ],
+      "id": "b8ad4b14-7293-40f1-9098-f0581fce84af",
+      "name": "undeploy cuenta",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/challenges/{{ $('Copiar Data de Challenge').item.json.originalData.documentId }}?populate=*",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "auth-token",
+              "value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsImFjY2Vzc1J1bGVzIjpbeyJpZCI6InRyYWRpbmctYWNjb3VudC1tYW5hZ2VtZW50LWFwaSIsIm1ldGhvZHMiOlsidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcmVzdC1hcGkiLCJtZXRob2RzIjpbIm1ldGFhcGktYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcnBjLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcmVhbC10aW1lLXN0cmVhbWluZy1hcGkiLCJtZXRob2RzIjpbIm1ldGFhcGktYXBpOndzOnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJtZXRhc3RhdHMtYXBpIiwibWV0aG9kcyI6WyJtZXRhc3RhdHMtYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6InJpc2stbWFuYWdlbWVudC1hcGkiLCJtZXRob2RzIjpbInJpc2stbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoiY29weWZhY3RvcnktYXBpIiwibWV0aG9kcyI6WyJjb3B5ZmFjdG9yeS1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibXQtbWFuYWdlci1hcGkiLCJtZXRob2RzIjpbIm10LW1hbmFnZXItYXBpOnJlc3Q6ZGVhbGluZzoqOioiLCJtdC1tYW5hZ2VyLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJiaWxsaW5nLWFwaSIsIm1ldGhvZHMiOlsiYmlsbGluZy1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfV0sImlnbm9yZVJhdGVMaW1pdHMiOmZhbHNlLCJ0b2tlbklkIjoiMjAyMTAyMTMiLCJpbXBlcnNvbmF0ZWQiOmZhbHNlLCJyZWFsVXNlcklkIjoiN2FiNTA2ODg5M2JhMzA3MWI3YWMxNDMyOWM0ZDVkN2YiLCJpYXQiOjE3NDE4MjI0ODF9.EgWgpWVf0qW52Q-HpUX2P130Su9h9Q7fLScrIqlstCPrArykyOdvoNlHlWLRKcb5zb2fxMt5X4E2WiVucbcVKhLsIBii-yMcLUUSSlk_Hi-_Pffgna0_wLf_J_ETC5IaKdbF7ttx-YBeFz4usGnEiYZF-JC-HGrYqG32h0My_Xo2c884TRSCJYr9CIe0eTU9T2C7jo5H1XHREVprXpWld6VLlzqRbrYI5V6PbTNs3nmn-g1sTRCSR6D3VAmrOydeWliIKPll3ONULHURoVq2Ii0VJiqXsE5BGvciU_p9DvyPnIkKwQubf6CXQahNjYhj8eUaccWXw9aW3i8Gv8h9VTDBc3xVOwxIDqJ7c3TwlKrXZrOD41NquRUuMY-xO-TJyPwloHKt-ZKWPcV-l6b-Zyv0w0Ng9Riv0bFQdHldpnXjh7bkzBs2W7AFj9naVcYpSlFqWcc5M86LgQbC6P3Ps8Le0vFsGidhFvcpb9oRQBaweEv0LgXgq_oRNKh4P7aCEPI3ngKN1diDvYKIQ68Pd0CqEF0BwNgRt-G31DY9nOhquhEXqJ208JEVO0teVeqm9JfOzfQsN69AWuxFoPLYy5HVQ53NRUDzgI7gpGRORkOPJmpQGud39oXE_Thqa-wQdGLyxsS2sQVEoU1z1K45eTz9FPzMTj_a3MoxZ45HRTA"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"data\": {\n    \"isactive\":{{$('Copiar Data de Challenge').item.json.updateData.isactive }},\n    \"endDate\":\"{{ $('Obtener dia Actual').item.json.currentDate }}\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2460,
+        120
+      ],
+      "id": "143371ab-ee2e-4b43-a7eb-6bb6e2610202",
+      "name": "Bloquear Challengue1",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"data\": {\n    \"metaId\":\"{{ $('Comprobar Estado').item.json.data.metadata.metaId }}\",\n    \"metrics\":{{ JSON.stringify($('verificamos estadisticas').item.json.metrics) }},\n    \"equityChart\":{{ JSON.stringify($('verificamos estadisticas').item.json.equityChart) }},\n    \"broker_account\":{{ JSON.stringify($('Comprobar Estado').item.json.data.broker_account)}},\n      \"challenge_stages\":{{ JSON.stringify($('Comprobar Estado').item.json.data.metadata.challenge_stages) }},\n    \"stage_parameters\":{{ JSON.stringify($('Comprobar Estado').item.json.data.metadata.stage_parameters) }}\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2280,
+        -220
+      ],
+      "id": "59a3b923-d3ee-4355-8314-1dd18a386176",
+      "name": "Edit Fields1"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n_workflows",
+  "repo_owner": "EliteCodeDev",
+  "repo_path": "workflows/zeven/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-05-24T14:12:24.000Z",
+  "versionId": "badd2abf-d2ae-46a2-b249-65f1a5435055"
+}
