@@ -1,0 +1,468 @@
+{
+  "active": false,
+  "connections": {
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "page_2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Combinar por iniciar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "page_1": {
+      "main": [
+        [
+          {
+            "node": "Challenges por iniciar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "page_2": {
+      "main": [
+        [
+          {
+            "node": "page_1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Global Constants",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Global Constants": {
+      "main": [
+        [
+          {
+            "node": "page_1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Challenges por iniciar": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Combinar por iniciar": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "verificamos estadisticas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verificamos estadisticas": {
+      "main": [
+        [
+          {
+            "node": "Realizó trades?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Realizó trades?": {
+      "main": [
+        [
+          {
+            "node": "Armar metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Armar metadata": {
+      "main": [
+        [
+          {
+            "node": "Iniciar Challenge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-08T03:56:41.897Z",
+  "id": "yJNtWUl0RGQ8YmeT",
+  "isArchived": false,
+  "meta": null,
+  "name": "APP: Tracker 1er Trade",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "seconds"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -180,
+        0
+      ],
+      "id": "c541c4a7-685b-4c9d-8e57-f7bb4df880df",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "915bbcec-f6a7-4fce-9704-165d884a9f05",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "array",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1020,
+        0
+      ],
+      "id": "649248cc-1580-48f5-8355-7e14687196f1",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0b888805-fc15-4169-bd0f-22b0d6011781",
+              "name": "page",
+              "value": "={{ $json.page || 1}}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        360,
+        0
+      ],
+      "id": "d242d6f2-7b4c-41b5-871f-afa752509964",
+      "name": "page_1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1632edcb-f8a0-438b-8196-ef006011535a",
+              "name": "page",
+              "value": "={{ $json.meta.pagination.page + 1}}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        880,
+        180
+      ],
+      "id": "031c7447-f90e-4363-b017-bf44e068a86e",
+      "name": "page_2"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-globals.globalConstants",
+      "typeVersion": 1,
+      "position": [
+        60,
+        0
+      ],
+      "id": "0c886067-3931-4d05-b02d-41c5dd4eb348",
+      "name": "Global Constants",
+      "credentials": {
+        "globalConstantsApi": {
+          "id": "xD5yrF0WiFvNSDFv",
+          "name": "Global Constants account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.STRAPI_URL }}/challenges?populate=*&filters[result][$eq]=init&filters[isactive][$eq]=true",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "pagination[page]",
+              "value": "={{ $json.page }}"
+            },
+            {
+              "name": "pagination[pageSize]",
+              "value": "25"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        640,
+        0
+      ],
+      "id": "89ef6706-c3a6-4dc0-9624-a5b46e2860a9",
+      "name": "Challenges por iniciar",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const allData = [];\nlet counter = 0;\ndo {\n  try {\n    // Obtener los items del nodo de n8n\n    const items = $(\"Challenges por iniciar\").all(0, counter);\n    \n    // Si no hay items, salir del bucle\n    if (!items || items.length === 0) {\n      break;\n    }\n    \n    // Extraer los datos del array 'data' dentro de json de cada item\n    const extractedData = items.map(item => item.json.data).flat();\n    \n    // Agregar los datos extraídos al array final\n    allData.push.apply(allData, extractedData);\n  } catch (error) {\n    // Devolver los datos recolectados hasta ahora\n    return ({\"data\":allData});\n  }\n  counter++;\n} while(true);\n\nreturn ({\"data\":allData});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1240,
+        20
+      ],
+      "id": "baa05cf3-2712-453d-9045-c84a9aee4df2",
+      "name": "Combinar por iniciar"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        20
+      ],
+      "id": "0d3de107-b2f8-464d-812b-2a5b3c3c17b5",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "url": "=https://web.zevenglobalfunding.com/api/meta-stats/{{ $json.broker_account.idMeta }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1900,
+        20
+      ],
+      "id": "144399cc-6a33-4ce3-85ce-7621a90994a2",
+      "name": "verificamos estadisticas",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e979c464-627c-4c07-89da-6a2173a46298",
+              "leftValue": "={{ $json.broker_account.idMeta }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        1680,
+        20
+      ],
+      "id": "9d5defa4-614d-48af-954c-5ab6c5aac1b8",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "074c2b42-dd28-4451-887c-7cbce59df996",
+              "leftValue": "={{$json.metrics.trades }}",
+              "rightValue": "=0",
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2120,
+        20
+      ],
+      "id": "3b70d4c4-91a5-450e-a5d9-2618ac195cd4",
+      "name": "Realizó trades?"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/challenges/{{ $('Split Out').item.json.documentId }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"data\": {\n    \"startDate\": \"{{ new Date().toISOString() }}\",\n    \"result\": \"progress\",\n    \"metadata\": {{ JSON.stringify($('Armar metadata').item.json.data) || {} }}\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2580,
+        -20
+      ],
+      "id": "ae7a90d3-e03d-4e69-85eb-0f2cb47874c4",
+      "name": "Iniciar Challenge",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"data\": {\n    \"metaId\":\"{{ $('verificamos estadisticas').item.json.metaId }}\",\n    \"metrics\":{{ JSON.stringify($('verificamos estadisticas').item.json.metrics) }},\n    \"equityChart\":{{ JSON.stringify($('verificamos estadisticas').item.json.equityChart) }},\n    \"broker_account\":{{ JSON.stringify($('Split Out').item.json.broker_account)}},\n    \"challenge_stages\":{{ JSON.stringify($('Split Out').item.json.metadata.challenge_stages) }},\n    \"stage_parameters\":{{ JSON.stringify($('Split Out').item.json.metadata.stage_parameters) }}\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2400,
+        -20
+      ],
+      "id": "45561cf6-b4c8-406c-97c8-f7989397ef46",
+      "name": "Armar metadata"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n_workflows",
+  "repo_owner": "EliteCodeDev",
+  "repo_path": "https://github.com/EliteCodeDev/n8n_workflows/",
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "psoEwVAjpwuKHyK1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-20T16:37:44.000Z",
+  "versionId": "07c73b02-a330-45d7-81a3-2dfeee0c44f6"
+}
