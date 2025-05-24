@@ -1,0 +1,497 @@
+{
+  "active": false,
+  "connections": {
+    "fecha de asignacion ticket": {
+      "main": [
+        [
+          {
+            "node": "fecha expiracion cupon",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Global Constants": {
+      "main": [
+        [
+          {
+            "node": "Obtener Challenge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener el usuario": {
+      "main": [
+        [
+          {
+            "node": "Obtener porcentaje",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Global Constants",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fecha expiracion cupon": {
+      "main": [
+        [
+          {
+            "node": "Obtener producto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener Challenge": {
+      "main": [
+        [
+          {
+            "node": "Obtener el usuario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener porcentaje": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto": {
+      "main": [
+        [
+          {
+            "node": "crear cupon",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "crear cupon": {
+      "main": [
+        [
+          {
+            "node": "Notificacion de desaprobado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Notificacion de desaprobado1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "fecha de asignacion ticket",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener producto": {
+      "main": [
+        [
+          {
+            "node": "Crypto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-29T18:01:54.297Z",
+  "id": "Gwdc51ka4UAo0vxi",
+  "isArchived": false,
+  "meta": null,
+  "name": "EJECUTAR: Crear Cupon Correo",
+  "nodes": [
+    {
+      "parameters": {
+        "outputFieldName": "fechaAsignacionTicket",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1540,
+        20
+      ],
+      "id": "c7720aa9-bf90-444a-a4c8-4bc3124daf2d",
+      "name": "fecha de asignacion ticket"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-globals.globalConstants",
+      "typeVersion": 1,
+      "position": [
+        240,
+        0
+      ],
+      "id": "007bce3a-a398-462c-b139-35254d485e32",
+      "name": "Global Constants",
+      "credentials": {
+        "globalConstantsApi": {
+          "id": "xD5yrF0WiFvNSDFv",
+          "name": "Global Constants account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/users?populate=*&filters[documentId][$eq]={{ $('When Executed by Another Workflow').item.json.data.user_id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        0
+      ],
+      "id": "583a49e0-5c10-4ba6-997b-9351710e7718",
+      "name": "Obtener el usuario"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "data",
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "40682143-99f5-4ad1-8676-4b392d793f08",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "operation": "addToDate",
+        "magnitude": "={{ $json.currentDate }}",
+        "duration": 3,
+        "outputFieldName": "fechaExpiracionTicket",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1720,
+        20
+      ],
+      "id": "433a345f-f052-461c-8e5e-78d8a8a85b13",
+      "name": "fecha expiracion cupon"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Global Constants').item.json.constants.WOOCOMMERCE_URL }}coupons",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wooCommerceApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"code\": \"{{ $json.data }}\",\n    \"discount_type\": \"percent\",\n    \"amount\": \"{{ $('Obtener porcentaje').item.json.data }}\",\n    \"individual_use\": true,\n    \"exclude_sale_items\": true,\n    \"date_expires\": \"{{ $('fecha expiracion cupon').item.json.fechaExpiracionTicket }}\",\n    \"usage_limit\": 1,\n    \"product_ids\":[{{ $('Obtener producto').item.json.line_items[0].product_id }}]\n} ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2400,
+        20
+      ],
+      "id": "3a9a8c82-c16a-4899-81c1-6b146754404b",
+      "name": "crear cupon",
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "6Kb9lwMY8NDVFSSe",
+          "name": "WooCommerce account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/challenges/{{ $('When Executed by Another Workflow').item.json.data.challenge_id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        500,
+        0
+      ],
+      "id": "fd797a18-012f-4c15-8d11-472c244c0a3a",
+      "name": "Obtener Challenge",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const phase = $('Obtener Challenge').first().json.data.phase;\nswitch (phase) {\n    case 1:\n        return ({\"data\":10});\n    case 2:\n        return ({\"data\":15});\n    case 3:\n        return ({\"data\":0});\n    default:\n        return ({\"data\":0}); // Added a default case to handle any unexpected phase values\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        0
+      ],
+      "id": "939bd898-d201-45b5-88b2-39a72e340831",
+      "name": "Obtener porcentaje"
+    },
+    {
+      "parameters": {
+        "action": "generate",
+        "encodingType": "base64",
+        "stringLength": 8
+      },
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        2180,
+        20
+      ],
+      "id": "2012860d-d212-457b-8fbb-d5c809d03222",
+      "name": "Crypto"
+    },
+    {
+      "parameters": {
+        "fromEmail": "={{ $('Global Constants').item.json.constants.EMAIL }}",
+        "toEmail": "= {{$('Obtener el usuario').item.json.email }}",
+        "subject": "You have lost a Challenge",
+        "html": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Challenge Not Approved - ZevenGlobal</title>\n    <style>\n        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');\n        \n        * {\n            margin: 0;\n            padding: 0;\n            box-sizing: border-box;\n            font-family: 'Montserrat', sans-serif;\n        }\n        \n        body {\n            background-color: #f0f5ff;\n            padding: 40px 20px;\n        }\n        \n        .email-container {\n            max-width: 650px;\n            margin: 0 auto;\n            background: #0a1a35;\n            border-radius: 16px;\n            overflow: hidden;\n            box-shadow: 0 12px 30px rgba(0, 65, 158, 0.2);\n        }\n        \n        .top-header {\n            background-color: #0a1730;\n            padding: 15px 0;\n            text-align: center;\n            border-bottom: 1px solid rgba(100, 150, 255, 0.2);\n        }\n        \n        .top-header img {\n            max-width: 120px;\n            height: auto;\n        }\n        \n        .hero-section {\n            background-color: #101f3d;\n            padding: 30px 20px;\n            text-align: center;\n            color: white;\n        }\n        \n        .hero-section h1 {\n            font-size: 24px;\n            margin-bottom: 10px;\n            color: #e74c3c;\n            font-weight: 700;\n        }\n        \n        .hero-section p {\n            font-size: 15px;\n            line-height: 1.5;\n            max-width: 450px;\n            margin: 0 auto;\n            color: #b4c9ff;\n        }\n        \n        .content {\n            padding: 30px 25px;\n            position: relative;\n        }\n        \n        .notification-icon {\n            text-align: center;\n            margin-bottom: 15px;\n        }\n        \n        .notification-icon svg {\n            width: 40px;\n            height: 40px;\n            fill: #e74c3c;\n        }\n        \n        .notification-card {\n            position: relative;\n            z-index: 1;\n            background: rgba(18, 37, 73, 0.9);\n            border-radius: 10px;\n            padding: 25px 20px;\n            margin-bottom: 25px;\n            border: 1px solid rgba(231, 76, 60, 0.3);\n            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);\n        }\n        \n        .notification-card h2 {\n            color: white;\n            font-size: 20px;\n            margin-bottom: 15px;\n            padding-bottom: 12px;\n            border-bottom: 1px solid rgba(231, 76, 60, 0.2);\n            text-align: center;\n        }\n        \n        .notification-message {\n            color: white;\n            text-align: center;\n            margin-bottom: 20px;\n            font-size: 15px;\n            line-height: 1.5;\n        }\n        \n        .info-item {\n            display: flex;\n            align-items: center;\n            padding: 12px 0;\n            border-bottom: 1px solid rgba(100, 150, 255, 0.1);\n        }\n        \n        .info-item:last-child {\n            border-bottom: none;\n        }\n        \n        .info-label {\n            color: #7e9bff;\n            font-weight: 500;\n            font-size: 14px;\n            width: 40%;\n            padding-right: 15px;\n        }\n        \n        .info-value {\n            color: white;\n            font-weight: 600;\n            font-size: 15px;\n            background-color: rgba(231, 76, 60, 0.1);\n            padding: 8px 12px;\n            border-radius: 4px;\n            border: 1px solid rgba(231, 76, 60, 0.2);\n            word-break: break-word;\n            width: 60%;\n            flex-grow: 1;\n        }\n        \n        .opportunity-message {\n            color: white;\n            text-align: center;\n            margin: 25px 0;\n            padding: 15px;\n            background: rgba(22, 45, 90, 0.7);\n            border-radius: 8px;\n            border-left: 3px solid #e74c3c;\n            font-size: 15px;\n            line-height: 1.5;\n        }\n        \n        .coupon-container {\n            margin: 30px auto;\n            border: 2px dashed #e74c3c;\n            max-width: 100%;\n        }\n        \n        .coupon-code {\n            font-size: 26px;\n            font-weight: 700;\n            color: #e74c3c;\n            letter-spacing: 2px;\n            margin: 0;\n            padding: 8px 15px;\n            background-color: rgba(231, 76, 60, 0.1);\n            border-radius: 5px;\n            border: 1px dashed rgba(231, 76, 60, 0.5);\n            display: inline-block;\n        }\n        \n        .coupon-detail {\n            display: flex;\n            align-items: center;\n            padding: 12px 0;\n            border-bottom: 1px solid rgba(100, 150, 255, 0.1);\n        }\n        \n        .coupon-detail:last-child {\n            border-bottom: none;\n        }\n        \n        .coupon-detail-label {\n            color: #7e9bff;\n            font-weight: 500;\n            font-size: 14px;\n            width: 40%;\n            padding-right: 15px;\n        }\n        \n        .coupon-detail-value {\n            color: white;\n            font-weight: 600;\n            font-size: 15px;\n            background-color: rgba(231, 76, 60, 0.1);\n            padding: 8px 12px;\n            border-radius: 4px;\n            border: 1px solid rgba(231, 76, 60, 0.2);\n            word-break: break-word;\n            width: 60%;\n            flex-grow: 1;\n        }\n        \n        .action-button {\n            display: block;\n            background-color: #e74c3c;\n            color: white;\n            text-decoration: none;\n            padding: 14px 20px;\n            border-radius: 6px;\n            font-size: 16px;\n            font-weight: 600;\n            text-align: center;\n            margin: 20px auto 10px;\n            max-width: 250px;\n            transition: all 0.3s ease;\n            box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);\n        }\n        \n        .action-button:hover {\n            background-color: #c0392b;\n        }\n        \n        .footer {\n            background-color: #0a1730;\n            padding: 20px;\n            text-align: center;\n            color: #7e9bff;\n            font-size: 13px;\n            border-top: 1px solid rgba(100, 150, 255, 0.2);\n        }\n        \n        .social-links {\n            margin: 12px 0;\n        }\n        \n        .social-links a {\n            display: inline-block;\n            width: 30px;\n            height: 30px;\n            background-color: rgba(100, 150, 255, 0.15);\n            border-radius: 50%;\n            margin: 0 5px;\n            line-height: 30px;\n            color: #7e9bff;\n            text-align: center;\n        }\n        \n        .social-icon {\n            width: 16px;\n            height: 16px;\n            vertical-align: middle;\n        }\n        \n        @media (max-width: 480px) {\n            .email-container {\n                border-radius: 10px;\n            }\n            \n            .top-header img {\n                max-width: 100px;\n            }\n            \n            .hero-section h1 {\n                font-size: 20px;\n            }\n            \n            .hero-section p {\n                font-size: 14px;\n            }\n            \n            .notification-card {\n                padding: 20px 15px;\n            }\n            \n            .info-item {\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            \n            .info-label {\n                width: 100%;\n                margin-bottom: 6px;\n            }\n            \n            .info-value {\n                width: 100%;\n            }\n            \n            .coupon-code {\n                font-size: 20px;\n                letter-spacing: 1px;\n            }\n            \n            .action-button {\n                width: 100%;\n                padding: 12px 15px;\n                font-size: 15px;\n            }\n        }\n    </style>\n</head>\n<body>\n    <div class=\"email-container\">\n        <div class=\"top-header\">\n            <img src=\"{{ $('Global Constants').item.json.constants.IMAGE_URL}}\" alt=\"ZevenGlobal Logo\">\n        </div>\n        \n        <div class=\"hero-section\">\n            <h1>Challenge Not Approved</h1>\n            <p>We regret to inform you that you did not pass the challenge, but we have a special offer for you.</p>\n        </div>\n        \n        <div class=\"content\">\n            <div class=\"notification-icon\">\n                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\">\n                    <path d=\"M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm0 319.91a20 20 0 1 1 20-20 20 20 0 0 1-20 20zm21.72-201.15l-5.74 122a16 16 0 0 1-32 0l-5.74-121.94v-.05a21.74 21.74 0 1 1 43.44 0z\"/>\n                </svg>\n            </div>\n            \n            <div class=\"notification-card\">\n                <h2>Challenge Details</h2>\n                \n                <div class=\"notification-message\">\n                    <p>We have reviewed your performance and unfortunately it does not meet the required parameters to pass the challenge.</p>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Challenge ID</span>\n                    <span class=\"info-value\">{{ $('Obtener Challenge').item.json.data.documentId }}</span>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Start Date</span>\n                    <span class=\"info-value\">{{ new Date($('Obtener Challenge').item.json.data.startDate).toLocaleDateString('es-ES') }}</span>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">End Date</span>\n                    <span class=\"info-value\">{{ new Date($('Obtener Challenge').item.json.data.endDate).toLocaleDateString('es-ES') }}</span>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Phase</span>\n                    <span class=\"info-value\">{{ $('Obtener Challenge').item.json.data.phase }}</span>\n                </div>\n            </div>\n            \n            <div class=\"opportunity-message\">\n                <p>Don't worry! We want to offer you a <strong>new opportunity</strong> for this challenge with a special discount.</p>\n            </div>\n            \n            <div class=\"notification-card coupon-container\">\n                <h2>SPECIAL DISCOUNT</h2>\n                \n                <div class=\"notification-message\">\n                    <p class=\"coupon-code\">{{ $json.code }}</p>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"coupon-detail-label\">Discount:</span>\n                    <span class=\"coupon-detail-value\">{{ $json.amount }}</span>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"coupon-detail-label\">Valid Until:</span>\n                    <span class=\"coupon-detail-value\">{{ new Date($('fecha expiracion cupon').item.json.fechaExpiracionTicket).toLocaleDateString('es-ES') }}</span>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"coupon-detail-label\">For the challenge:</span>\n                    <span class=\"coupon-detail-value\">{{ $('Obtener producto').item.json.line_items[0].name }}</span>\n                </div>\n            </div>\n            \n            <p style=\"color: white; text-align: center; margin-bottom: 15px; font-size: 14px;\">To apply this discount and try again, please visit your dashboard.</p>\n            \n            <a href=\"{{ $('Global Constants').item.json.constants.WEBAPP_URL }}\" target=\"_blank\" class=\"action-button\">APPLY COUPON</a>\n        </div>\n        \n        <div class=\"footer\">\n            <p>© 2025 ZevenGlobal - All rights reserved</p>\n            <div class=\"social-links\">\n                <a href=\"#\">\n                    <img class=\"social-icon\" src=\"https://cdn-icons-png.flaticon.com/512/124/124010.png\" alt=\"Facebook\">\n                </a>\n                <a href=\"#\">\n                    <img class=\"social-icon\" src=\"https://cdn-icons-png.flaticon.com/512/124/124021.png\" alt=\"Twitter\">\n                </a>\n                <a href=\"#\">\n                    <img class=\"social-icon\" src=\"https://cdn-icons-png.flaticon.com/512/174/174855.png\" alt=\"Instagram\">\n                </a>\n            </div>\n            <p>If you have any questions, contact us at <a href=\"mailto:{{ $('Global Constants').item.json.constants.EMAIL }}\" style=\"color: #3a9fff; text-decoration: none;\">{{ $('Global Constants').item.json.constants.EMAIL }}</a></p>\n        </div>\n    </div>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        2640,
+        20
+      ],
+      "id": "471f3fc2-a63a-4224-b1b7-2ef5dd127555",
+      "name": "Notificacion de desaprobado",
+      "webhookId": "0667665b-452e-4c5e-8d80-48abe5d89526",
+      "credentials": {
+        "smtp": {
+          "id": "ZS9NhafTpi5LRpMH",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "33b9d627-ab1d-4f60-a6e7-5fbb055249c4",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1320,
+        0
+      ],
+      "id": "07b8297f-d314-4c58-b5c3-60f59496c24d",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "fromEmail": "={{ $('Global Constants').item.json.constants.EMAIL }}",
+        "toEmail": "={{$('Obtener el usuario').item.json.email }}",
+        "subject": " You have lost a Challenge",
+        "html": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Challenge Not Approved - ZevenGlobal</title>\n    <style>\n        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');\n        \n        * {\n            margin: 0;\n            padding: 0;\n            box-sizing: border-box;\n            font-family: 'Montserrat', sans-serif;\n        }\n        \n        body {\n            background-color: #f0f5ff;\n            padding: 40px 20px;\n        }\n        \n        .email-container {\n            max-width: 650px;\n            margin: 0 auto;\n            background: #0a1a35;\n            border-radius: 16px;\n            overflow: hidden;\n            box-shadow: 0 12px 30px rgba(0, 65, 158, 0.2);\n        }\n        \n        .top-header {\n            background-color: #0a1730;\n            padding: 15px 0;\n            text-align: center;\n            border-bottom: 1px solid rgba(100, 150, 255, 0.2);\n        }\n        \n        .top-header img {\n            max-width: 120px;\n            height: auto;\n        }\n        \n        .hero-section {\n            background-color: #101f3d;\n            padding: 30px 20px;\n            text-align: center;\n            color: white;\n        }\n        \n        .hero-section h1 {\n            font-size: 24px;\n            margin-bottom: 10px;\n            color: #e74c3c;\n            font-weight: 700;\n        }\n        \n        .hero-section p {\n            font-size: 15px;\n            line-height: 1.5;\n            max-width: 450px;\n            margin: 0 auto;\n            color: #b4c9ff;\n        }\n        \n        .content {\n            padding: 30px 25px;\n            position: relative;\n        }\n        \n        .notification-icon {\n            text-align: center;\n            margin-bottom: 15px;\n        }\n        \n        .notification-icon svg {\n            width: 40px;\n            height: 40px;\n            fill: #e74c3c;\n        }\n        \n        .notification-card {\n            position: relative;\n            z-index: 1;\n            background: rgba(18, 37, 73, 0.9);\n            border-radius: 10px;\n            padding: 25px 20px;\n            margin-bottom: 25px;\n            border: 1px solid rgba(231, 76, 60, 0.3);\n            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);\n        }\n        \n        .notification-card h2 {\n            color: white;\n            font-size: 20px;\n            margin-bottom: 15px;\n            padding-bottom: 12px;\n            border-bottom: 1px solid rgba(231, 76, 60, 0.2);\n            text-align: center;\n        }\n        \n        .notification-message {\n            color: white;\n            text-align: center;\n            margin-bottom: 20px;\n            font-size: 15px;\n            line-height: 1.5;\n        }\n        \n        .info-item {\n            display: flex;\n            align-items: center;\n            padding: 12px 0;\n            border-bottom: 1px solid rgba(100, 150, 255, 0.1);\n        }\n        \n        .info-item:last-child {\n            border-bottom: none;\n        }\n        \n        .info-label {\n            color: #7e9bff;\n            font-weight: 500;\n            font-size: 14px;\n            width: 40%;\n            padding-right: 15px;\n        }\n        \n        .info-value {\n            color: white;\n            font-weight: 600;\n            font-size: 15px;\n            background-color: rgba(231, 76, 60, 0.1);\n            padding: 8px 12px;\n            border-radius: 4px;\n            border: 1px solid rgba(231, 76, 60, 0.2);\n            word-break: break-word;\n            width: 60%;\n            flex-grow: 1;\n        }\n        \n        .action-button {\n            display: block;\n            background-color: #e74c3c;\n            color: white;\n            text-decoration: none;\n            padding: 14px 20px;\n            border-radius: 6px;\n            font-size: 16px;\n            font-weight: 600;\n            text-align: center;\n            margin: 20px auto 10px;\n            max-width: 250px;\n            transition: all 0.3s ease;\n            box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);\n        }\n        \n        .action-button:hover {\n            background-color: #c0392b;\n        }\n        \n        .footer {\n            background-color: #0a1730;\n            padding: 20px;\n            text-align: center;\n            color: #7e9bff;\n            font-size: 13px;\n            border-top: 1px solid rgba(100, 150, 255, 0.2);\n        }\n        \n        .social-links {\n            margin: 12px 0;\n        }\n        \n        .social-links a {\n            display: inline-block;\n            width: 30px;\n            height: 30px;\n            background-color: rgba(100, 150, 255, 0.15);\n            border-radius: 50%;\n            margin: 0 5px;\n            line-height: 30px;\n            color: #7e9bff;\n            text-align: center;\n        }\n        \n        .social-icon {\n            width: 16px;\n            height: 16px;\n            vertical-align: middle;\n        }\n        \n        @media (max-width: 480px) {\n            .email-container {\n                border-radius: 10px;\n            }\n            \n            .top-header img {\n                max-width: 100px;\n            }\n            \n            .hero-section h1 {\n                font-size: 20px;\n            }\n            \n            .hero-section p {\n                font-size: 14px;\n            }\n            \n            .notification-card {\n                padding: 20px 15px;\n            }\n            \n            .info-item {\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            \n            .info-label {\n                width: 100%;\n                margin-bottom: 6px;\n            }\n            \n            .info-value {\n                width: 100%;\n            }\n            \n            .action-button {\n                width: 100%;\n                padding: 12px 15px;\n                font-size: 15px;\n            }\n        }\n    </style>\n</head>\n<body>\n    <div class=\"email-container\">\n        <div class=\"top-header\">\n            <img src=\"{{ $('Global Constants').item.json.constants.IMAGE_URL}}\" alt=\"ZevenGlobal Logo\">\n        </div>\n        \n        <div class=\"hero-section\">\n            <h1>Challenge Not Approved</h1>\n            <p>We regret to inform you that you did not meet the challenge criteria.</p>\n        </div>\n        \n        <div class=\"content\">\n            <div class=\"notification-icon\">\n                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\">\n                    <path d=\"M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm0 319.91a20 20 0 1 1 20-20 20 20 0 0 1-20 20zm21.72-201.15l-5.74 122a16 16 0 0 1-32 0l-5.74-121.94v-.05a21.74 21.74 0 1 1 43.44 0z\"/>\n                </svg>\n            </div>\n            \n            <div class=\"notification-card\">\n                <h2>Challenge Details</h2>\n                \n                <div class=\"notification-message\">\n                    <p>We have reviewed your performance and unfortunately it does not meet the required parameters for passing the challenge.</p>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Challenge ID</span>\n                    <span class=\"info-value\">{{ $('Obtener Challenge').item.json.data.documentId }}</span>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Start Date</span>\n                    <span class=\"info-value\">{{ new Date($('Obtener Challenge').item.json.data.startDate).toLocaleDateString('es-ES') }}</span>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">End Date</span>\n                    <span class=\"info-value\">{{ new Date($('Obtener Challenge').item.json.data.endDate).toLocaleDateString('es-ES') }}</span>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Phase</span>\n                    <span class=\"info-value\">{{ $('Obtener Challenge').item.json.data.phase }}</span>\n                </div>\n            </div>\n            \n            <p style=\"color: white; text-align: center; margin-bottom: 15px; font-size: 14px;\">For more information or to try again, please visit your dashboard.</p>\n            \n            <a style=\"color: white\" href=\"{{ $('Global Constants').item.json.constants.WEBAPP_URL }}\" target=\"_blank\" class=\"action-button\">VIEW DASHBOARD</a>\n        </div>\n        \n        <div class=\"footer\">\n            <p>© 2025 ZevenGlobal - All rights reserved</p>\n            <div class=\"social-links\">\n                <a href=\"#\">\n                    <img class=\"social-icon\" src=\"https://cdn-icons-png.flaticon.com/512/124/124010.png\" alt=\"Facebook\">\n                </a>\n                <a href=\"#\">\n                    <img class=\"social-icon\" src=\"https://cdn-icons-png.flaticon.com/512/124/124021.png\" alt=\"Twitter\">\n                </a>\n                <a href=\"#\">\n                    <img class=\"social-icon\" src=\"https://cdn-icons-png.flaticon.com/512/174/174855.png\" alt=\"Instagram\">\n                </a>\n            </div>\n            <p>If you have any questions, contact us at <a href=\"mailto:{{ $('Global Constants').item.json.constants.EMAIL }}\" style=\"color: #3a9fff; text-decoration: none;\">{{ $('Global Constants').item.json.constants.EMAIL }}</a></p>\n        </div>\n    </div>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        1740,
+        -200
+      ],
+      "id": "d13e3174-c691-438c-b95b-f0b0c78d6930",
+      "name": "Notificacion de desaprobado1",
+      "webhookId": "0667665b-452e-4c5e-8d80-48abe5d89526",
+      "credentials": {
+        "smtp": {
+          "id": "ZS9NhafTpi5LRpMH",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.WOOCOMMERCE_URL }}orders/{{ $('Obtener Challenge').item.json.data.wc_order }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wooCommerceApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1940,
+        20
+      ],
+      "id": "b0fef4a3-85cb-449d-ab7f-63085e24decd",
+      "name": "Obtener producto",
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "6Kb9lwMY8NDVFSSe",
+          "name": "WooCommerce account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "crear cupon": [
+      {
+        "json": {
+          "id": 11048,
+          "code": "ldma3clp",
+          "amount": "0.10",
+          "status": "publish",
+          "date_created": "2025-03-29T15:11:21",
+          "date_created_gmt": "2025-03-29T20:11:21",
+          "date_modified": "2025-03-29T15:11:21",
+          "date_modified_gmt": "2025-03-29T20:11:21",
+          "discount_type": "percent",
+          "description": "",
+          "date_expires": "2025-04-01T20:07:48",
+          "date_expires_gmt": "2025-04-02T01:07:48",
+          "usage_count": 0,
+          "individual_use": true,
+          "product_ids": [
+            10576
+          ],
+          "excluded_product_ids": [],
+          "usage_limit": 1,
+          "usage_limit_per_user": null,
+          "limit_usage_to_x_items": null,
+          "free_shipping": false,
+          "product_categories": [],
+          "excluded_product_categories": [],
+          "exclude_sale_items": true,
+          "minimum_amount": "0.00",
+          "maximum_amount": "0.00",
+          "email_restrictions": [],
+          "used_by": [],
+          "meta_data": [],
+          "_links": {
+            "self": [
+              {
+                "href": "https://neocapitalfunding.com/wp-json/wc/v3/coupons/11048",
+                "targetHints": {
+                  "allow": [
+                    "GET",
+                    "POST",
+                    "PUT",
+                    "PATCH",
+                    "DELETE"
+                  ]
+                }
+              }
+            ],
+            "collection": [
+              {
+                "href": "https://neocapitalfunding.com/wp-json/wc/v3/coupons"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "data": {
+            "user_id": "clxuc8zd0kaucn1holglpbsu",
+            "challenge_id": "d2nj7ajvtfshqibmmlwf9uxe"
+          }
+        }
+      },
+      {
+        "json": {
+          "data": {
+            "user_id": "noh8itj8ild1ij2952schtu0",
+            "challenge_id": "o7f19c3skbsh9x3bkervfixu"
+          }
+        }
+      },
+      {
+        "json": {
+          "data": {
+            "user_id": "gjod8zj74poxn1muxpdoamxd",
+            "challenge_id": "p1qzynabq7rcwym7wnmcy54c"
+          }
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n_workflows",
+  "repo_owner": "EliteCodeDev",
+  "repo_path": "https://github.com/EliteCodeDev/n8n_workflows/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-23T22:40:00.000Z",
+  "versionId": "9e815ef1-b1e3-4556-b23b-2540cd5ed9a5"
+}
