@@ -1,0 +1,817 @@
+{
+  "active": false,
+  "connections": {
+    "Global Constants": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Global Constants",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Obtener Relation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener Relation": {
+      "main": [
+        [
+          {
+            "node": "Crear o Editar?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crear Variacion": {
+      "main": [
+        [
+          {
+            "node": "Escoger Variacion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Editar Config": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crear o Editar?": {
+      "main": [
+        [
+          {
+            "node": "Editar Variacion",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Crear Variacion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Editar Variacion": {
+      "main": [
+        [
+          {
+            "node": "Escoger Variacion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Escoger Variacion": {
+      "main": [
+        [
+          {
+            "node": "Editar Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-08T14:06:28.600Z",
+  "id": "BgKde8UKdUIonwDR",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "APP: Manejar Variaciones de Producto",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-globals.globalConstants",
+      "typeVersion": 1,
+      "position": [
+        280,
+        60
+      ],
+      "id": "b08224c9-6ccb-4f5e-9b33-0d8e33aaf0cf",
+      "name": "Global Constants",
+      "credentials": {
+        "globalConstantsApi": {
+          "id": "xD5yrF0WiFvNSDFv",
+          "name": "Global Constants account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.constants.WOOCOMMERCE_URL }}products",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wooCommerceApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        560,
+        -520
+      ],
+      "id": "39b0375f-42e6-452b-8e81-572a257cd27c",
+      "name": "crear cupon1",
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "6Kb9lwMY8NDVFSSe",
+          "name": "WooCommerce account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "create-variations",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        40,
+        60
+      ],
+      "id": "5b3210c9-8e8f-40da-84e6-7f55547b0748",
+      "name": "Webhook",
+      "webhookId": "97286641-9f24-42cf-a7bd-c6ed44e453d9"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "body.data",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        700,
+        60
+      ],
+      "id": "e5a0ddec-5e1d-4bc0-990a-ad0c1bab5954",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1000,
+        40
+      ],
+      "id": "b10ab404-6711-4d45-bc6d-24c24a582c22",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.STRAPI_URL }}/challenge-relations/{{ $json.challenge_relation.documentId }}?populate=*",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1340,
+        60
+      ],
+      "id": "d4404437-dd07-487c-b89d-e994334fca52",
+      "name": "Obtener Relation",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Global Constants').item.json.constants.WOOCOMMERCE_URL }}products/{{ $('Loop Over Items').item.json.challenge_product.woocommerceId }}/variations",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wooCommerceApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"regular_price\":\"{{ $('Loop Over Items').item.json.precio }}\",\n\"attributes\":[\n  {\n    \"id\":0,\n    \"name\":\"step\",\n    \"option\":\"{{ $json.data.challenge_step.name }}\"\n  },\n{\n    \"id\":0,\n    \"name\":\"subcategory\",\n    \"option\":\"{{ $json.data.challenge_subcategory.name }}\"\n  }\n]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2200,
+        120
+      ],
+      "id": "f038f61f-4d00-43a8-a055-296b0f585179",
+      "name": "Crear Variacion",
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "6Kb9lwMY8NDVFSSe",
+          "name": "WooCommerce account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "noData",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1580,
+        -180
+      ],
+      "id": "7fb2636a-85b4-45a6-bb2c-6118138b1e5b",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $('Global Constants').item.json.constants.STRAPI_URL }}/product-configs/{{ $('Loop Over Items').item.json.documentId }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"data\":{\n    \"wooId\":\"{{ $json.data }}\"\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2640,
+        160
+      ],
+      "id": "1d994a0d-e7f9-4eb6-886d-f57e4189d2c2",
+      "name": "Editar Config",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "5fcb6b1e-8ab4-4d4e-8182-3cca007091ef",
+              "leftValue": "={{ $('Loop Over Items').item.json.wooId }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1720,
+        60
+      ],
+      "id": "2bb32370-0c09-4293-ae47-7b9bb99243e4",
+      "name": "Crear o Editar?"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Global Constants').item.json.constants.WOOCOMMERCE_URL }}products/{{ $('Loop Over Items').item.json.challenge_product.woocommerceId }}/variations/{{ $('Loop Over Items').item.json.wooId }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wooCommerceApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\"regular_price\":\"{{ $('Loop Over Items').item.json.precio }}\",\n\"attributes\":[\n  {\n    \"id\":0,\n    \"name\":\"step\",\n    \"option\":\"{{ $json.data.challenge_step.name }}\"\n  },\n{\n    \"id\":0,\n    \"name\":\"subcategory\",\n    \"option\":\"{{ $json.data.challenge_subcategory.name }}\"\n  }\n]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2200,
+        -80
+      ],
+      "id": "b09f4c0b-e1e7-435f-91e7-5f666840e26d",
+      "name": "Editar Variacion",
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "6Kb9lwMY8NDVFSSe",
+          "name": "WooCommerce account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "let data;\n\ntry {\n  // Intentamos leer del nodo \"Actualizar Broker account\"\n  const id1 = $('Crear Variacion').first().json.id;\n  // Si existe, guardamos esos datos\n  if (id1) {\n    data = $('Crear Variacion').first().json.id;\n  }\n} catch (error) {\n  // Si falla, significa que no se ejecutó o no tenía esos datos\n  // Podemos dejarlo pasar o hacer un console.log(error)\n}\n\ntry {\n  // Intentamos leer del nodo \"Obtener Broker Account\"\n  const id2 = $('Editar Variacion').first().json.id;\n  // Si existe, guardamos esos datos\n  if (id2) {\n    data = $('Editar Variacion').first().json.id;\n  }\n} catch (error) {\n  // Igualmente, si falla, es porque no se ejecutó.\n}\n\n// Al final devolvemos lo que hayamos encontrado\nreturn { data };\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2460,
+        20
+      ],
+      "id": "41687002-d053-4e83-b516-62ec08d8a587",
+      "name": "Escoger Variacion"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.zevenglobalfunding.com",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+            "content-length": "8918",
+            "accept": "*/*",
+            "accept-encoding": "gzip, br",
+            "accept-language": "es-PE,es;q=0.9",
+            "cdn-loop": "cloudflare; loops=1",
+            "cf-connecting-ip": "2800:200:fdc0:1c54:fdff:abbf:198e:eaa6",
+            "cf-ipcountry": "PE",
+            "cf-ray": "939b6e66e9db346c-GRU",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/json",
+            "origin": "http://localhost:3000",
+            "priority": "u=1, i",
+            "referer": "http://localhost:3000/",
+            "sec-ch-ua": "\"Google Chrome\";v=\"129\", \"Not=A?Brand\";v=\"8\", \"Chromium\";v=\"129\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "cross-site",
+            "x-forwarded-for": "2800:200:fdc0:1c54:fdff:abbf:198e:eaa6, 172.69.138.207",
+            "x-forwarded-host": "n8n.zevenglobalfunding.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "e6c05b0fe480",
+            "x-real-ip": "172.69.138.207"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "data": [
+              {
+                "id": 30,
+                "documentId": "avynrpaaozznc0rfj0r7ii3b",
+                "precio": 100,
+                "wooId": "11753",
+                "createdAt": "2025-05-02T23:09:40.115Z",
+                "updatedAt": "2025-05-03T04:48:11.484Z",
+                "publishedAt": "2025-05-03T04:48:11.479Z",
+                "challenge_product": {
+                  "id": 100,
+                  "documentId": "a2bt23v2xc9rbcfm1rheexof",
+                  "name": "1,200 USD",
+                  "createdAt": "2025-05-02T21:56:57.090Z",
+                  "updatedAt": "2025-05-02T22:30:41.968Z",
+                  "publishedAt": "2025-05-02T22:30:41.854Z",
+                  "isActive": true,
+                  "precio": 1.2,
+                  "hasDiscount": false,
+                  "descuento": null,
+                  "woocommerceId": 11738
+                },
+                "challenge_relation": {
+                  "id": 148,
+                  "documentId": "jyrowomitt0vijaigfno8593",
+                  "createdAt": "2025-05-02T22:33:37.254Z",
+                  "updatedAt": "2025-05-02T23:51:10.513Z",
+                  "publishedAt": "2025-05-02T23:51:09.300Z"
+                }
+              },
+              {
+                "id": 41,
+                "documentId": "l5cuq7lnh5z5rbok58rpo8eh",
+                "precio": 250,
+                "wooId": "11754",
+                "createdAt": "2025-05-02T23:16:24.720Z",
+                "updatedAt": "2025-05-03T04:48:12.412Z",
+                "publishedAt": "2025-05-03T04:48:12.406Z",
+                "challenge_product": {
+                  "id": 102,
+                  "documentId": "id3jhkerpsy0nm72e0qllexu",
+                  "name": "3,000 USD",
+                  "createdAt": "2025-05-02T22:35:02.960Z",
+                  "updatedAt": "2025-05-02T22:57:25.965Z",
+                  "publishedAt": "2025-05-02T22:57:25.855Z",
+                  "isActive": true,
+                  "precio": 3,
+                  "hasDiscount": false,
+                  "descuento": null,
+                  "woocommerceId": 11739
+                },
+                "challenge_relation": {
+                  "id": 148,
+                  "documentId": "jyrowomitt0vijaigfno8593",
+                  "createdAt": "2025-05-02T22:33:37.254Z",
+                  "updatedAt": "2025-05-02T23:51:10.513Z",
+                  "publishedAt": "2025-05-02T23:51:09.300Z"
+                }
+              },
+              {
+                "id": 39,
+                "documentId": "xc0t8f655ymerdemqbv3zx2g",
+                "precio": 500,
+                "wooId": "11755",
+                "createdAt": "2025-05-02T23:14:29.819Z",
+                "updatedAt": "2025-05-03T04:48:13.427Z",
+                "publishedAt": "2025-05-03T04:48:13.420Z",
+                "challenge_product": {
+                  "id": 103,
+                  "documentId": "rj6tncbvzqwhnko214uc5hlx",
+                  "name": "6,000 USD",
+                  "createdAt": "2025-05-02T22:38:12.988Z",
+                  "updatedAt": "2025-05-03T03:43:14.650Z",
+                  "publishedAt": "2025-05-03T03:43:14.580Z",
+                  "isActive": true,
+                  "precio": 6,
+                  "hasDiscount": false,
+                  "descuento": null,
+                  "woocommerceId": 11739
+                },
+                "challenge_relation": {
+                  "id": 148,
+                  "documentId": "jyrowomitt0vijaigfno8593",
+                  "createdAt": "2025-05-02T22:33:37.254Z",
+                  "updatedAt": "2025-05-02T23:51:10.513Z",
+                  "publishedAt": "2025-05-02T23:51:09.300Z"
+                }
+              },
+              {
+                "id": 33,
+                "documentId": "dpzeawxzr1f8yxc6q9gqq75s",
+                "precio": 1000,
+                "wooId": null,
+                "createdAt": "2025-05-02T23:11:35.879Z",
+                "updatedAt": "2025-05-02T23:19:11.907Z",
+                "publishedAt": "2025-05-02T23:19:11.797Z",
+                "challenge_product": {
+                  "id": 104,
+                  "documentId": "pjqw13zw2dn90xxqvsd5wbkp",
+                  "name": "12,000 USD",
+                  "createdAt": "2025-05-02T22:45:17.221Z",
+                  "updatedAt": "2025-05-03T04:49:44.312Z",
+                  "publishedAt": "2025-05-03T04:49:44.249Z",
+                  "isActive": true,
+                  "precio": 12,
+                  "hasDiscount": false,
+                  "descuento": null,
+                  "woocommerceId": 11741
+                },
+                "challenge_relation": {
+                  "id": 148,
+                  "documentId": "jyrowomitt0vijaigfno8593",
+                  "createdAt": "2025-05-02T22:33:37.254Z",
+                  "updatedAt": "2025-05-02T23:51:10.513Z",
+                  "publishedAt": "2025-05-02T23:51:09.300Z"
+                }
+              },
+              {
+                "id": 35,
+                "documentId": "aegqtzxz30p256u40tdh6ouf",
+                "precio": 2000,
+                "wooId": null,
+                "createdAt": "2025-05-02T23:12:27.433Z",
+                "updatedAt": "2025-05-02T23:19:12.708Z",
+                "publishedAt": "2025-05-02T23:19:12.600Z",
+                "challenge_product": {
+                  "id": 105,
+                  "documentId": "jx2565db1fhwo6q3cd6hhp4s",
+                  "name": "24,000 USD",
+                  "createdAt": "2025-05-02T22:50:31.254Z",
+                  "updatedAt": "2025-05-03T03:55:14.383Z",
+                  "publishedAt": "2025-05-03T03:55:14.250Z",
+                  "isActive": true,
+                  "precio": 24,
+                  "hasDiscount": false,
+                  "descuento": null,
+                  "woocommerceId": 11742
+                },
+                "challenge_relation": {
+                  "id": 148,
+                  "documentId": "jyrowomitt0vijaigfno8593",
+                  "createdAt": "2025-05-02T22:33:37.254Z",
+                  "updatedAt": "2025-05-02T23:51:10.513Z",
+                  "publishedAt": "2025-05-02T23:51:09.300Z"
+                }
+              },
+              {
+                "id": 36,
+                "documentId": "qzle4r94p0a9v9l58e99u7xz",
+                "precio": 2500,
+                "wooId": null,
+                "createdAt": "2025-05-02T23:12:59.242Z",
+                "updatedAt": "2025-05-02T23:19:13.465Z",
+                "publishedAt": "2025-05-02T23:19:13.354Z",
+                "challenge_product": {
+                  "id": 106,
+                  "documentId": "uvvt2p2w8pm0cmkulnuex3dx",
+                  "name": "30,000 USD",
+                  "createdAt": "2025-05-02T22:56:13.249Z",
+                  "updatedAt": "2025-05-02T22:56:15.526Z",
+                  "publishedAt": "2025-05-02T22:56:15.417Z",
+                  "isActive": true,
+                  "precio": 30,
+                  "hasDiscount": false,
+                  "descuento": null,
+                  "woocommerceId": 11743
+                },
+                "challenge_relation": {
+                  "id": 148,
+                  "documentId": "jyrowomitt0vijaigfno8593",
+                  "createdAt": "2025-05-02T22:33:37.254Z",
+                  "updatedAt": "2025-05-02T23:51:10.513Z",
+                  "publishedAt": "2025-05-02T23:51:09.300Z"
+                }
+              },
+              {
+                "id": 40,
+                "documentId": "c8oe0fqwb4nue35jhry25ile",
+                "precio": 5000,
+                "wooId": null,
+                "createdAt": "2025-05-02T23:15:57.313Z",
+                "updatedAt": "2025-05-02T23:19:14.222Z",
+                "publishedAt": "2025-05-02T23:19:14.114Z",
+                "challenge_product": {
+                  "id": 107,
+                  "documentId": "iu23yawkzb0b2oh5165y70x4",
+                  "name": "60,000 USD",
+                  "createdAt": "2025-05-02T22:56:37.764Z",
+                  "updatedAt": "2025-05-02T22:56:39.813Z",
+                  "publishedAt": "2025-05-02T22:56:39.703Z",
+                  "isActive": true,
+                  "precio": 60,
+                  "hasDiscount": false,
+                  "descuento": null,
+                  "woocommerceId": 11744
+                },
+                "challenge_relation": {
+                  "id": 148,
+                  "documentId": "jyrowomitt0vijaigfno8593",
+                  "createdAt": "2025-05-02T22:33:37.254Z",
+                  "updatedAt": "2025-05-02T23:51:10.513Z",
+                  "publishedAt": "2025-05-02T23:51:09.300Z"
+                }
+              },
+              {
+                "id": 42,
+                "documentId": "ai55g8yg4gunmfmwud3v6ksn",
+                "precio": 7500,
+                "wooId": null,
+                "createdAt": "2025-05-02T23:17:16.954Z",
+                "updatedAt": "2025-05-02T23:19:14.976Z",
+                "publishedAt": "2025-05-02T23:19:14.869Z",
+                "challenge_product": {
+                  "id": 108,
+                  "documentId": "gsh75zypj0elu2dmwb3bqi03",
+                  "name": "90,000 USD",
+                  "createdAt": "2025-05-02T22:58:06.354Z",
+                  "updatedAt": "2025-05-02T22:58:08.459Z",
+                  "publishedAt": "2025-05-02T22:58:08.350Z",
+                  "isActive": true,
+                  "precio": 90,
+                  "hasDiscount": false,
+                  "descuento": null,
+                  "woocommerceId": 11745
+                },
+                "challenge_relation": {
+                  "id": 148,
+                  "documentId": "jyrowomitt0vijaigfno8593",
+                  "createdAt": "2025-05-02T22:33:37.254Z",
+                  "updatedAt": "2025-05-02T23:51:10.513Z",
+                  "publishedAt": "2025-05-02T23:51:09.300Z"
+                }
+              },
+              {
+                "id": 38,
+                "documentId": "k9oj0wzqy67hzeuk4yss5q3w",
+                "precio": 10000,
+                "wooId": null,
+                "createdAt": "2025-05-02T23:14:02.280Z",
+                "updatedAt": "2025-05-02T23:19:15.730Z",
+                "publishedAt": "2025-05-02T23:19:15.614Z",
+                "challenge_product": {
+                  "id": 109,
+                  "documentId": "np126d76hkws9s93gnd234xw",
+                  "name": "120,000 USD",
+                  "createdAt": "2025-05-02T22:58:27.092Z",
+                  "updatedAt": "2025-05-02T22:58:29.073Z",
+                  "publishedAt": "2025-05-02T22:58:28.957Z",
+                  "isActive": true,
+                  "precio": 120,
+                  "hasDiscount": false,
+                  "descuento": null,
+                  "woocommerceId": 11746
+                },
+                "challenge_relation": {
+                  "id": 148,
+                  "documentId": "jyrowomitt0vijaigfno8593",
+                  "createdAt": "2025-05-02T22:33:37.254Z",
+                  "updatedAt": "2025-05-02T23:51:10.513Z",
+                  "publishedAt": "2025-05-02T23:51:09.300Z"
+                }
+              },
+              {
+                "id": 37,
+                "documentId": "i0f8fvyuzcegezcanjwewwo3",
+                "precio": 15000,
+                "wooId": null,
+                "createdAt": "2025-05-02T23:13:39.290Z",
+                "updatedAt": "2025-05-02T23:19:16.476Z",
+                "publishedAt": "2025-05-02T23:19:16.369Z",
+                "challenge_product": {
+                  "id": 110,
+                  "documentId": "l33k4tf35be6vbwysc1x2j41",
+                  "name": "180,000 USD",
+                  "createdAt": "2025-05-02T22:58:46.800Z",
+                  "updatedAt": "2025-05-02T22:58:48.715Z",
+                  "publishedAt": "2025-05-02T22:58:48.592Z",
+                  "isActive": true,
+                  "precio": 180,
+                  "hasDiscount": false,
+                  "descuento": null,
+                  "woocommerceId": 11747
+                },
+                "challenge_relation": {
+                  "id": 148,
+                  "documentId": "jyrowomitt0vijaigfno8593",
+                  "createdAt": "2025-05-02T22:33:37.254Z",
+                  "updatedAt": "2025-05-02T23:51:10.513Z",
+                  "publishedAt": "2025-05-02T23:51:09.300Z"
+                }
+              },
+              {
+                "id": 34,
+                "documentId": "qf2auejpldtrd7f4k87wwg77",
+                "precio": 25000,
+                "wooId": null,
+                "createdAt": "2025-05-02T23:11:36.956Z",
+                "updatedAt": "2025-05-02T23:19:17.228Z",
+                "publishedAt": "2025-05-02T23:19:17.121Z",
+                "challenge_product": {
+                  "id": 112,
+                  "documentId": "xfg337x1vbkp27nzwkjafaak",
+                  "name": "300,000 USD",
+                  "createdAt": "2025-05-02T23:00:23.473Z",
+                  "updatedAt": "2025-05-02T23:00:25.795Z",
+                  "publishedAt": "2025-05-02T23:00:25.675Z",
+                  "isActive": true,
+                  "precio": 300,
+                  "hasDiscount": false,
+                  "descuento": null,
+                  "woocommerceId": 11749
+                },
+                "challenge_relation": {
+                  "id": 148,
+                  "documentId": "jyrowomitt0vijaigfno8593",
+                  "createdAt": "2025-05-02T22:33:37.254Z",
+                  "updatedAt": "2025-05-02T23:51:10.513Z",
+                  "publishedAt": "2025-05-02T23:51:09.300Z"
+                }
+              },
+              {
+                "id": 31,
+                "documentId": "iv2rqqq2ofzbtvx7kpy53pax",
+                "precio": 50000,
+                "wooId": null,
+                "createdAt": "2025-05-02T23:09:41.242Z",
+                "updatedAt": "2025-05-02T23:19:17.986Z",
+                "publishedAt": "2025-05-02T23:19:17.875Z",
+                "challenge_product": {
+                  "id": 113,
+                  "documentId": "hce3608hfnglrl5dlvzp3dhs",
+                  "name": "600,000 USD",
+                  "createdAt": "2025-05-02T23:00:48.246Z",
+                  "updatedAt": "2025-05-02T23:00:50.315Z",
+                  "publishedAt": "2025-05-02T23:00:50.205Z",
+                  "isActive": true,
+                  "precio": 600,
+                  "hasDiscount": false,
+                  "descuento": null,
+                  "woocommerceId": 11750
+                },
+                "challenge_relation": {
+                  "id": 148,
+                  "documentId": "jyrowomitt0vijaigfno8593",
+                  "createdAt": "2025-05-02T22:33:37.254Z",
+                  "updatedAt": "2025-05-02T23:51:10.513Z",
+                  "publishedAt": "2025-05-02T23:51:09.300Z"
+                }
+              },
+              {
+                "id": 32,
+                "documentId": "ju5evyezzkqlqdhvw4iv02n6",
+                "precio": 100000,
+                "wooId": null,
+                "createdAt": "2025-05-02T23:09:42.409Z",
+                "updatedAt": "2025-05-02T23:19:18.742Z",
+                "publishedAt": "2025-05-02T23:19:18.633Z",
+                "challenge_product": {
+                  "id": 114,
+                  "documentId": "uixgzpxq9jqx67jxw4rhbxnf",
+                  "name": "1,2M USD",
+                  "createdAt": "2025-05-02T23:01:08.495Z",
+                  "updatedAt": "2025-05-02T23:01:10.534Z",
+                  "publishedAt": "2025-05-02T23:01:10.425Z",
+                  "isActive": true,
+                  "precio": 1200,
+                  "hasDiscount": false,
+                  "descuento": null,
+                  "woocommerceId": 11751
+                },
+                "challenge_relation": {
+                  "id": 148,
+                  "documentId": "jyrowomitt0vijaigfno8593",
+                  "createdAt": "2025-05-02T22:33:37.254Z",
+                  "updatedAt": "2025-05-02T23:51:10.513Z",
+                  "publishedAt": "2025-05-02T23:51:09.300Z"
+                }
+              }
+            ]
+          },
+          "webhookUrl": "https://n8n.zevenglobalfunding.com/webhook/create-variations",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n_workflows",
+  "repo_owner": "EliteCodeDev",
+  "repo_path": "https://github.com/EliteCodeDev/n8n_workflows/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-05-12T20:05:37.000Z",
+  "versionId": "ae8924b3-d833-4958-b0d8-e6ce577e6cf2"
+}
