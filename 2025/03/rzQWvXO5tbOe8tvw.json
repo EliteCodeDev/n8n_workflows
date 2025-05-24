@@ -1,0 +1,571 @@
+{
+  "active": true,
+  "connections": {
+    "realizar sorteo": {
+      "main": [
+        [
+          {
+            "node": "fecha de asignacion ticket",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Global Constants": {
+      "main": [
+        [
+          {
+            "node": "obtener Rewards",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fecha expiracion ticket": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fecha de asignacion ticket": {
+      "main": [
+        [
+          {
+            "node": "fecha expiracion ticket",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "crear cupon": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crypto": {
+      "main": [
+        [
+          {
+            "node": "Armar Cupon",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Crypto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Global Constants",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "obtener datos del ticket": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "editar datos del ticket",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "editar datos del ticket": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "realizar sorteo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "obtener Rewards": {
+      "main": [
+        [
+          {
+            "node": "obtener datos del ticket",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Armar Cupon": {
+      "main": [
+        [
+          {
+            "node": "crear cupon",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-10T21:06:00.712Z",
+  "id": "rzQWvXO5tbOe8tvw",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "APP: Girar la Ruleta",
+  "nodes": [
+    {
+      "parameters": {
+        "jsCode": "// Obtener la lista de productos con sus probabilidades\nconst productos = $('obtener Rewards').first().json.data;\nif (!productos || productos.length === 0) {\n  throw new Error('No hay productos provisionales para elegir.');\n}\n\n// Función para normalizar las probabilidades para que sumen exactamente 100%\nfunction normalizarProbabilidades(productos) {\n  // Calcular la suma total de todas las probabilidades\n  const sumaTotal = productos.reduce((suma, producto) => \n    suma + (producto.probabilidad || 0), 0);\n  \n  // Si la suma es 0, asignar probabilidades iguales a todos\n  if (sumaTotal === 0) {\n    const probabilidadIgual = 100 / productos.length;\n    return productos.map(producto => ({\n      ...producto,\n      probabilidadOriginal: producto.probabilidad || 0,\n      probabilidad: probabilidadIgual\n    }));\n  }\n  \n  // Normalizar cada probabilidad para que la suma sea exactamente 100\n  return productos.map(producto => ({\n    ...producto,\n    probabilidadOriginal: producto.probabilidad || 0,\n    probabilidad: ((producto.probabilidad || 0) / sumaTotal) * 100\n  }));\n}\n\n// Función para seleccionar un producto basado en su probabilidad\nfunction seleccionarPorProbabilidad(productos) {\n  // Normalizar las probabilidades\n  const productosNormalizados = normalizarProbabilidades(productos);\n  \n  // Calcular el valor aleatorio entre 0 y 100\n  const valorAleatorio = Math.random() * 100;\n  \n  // Acumular probabilidades para determinar rangos\n  let acumulado = 0;\n  \n  for (let i = 0; i < productosNormalizados.length; i++) {\n    // Sumar la probabilidad del producto actual al acumulado\n    acumulado += productosNormalizados[i].probabilidad;\n    \n    // Si el valor aleatorio está dentro del rango actual, seleccionar este producto\n    if (valorAleatorio <= acumulado) {\n      return {\n        premio: productosNormalizados[i],\n        indice: i\n      };\n    }\n  }\n  \n  // En caso de error de redondeo, devolver el último producto\n  return {\n    premio: productosNormalizados[productosNormalizados.length - 1],\n    indice: productosNormalizados.length - 1\n  };\n}\n\n// Seleccionar un producto según su probabilidad\nconst resultado = seleccionarPorProbabilidad(productos);\n\n// Devolver el resultado con el premio seleccionado y su índice\nreturn [\n  {\n    json: {\n      premio: resultado.premio,\n      indice: resultado.indice\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -220,
+        -160
+      ],
+      "id": "26cf3d13-89ab-4171-bbfd-ca8fec2c3e53",
+      "name": "realizar sorteo"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"indice\": {{ $('realizar sorteo').item.json.indice }},\n  \"cupon\": \"{{ $('crear cupon').item.json.code }}\",\n  \"descuento\":\"{{ $('crear cupon').item.json.amount }}\",\n  \"premio\":{{ JSON.stringify($('Edit Fields1').item.json.data) }}\n  \n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1760,
+        -160
+      ],
+      "id": "a857553a-19eb-446b-9eb3-d0d022f308bc",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-globals.globalConstants",
+      "typeVersion": 1,
+      "position": [
+        -1720,
+        -160
+      ],
+      "id": "bf1ccff4-cc79-48c3-9d3b-39b4b0b5ad2c",
+      "name": "Global Constants",
+      "credentials": {
+        "globalConstantsApi": {
+          "id": "xD5yrF0WiFvNSDFv",
+          "name": "Global Constants account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "addToDate",
+        "magnitude": "={{ $json.fechaAsignacionPremio }}",
+        "duration": 7,
+        "outputFieldName": "fechaExpiracionPremio",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        200,
+        -160
+      ],
+      "id": "d3614efd-7b49-450b-8910-7393eb53ef95",
+      "name": "fecha expiracion ticket"
+    },
+    {
+      "parameters": {
+        "outputFieldName": "fechaAsignacionPremio",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        -20,
+        -160
+      ],
+      "id": "ef3ffef3-936b-4d60-975c-db8f041f19ff",
+      "name": "fecha de asignacion ticket"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Global Constants').item.json.constants.WOOCOMMERCE_URL }}coupons",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wooCommerceApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.data }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        860,
+        -160
+      ],
+      "id": "cdea4336-87a3-45ee-99e1-366dd37028a1",
+      "name": "crear cupon",
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "6Kb9lwMY8NDVFSSe",
+          "name": "WooCommerce account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "action": "generate",
+        "encodingType": "base64",
+        "stringLength": 8
+      },
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        520,
+        -160
+      ],
+      "id": "c6ff2c0a-4e0a-4593-840a-666c28183d76",
+      "name": "Crypto"
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.fechaExpiracionPremio }}",
+        "format": "yyyy-MM-dd",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        360,
+        -160
+      ],
+      "id": "e97c373b-5d03-40c3-9720-bad03b34db82",
+      "name": "Date & Time"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "roullete",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1920,
+        -160
+      ],
+      "id": "f0d67304-d116-46af-93b3-4268c4ee5df4",
+      "name": "Webhook",
+      "webhookId": "a62fb189-fe82-4c5a-b42f-5a7549e66dfc"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/tickets/{{ $('Webhook').item.json.body.documentId }}?populate=*  ",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -900,
+        -160
+      ],
+      "id": "7f4333d6-c1a2-4d0a-91e7-906324bef3b8",
+      "name": "obtener datos del ticket",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/tickets/{{ $('obtener datos del ticket').item.json.data.documentId }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"data\": {\n      \"habilitado\":false,\n      \"codigo\":\"{{ $('crear cupon').item.json.code }}\",\n      \"fechaAsignacionPremio\":\"{{ $('fecha de asignacion ticket').item.json.fechaAsignacionPremio }}\",\n      \"fechaExpiracionPremio\":\"{{ $('fecha expiracion ticket').item.json.fechaExpiracionPremio }}\",\n      \"reward\":\"{{ $('realizar sorteo').item.json.premio.documentId }}\",\n      \"cuponId\":\"{{ $('crear cupon').item.json.id }}\"\n    }\n  } ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1240,
+        -160
+      ],
+      "id": "86b2dc29-c371-406c-a025-6e1591d7badf",
+      "name": "editar datos del ticket",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d7d2b314-2205-4f46-be91-2535a8ab34ff",
+              "name": "fechaExpiracionPremio",
+              "value": "={{ $json.date_expires }}",
+              "type": "string"
+            },
+            {
+              "id": "5c4195e3-5e19-438b-8477-b48babd6c5df",
+              "name": "fechaAsignacionPremio",
+              "value": "={{ $('fecha de asignacion ticket').item.json.fechaAsignacionPremio }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1040,
+        -160
+      ],
+      "id": "23af284b-0295-4892-af34-afc20511c2ca",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "7870d427-d3cd-4eb7-aaae-c579e0b30c85",
+              "leftValue": "={{ $json.data.habilitado }}",
+              "rightValue": "False",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -680,
+        -240
+      ],
+      "id": "63a751fb-5120-4d10-9705-3aa627e1c355",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"error\": \"ticket usado\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        -400,
+        -380
+      ],
+      "id": "a852de5a-8db0-4757-b689-8c9de0936ec1",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/rewards",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1460,
+        -160
+      ],
+      "id": "f61cf9eb-9718-44b0-8895-ac67c2411c0b",
+      "name": "obtener Rewards",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "/**\n * Creates a WooCommerce coupon based on a premio (reward) object\n * @param {Object} premio - The premio/reward object\n * @returns {Object} - WooCommerce coupon object\n */\nconst createCouponFromPremio = (premio) => {\n  // Generate a random code if not provided\n  // Current date for expiration calculation\n  const now = new Date();\n  \n  // Set expiration date based on duration\n  let expirationDate = null;\n  if (premio.duracion && premio.duracion !== \"ilimitado\") {\n    expirationDate = new Date();\n    \n    // Parse duration in format \"number-unit\" (e.g., \"2-dias\", \"6-semanas\")\n    const durationMatch = premio.duracion.match(/^(\\d+)-(\\w+)$/);\n    \n    if (durationMatch) {\n      const [, amount, unit] = durationMatch;\n      const numAmount = parseInt(amount, 10);\n      \n      switch(unit.toLowerCase()) {\n        case 'horas':\n        case 'hora':\n        case 'hours':\n        case 'hour':\n          expirationDate.setHours(now.getHours() + numAmount);\n          break;\n        case 'dias':\n        case 'dia':\n        case 'days':\n        case 'day':\n          expirationDate.setDate(now.getDate() + numAmount);\n          break;\n        case 'semanas':\n        case 'semana':\n        case 'weeks':\n        case 'week':\n          expirationDate.setDate(now.getDate() + (numAmount * 7));\n          break;\n        case 'meses':\n        case 'mes':\n        case 'months':\n        case 'month':\n          expirationDate.setMonth(now.getMonth() + numAmount);\n          break;\n        case 'años':\n        case 'año':\n        case 'years':\n        case 'year':\n          expirationDate.setFullYear(now.getFullYear() + numAmount);\n          break;\n        default:\n          // If unit is not recognized, default to days\n          expirationDate.setDate(now.getDate() + numAmount);\n      }\n    } else {\n      // Try to parse as just days if the format doesn't match\n      const durationDays = parseInt(premio.duracion, 10);\n      if (!isNaN(durationDays)) {\n        expirationDate.setDate(now.getDate() + durationDays);\n      }\n    }\n  }\n  \n  // Map discount type\n  let discountType = \"percent\";\n  if (premio.type === \"descuento\") {\n    discountType = \"percent\"; // Using percent as default for descuento\n  }\n  \n  // Create the coupon object\n  const coupon = {\n    // Mandatory fields\n    code: $input.first().json.data,\n    \n    // Set discount amount from procentaje\n    amount: String(premio.procentaje || \"0\"),\n    \n    // Set discount type\n    discount_type: discountType,\n    \n    // Set description\n    description: `Cupón generado automáticamente desde premio ID: ${premio.id}`,\n    \n    // Set expiration if applicable\n    ...(expirationDate && {\n      date_expires: expirationDate.toISOString().split('T')[0],\n      date_expires_gmt: expirationDate.toISOString()\n    }),\n    \n    // Set usage limit\n    usage_limit: premio.usos || 1,\n    usage_limit_per_user: 1,\n    \n    // Set individual use to true\n    individual_use: true,\n    \n    // Apply to specific products if specified\n    ...((() => {\n      // Handle productos field which can be null, empty, a single product, or multiple products\n      if (!premio.productos) return {};\n      \n      let productIds = [];\n      \n      try {\n        // If productos is already a string, try to parse it\n        if (typeof premio.productos === 'string') {\n          const parsed = JSON.parse(premio.productos);\n          if (Array.isArray(parsed)) {\n            productIds = parsed;\n          } else if (typeof parsed === 'object' && parsed !== null) {\n            // Handle case where it might be an object with ID\n            productIds = [parsed.id || parsed.ID || parsed];\n          } else if (parsed) {\n            // Single value that's not null\n            productIds = [parsed];\n          }\n        } \n        // If productos is already an array\n        else if (Array.isArray(premio.productos)) {\n          productIds = premio.productos;\n        } \n        // If productos is an object\n        else if (typeof premio.productos === 'object' && premio.productos !== null) {\n          // Check if it's a single product object with ID\n          if (premio.productos.id || premio.productos.ID) {\n            productIds = [premio.productos.id || premio.productos.ID];\n          } else {\n            // Try to extract product IDs from object values\n            productIds = Object.values(premio.productos)\n              .filter(val => val && (typeof val === 'number' || typeof val === 'string'))\n              .map(val => parseInt(val, 10))\n              .filter(val => !isNaN(val));\n          }\n        }\n      } catch (e) {\n        console.error(\"Error parsing productos:\", e);\n      }\n      \n      return productIds.length > 0 ? { product_ids: productIds } : {};\n    })()),\n    \n    // Default fields\n    free_shipping: false,\n    exclude_sale_items: false,\n    \n    // Add metadata about the original premio\n    meta_data: [\n      {\n        key: \"premio_id\",\n        value: premio.id\n      },\n      {\n        key: \"premio_type\",\n        value: premio.type\n      },\n      {\n        key: \"premio_probabilidad\",\n        value: premio.probabilidad\n      }\n    ]\n  };\n  \n  return coupon;\n};\n\n// Example usage\nconst premio = $('realizar sorteo').first().json.premio;\nconst wooCommerceCoupon = createCouponFromPremio(premio);\n\n// Output the coupon object\nconsole.log(JSON.stringify(wooCommerceCoupon, null, 2));\n\n// Return the coupon object for further processing\nreturn ({\"data\":wooCommerceCoupon});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        680,
+        -160
+      ],
+      "id": "780fa45c-1944-444e-a070-e8797751ebc2",
+      "name": "Armar Cupon"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"data\": {\n     \"id\":{{ $('crear cupon').item.json.id }},\n      \"code\":\"{{ $('crear cupon').item.json.code }}\",\n      \"amount\":{{ $('crear cupon').item.json.amount }},\n      \"productos\":{{ $('realizar sorteo').item.json.premio.productos }},\n      \"nombre\":\"{{ $('realizar sorteo').item.json.premio.nombre }}\"\n}\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1480,
+        -160
+      ],
+      "id": "04d9e316-2272-4cd0-b661-624107da756d",
+      "name": "Edit Fields1"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.zevenglobalfunding.com",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+            "content-length": "41",
+            "accept": "*/*",
+            "accept-encoding": "gzip, br",
+            "accept-language": "es-PE,es;q=0.9",
+            "authorization": "Bearer 9219b9cff264a4cfc28436d94ff4a187a77bf1ce8c29022250539fcc0661cdea7cc4b1e5fbdfc8ea5629ffec592b7d1e0686209540d7622ca02c8714641faf5f92474a6d0e79c3a678df9e6cbd773487e4abe4a553c1ec5bfb3cd83ba137db7eb8e7cdaebdb9a194382164c844e08afb4bb7f01b0ec563e745a20d6ad0994886",
+            "cdn-loop": "cloudflare; loops=1",
+            "cf-connecting-ip": "2800:200:fdc0:1c54:c977:1b8e:c5cd:3293",
+            "cf-ipcountry": "PE",
+            "cf-ray": "93842e968ad00dd4-SCL",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/json",
+            "origin": "http://localhost:3000",
+            "priority": "u=1, i",
+            "referer": "http://localhost:3000/",
+            "sec-ch-ua": "\"Google Chrome\";v=\"129\", \"Not=A?Brand\";v=\"8\", \"Chromium\";v=\"129\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "cross-site",
+            "x-forwarded-for": "2800:200:fdc0:1c54:c977:1b8e:c5cd:3293, 162.158.225.167",
+            "x-forwarded-host": "n8n.zevenglobalfunding.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "e6c05b0fe480",
+            "x-real-ip": "162.158.225.167"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "documentId": "bet90bj6aloleomg8lhm8cj4"
+          },
+          "webhookUrl": "https://n8n.zevenglobalfunding.com/webhook/roullete",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n_workflows",
+  "repo_owner": "EliteCodeDev",
+  "repo_path": "https://github.com/EliteCodeDev/n8n_workflows/",
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "psoEwVAjpwuKHyK1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-05-20T15:31:33.000Z",
+  "versionId": "e90219cc-df25-49a9-b56a-772ca1162f33"
+}
