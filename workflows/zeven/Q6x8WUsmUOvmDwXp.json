@@ -1,0 +1,1683 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Global Constants",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Global Constants": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Solicita challenges": {
+      "main": [
+        [
+          {
+            "node": "Challenges Aprobados en Fase 3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Actualizar el Challenge a desaprobado": {
+      "main": [
+        [
+          {
+            "node": "undeploy cuenta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        []
+      ]
+    },
+    "Aprobar Challenge": {
+      "main": [
+        [
+          {
+            "node": "No es de Fase 3?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Challenge Aprobado?": {
+      "main": [
+        [
+          {
+            "node": "User y Relation1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Challenge Desaprobado?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener dia Actual": {
+      "main": [
+        [
+          {
+            "node": "verificamos estadisticas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Escoger stage adecuado": {
+      "main": [
+        [
+          {
+            "node": "Obtener Parámetros",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verificamos estadisticas": {
+      "main": [
+        [
+          {
+            "node": "Construir Metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "undeploy cuenta": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Asignar un Cupon": {
+      "main": [
+        []
+      ]
+    },
+    "Obtener dia Actual1": {
+      "main": [
+        [
+          {
+            "node": "Aprobar Challenge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow": {
+      "main": [
+        [
+          {
+            "node": "Asignar un Cupon",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Challenges Aprobados en Fase 3": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tiene Metadata?": {
+      "main": [
+        [
+          {
+            "node": "Escoger Metadata",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Tiene metadata Actualizada?": {
+      "main": [
+        [
+          {
+            "node": "Escoger Metadata",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Tiene Metadata?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extraer Metadata": {
+      "main": [
+        [
+          {
+            "node": "Tiene metadata Actualizada?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No es de Fase 3?": {
+      "main": [
+        [
+          {
+            "node": "Crear Certificado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Escoger Metadata": {
+      "main": [
+        [
+          {
+            "node": "Extraer Parametros",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener Parámetros": {
+      "main": [
+        [
+          {
+            "node": "Obtener Parámetro",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener Parámetro": {
+      "main": [
+        [
+          {
+            "node": "Extraer Metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Challenge Desaprobado?": {
+      "main": [
+        [
+          {
+            "node": "User y Relation",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "User y Relation": {
+      "main": [
+        [
+          {
+            "node": "Obtener dia Actual",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Construir Metadata": {
+      "main": [
+        [
+          {
+            "node": "Actualizar el Challenge a desaprobado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extraer Parametros": {
+      "main": [
+        [
+          {
+            "node": "Challenge Aprobado?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener Challenges activos": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "page_4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Combinar en Progreso",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "page_2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Combinar Aprobados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Challenges en Fase 3": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "page_1": {
+      "main": [
+        [
+          {
+            "node": "Challenges en Fase 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "page_2": {
+      "main": [
+        [
+          {
+            "node": "page_1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "page_3": {
+      "main": [
+        [
+          {
+            "node": "Obtener Challenges activos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "page_4": {
+      "main": [
+        [
+          {
+            "node": "page_3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Combinar en Progreso": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Combinar Aprobados": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        []
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Escoger stage adecuado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "User y Relation1": {
+      "main": [
+        [
+          {
+            "node": "Obtener dia Actual1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-03T03:15:55.797Z",
+  "id": "Q6x8WUsmUOvmDwXp",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "APP: Desaprobar Challenges v3",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "seconds"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -1420,
+        -360
+      ],
+      "id": "9a0e6cf5-ae58-4ec0-b4cd-07d854e18dae",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-globals.globalConstants",
+      "typeVersion": 1,
+      "position": [
+        -1200,
+        -360
+      ],
+      "id": "0546c176-557a-4912-96ee-567e92803812",
+      "name": "Global Constants",
+      "credentials": {
+        "globalConstantsApi": {
+          "id": "xD5yrF0WiFvNSDFv",
+          "name": "Global Constants account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/challenges?filters[result][$eq]=progress&filters[isactive][$eq]=true&populate=*",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1300,
+        -2285
+      ],
+      "id": "41e241c3-a3e7-4eb4-b60f-8def639fde94",
+      "name": "Solicita challenges",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/challenges/{{ $('User y Relation').item.json.data.challenge_id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"data\": {\n    \"result\": \"disapproved\",\n    \"isactive\":false,\n    \"endDate\":\"{{ $('Obtener dia Actual').item.json.currentDate }}\",\n    \"metadata\":{{ JSON.stringify($json.data) }}\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2440,
+        -265
+      ],
+      "id": "004406cc-f3fc-47bb-8b4d-7ecb373360eb",
+      "name": "Actualizar el Challenge a desaprobado",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        -860,
+        -2285
+      ],
+      "id": "178dfe11-5f74-4301-992a-549c6a8fb912",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/challenges/{{ $('Split Out').item.json.documentId }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"data\":{\n    \"result\":\"approved\",\n    \"endDate\":\"{{ $('Obtener dia Actual1').item.json.currentDate }}\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1780,
+        -465
+      ],
+      "id": "6c473b52-724b-4488-a240-7b5eb76580fb",
+      "name": "Aprobar Challenge",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f302e098-8533-4241-be8b-cd9b9b33d257",
+              "leftValue": "={{ $('Extraer Parametros').item.json.data.daysSinceTradingStarted}}",
+              "rightValue": "={{ $('Obtener Parámetro').item.json.stage_parameters.first().minimumTradingDays }}",
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            },
+            {
+              "id": "d84e4a65-afd5-4143-b779-8a78fa321a93",
+              "leftValue": "={{ $('Extraer Parametros').item.json.data.maxDrawdown }}",
+              "rightValue": "={{ $('Obtener Parámetro').item.json.stage_parameters.first().maximumTotalLoss }}",
+              "operator": {
+                "type": "number",
+                "operation": "lte"
+              }
+            },
+            {
+              "id": "4b91c87b-bf06-4eaf-8bef-eae1d5bdeb63",
+              "leftValue": "={{ $('Extraer Parametros').item.json.data.profit }}",
+              "rightValue": "={{ $('Obtener Parámetro').item.json.stage_parameters.first().profitTarget /100 * $('Split Out').item.json.metadata.broker_account.balance}}",
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            },
+            {
+              "id": "f8857d02-ab16-4a87-a178-b5841a4ee80d",
+              "leftValue": "={{Math.abs($json.data.today_profit\n     * 100 / $('Split Out').item.json.metadata.broker_account.balance\n)}}",
+              "rightValue": "={{ $('Obtener Parámetro').item.json.stage_parameters.first().maximumDailyLoss}}",
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1120,
+        -365
+      ],
+      "id": "15bac96f-e0f5-4b7c-83fa-89c178dc6271",
+      "name": "Challenge Aprobado?"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1780,
+        -265
+      ],
+      "id": "f858cba5-229e-45de-aa58-629696b6ccdd",
+      "name": "Obtener dia Actual"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Obtenemos la fase actual del \"Loop Over Items\"\nconst currentPhase = $('Split Out').item.json.phase;\n\n// Obtenemos los stages disponibles\nconst stages = $json.metadata.challenge_stages;\nconst totalStages = stages.length;\n\n// Determinamos qué índice de stage seleccionar basado en la fase actual\nlet stageIndex = 0;\n\nif (totalStages === 1) {\n  // Si solo hay una fase, siempre es la primera (índice 0)\n  stageIndex = 0;\n} else if (totalStages === 2) {\n  // Si hay dos fases:\n  // - Si la fase actual es 1 o 2, usamos el índice 0\n  // - Si la fase actual es 3, usamos el índice 1\n  stageIndex = (currentPhase === 3 ? 1 : 0);\n} else if (totalStages === 3) {\n  // Si hay tres fases, el índice es la fase actual - 1\n  stageIndex = currentPhase - 1;\n} else {\n  // Para cualquier otro caso, aseguramos que no excedamos el total de fases disponibles\n  stageIndex = Math.min(currentPhase - 1, totalStages - 1);\n}\n\n// Devolvemos el stage correspondiente\nreturn stages[stageIndex];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -760,
+        -360
+      ],
+      "id": "79d8ec77-d478-45db-af29-fe7eebe0eeb6",
+      "name": "Escoger stage adecuado"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.WEBAPP_INTERNAL_URL }}api/meta-stats/{{ $('Split Out').item.json.broker_account.idMeta }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "auth-token",
+              "value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsInBlcm1pc3Npb25zIjpbXSwiYWNjZXNzUnVsZXMiOlt7ImlkIjoidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpIiwibWV0aG9kcyI6WyJ0cmFkaW5nLWFjY291bnQtbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZXN0LWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1ycGMtYXBpIiwibWV0aG9kcyI6WyJtZXRhYXBpLWFwaTp3czpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZWFsLXRpbWUtc3RyZWFtaW5nLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFzdGF0cy1hcGkiLCJtZXRob2RzIjpbIm1ldGFzdGF0cy1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoicmlzay1tYW5hZ2VtZW50LWFwaSIsIm1ldGhvZHMiOlsicmlzay1tYW5hZ2VtZW50LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJjb3B5ZmFjdG9yeS1hcGkiLCJtZXRob2RzIjpbImNvcHlmYWN0b3J5LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJtdC1tYW5hZ2VyLWFwaSIsIm1ldGhvZHMiOlsibXQtbWFuYWdlci1hcGk6cmVzdDpkZWFsaW5nOio6KiIsIm10LW1hbmFnZXItYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6ImJpbGxpbmctYXBpIiwibWV0aG9kcyI6WyJiaWxsaW5nLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19XSwiaWdub3JlUmF0ZUxpbWl0cyI6ZmFsc2UsInRva2VuSWQiOiIyMDIxMDIxMyIsImltcGVyc29uYXRlZCI6ZmFsc2UsInJlYWxVc2VySWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsImlhdCI6MTczNzc2MTAzNn0.JxymmDtZAD6n-IB-BwwZH4aNJbW9S9g_ksrpKfyOFfRXR2-vP1DzkTq6i0fqopgxfLNSJDFgPCX6EJhoQFWSSb85TWIEatwgNSBczhTk-CM5q1zylPv_r2zKLmyPIJs1Juav93ImWuy7yOFhUKtwDbg_jtju53XSg1UcSEqL50ojnZVMg6zEMUfT8fU-79Z_M4TB_5TUERhOXeiAhgqhW-OLh65CoU-JoH-wJNhzFNQM4_-ymRSCvvXfT5MHmVzk3oUmPiw381nn_cqmi9y9hLbxHHYoIo5GMOZZf0vNjcbPqFHTgJ6j8Uqe_i2uWqNb9ZcXv066wAkPaFn0um3PsChQUSeC_Ng05n965RPn1soGd4AKU9Kv3gim6Z1RBg6-AnN19QsT2PJluy5CiNoxcchjdu3V_s3cTUCEAhYy9xcp04MqkgIjnLGHZFpQdfEckRbdnaLISJTXt09t7Ei1aNqvwW-5KS__obio2cX1Pnj7L5tl9UzBm55hCpR9loBeIsI2mbYxlHId1UO14Cc6CPFxbh7FMVNGbxuALMxmmrEEQe1JJy3nTMKLqdDOyihYkZnU_qpfzuR-rlgwQ4XGKWRx10JHVlXnrGAuak1P75Bhw_ZD0XxC9V6i_WsJOdCXj4hrBgHTdtGskX4SW4EUpmspOvWqovJbh2ick8yTcgU"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2000,
+        -265
+      ],
+      "id": "fe978854-0208-4611-ba42-f48df86d0858",
+      "name": "verificamos estadisticas"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://mt-provisioning-api-v1.agiliumtrade.agiliumtrade.ai/users/current/accounts/{{ $('Split Out').item.json.broker_account.idMeta }}/undeploy ",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "auth-token",
+              "value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsInBlcm1pc3Npb25zIjpbXSwiYWNjZXNzUnVsZXMiOlt7ImlkIjoidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpIiwibWV0aG9kcyI6WyJ0cmFkaW5nLWFjY291bnQtbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZXN0LWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1ycGMtYXBpIiwibWV0aG9kcyI6WyJtZXRhYXBpLWFwaTp3czpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZWFsLXRpbWUtc3RyZWFtaW5nLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFzdGF0cy1hcGkiLCJtZXRob2RzIjpbIm1ldGFzdGF0cy1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoicmlzay1tYW5hZ2VtZW50LWFwaSIsIm1ldGhvZHMiOlsicmlzay1tYW5hZ2VtZW50LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJjb3B5ZmFjdG9yeS1hcGkiLCJtZXRob2RzIjpbImNvcHlmYWN0b3J5LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJtdC1tYW5hZ2VyLWFwaSIsIm1ldGhvZHMiOlsibXQtbWFuYWdlci1hcGk6cmVzdDpkZWFsaW5nOio6KiIsIm10LW1hbmFnZXItYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6ImJpbGxpbmctYXBpIiwibWV0aG9kcyI6WyJiaWxsaW5nLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19XSwiaWdub3JlUmF0ZUxpbWl0cyI6ZmFsc2UsInRva2VuSWQiOiIyMDIxMDIxMyIsImltcGVyc29uYXRlZCI6ZmFsc2UsInJlYWxVc2VySWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsImlhdCI6MTczNzc2MTAzNn0.JxymmDtZAD6n-IB-BwwZH4aNJbW9S9g_ksrpKfyOFfRXR2-vP1DzkTq6i0fqopgxfLNSJDFgPCX6EJhoQFWSSb85TWIEatwgNSBczhTk-CM5q1zylPv_r2zKLmyPIJs1Juav93ImWuy7yOFhUKtwDbg_jtju53XSg1UcSEqL50ojnZVMg6zEMUfT8fU-79Z_M4TB_5TUERhOXeiAhgqhW-OLh65CoU-JoH-wJNhzFNQM4_-ymRSCvvXfT5MHmVzk3oUmPiw381nn_cqmi9y9hLbxHHYoIo5GMOZZf0vNjcbPqFHTgJ6j8Uqe_i2uWqNb9ZcXv066wAkPaFn0um3PsChQUSeC_Ng05n965RPn1soGd4AKU9Kv3gim6Z1RBg6-AnN19QsT2PJluy5CiNoxcchjdu3V_s3cTUCEAhYy9xcp04MqkgIjnLGHZFpQdfEckRbdnaLISJTXt09t7Ei1aNqvwW-5KS__obio2cX1Pnj7L5tl9UzBm55hCpR9loBeIsI2mbYxlHId1UO14Cc6CPFxbh7FMVNGbxuALMxmmrEEQe1JJy3nTMKLqdDOyihYkZnU_qpfzuR-rlgwQ4XGKWRx10JHVlXnrGAuak1P75Bhw_ZD0XxC9V6i_WsJOdCXj4hrBgHTdtGskX4SW4EUpmspOvWqovJbh2ick8yTcgU"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2660,
+        -265
+      ],
+      "id": "64e96cba-7f33-4cf6-93ce-b4c341854b96",
+      "name": "undeploy cuenta"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "C4JVg8otdafomfws",
+          "mode": "list",
+          "cachedResultName": "Crear Certificado"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "data": "={{ $('Aprobar Challenge').item.json.data.documentId }}"
+          },
+          "matchingColumns": [
+            "data"
+          ],
+          "schema": [
+            {
+              "id": "data",
+              "displayName": "data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        2220,
+        -465
+      ],
+      "id": "69eb39a5-7bb2-423b-bd4e-8fcf2cfc9da3",
+      "name": "Crear Certificado"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "Gwdc51ka4UAo0vxi",
+          "mode": "list",
+          "cachedResultName": "Cupon de Correo"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "data": "={{ $('User y Relation').item.json.data }}"
+          },
+          "matchingColumns": [
+            "data"
+          ],
+          "schema": [
+            {
+              "id": "data",
+              "displayName": "data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "object",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        3100,
+        -265
+      ],
+      "id": "67fbd6f5-9585-4c96-b144-b5dad6c1f60a",
+      "name": "Asignar un Cupon",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1560,
+        -465
+      ],
+      "id": "4b1252bf-2558-443e-85ed-e68b64f4f8df",
+      "name": "Obtener dia Actual1"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "p4IUOKHRPQD8G7yQ",
+          "mode": "list",
+          "cachedResultName": "Resetar MT account"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        2880,
+        -265
+      ],
+      "id": "61ff4c21-a6e5-4e52-b330-ce8990ea8868",
+      "name": "Execute Workflow",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/challenges?populate=*&filters[phase][$eq]=3&filters[result][$eq]=approved&filters[isactive][$eq]=true",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1080,
+        -2360
+      ],
+      "id": "1c92560c-86aa-49a2-8f61-f6abaf09acaf",
+      "name": "Challenges Aprobados en Fase 3",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "015919e1-84b9-453f-838f-18232b7c1307",
+              "leftValue": "={{ $('Split Out').item.json.metadata }}",
+              "rightValue": "",
+              "operator": {
+                "type": "object",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        460,
+        -290
+      ],
+      "id": "be4f5703-6c44-4d5a-8933-6cffd17f2c7f",
+      "name": "Tiene Metadata?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "20a8c54c-acd2-4525-b072-76a391637691",
+              "leftValue": "={{ $('Extraer Metadata').item.json.success }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        240,
+        -365
+      ],
+      "id": "6e517bd8-879e-4221-b105-febcf1c4301b",
+      "name": "Tiene metadata Actualizada?"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "let data;\n\ntry {\n  // Intentamos leer del nodo \"Actualizar Broker account\"\n  const id1 = $('Split Out').item.json.metadata.metrics;\n  // Si existe, guardamos esos datos\n  if (id1) {\n    data = id1\n  }\n} catch (error) {\n  // Si falla, significa que no se ejecutó o no tenía esos datos\n  // Podemos dejarlo pasar o hacer un console.log(error)\n}\n\ntry {\n  // Intentamos leer del nodo \"Obtener Broker Account\"\n  const id2 = $('Extraer Metadata').item.json.metrics;\n  // Si existe, guardamos esos datos\n  if (id2) {\n    data = id2\n  }\n} catch (error) {\n  // Igualmente, si falla, es porque no se ejecutó.\n}\n\n// Al final devolvemos lo que hayamos encontrado\nreturn { data };\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        680,
+        -365
+      ],
+      "id": "6ebd4b84-e7fe-434c-a577-970629c630cf",
+      "name": "Escoger Metadata"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.WEBAPP_INTERNAL_URL }}api/meta-stats/{{ $('Split Out').item.json.metadata.metaId }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "auth-token",
+              "value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsInBlcm1pc3Npb25zIjpbXSwiYWNjZXNzUnVsZXMiOlt7ImlkIjoidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpIiwibWV0aG9kcyI6WyJ0cmFkaW5nLWFjY291bnQtbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZXN0LWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1ycGMtYXBpIiwibWV0aG9kcyI6WyJtZXRhYXBpLWFwaTp3czpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZWFsLXRpbWUtc3RyZWFtaW5nLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFzdGF0cy1hcGkiLCJtZXRob2RzIjpbIm1ldGFzdGF0cy1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoicmlzay1tYW5hZ2VtZW50LWFwaSIsIm1ldGhvZHMiOlsicmlzay1tYW5hZ2VtZW50LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJjb3B5ZmFjdG9yeS1hcGkiLCJtZXRob2RzIjpbImNvcHlmYWN0b3J5LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJtdC1tYW5hZ2VyLWFwaSIsIm1ldGhvZHMiOlsibXQtbWFuYWdlci1hcGk6cmVzdDpkZWFsaW5nOio6KiIsIm10LW1hbmFnZXItYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6ImJpbGxpbmctYXBpIiwibWV0aG9kcyI6WyJiaWxsaW5nLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19XSwiaWdub3JlUmF0ZUxpbWl0cyI6ZmFsc2UsInRva2VuSWQiOiIyMDIxMDIxMyIsImltcGVyc29uYXRlZCI6ZmFsc2UsInJlYWxVc2VySWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsImlhdCI6MTczNzc2MTAzNn0.JxymmDtZAD6n-IB-BwwZH4aNJbW9S9g_ksrpKfyOFfRXR2-vP1DzkTq6i0fqopgxfLNSJDFgPCX6EJhoQFWSSb85TWIEatwgNSBczhTk-CM5q1zylPv_r2zKLmyPIJs1Juav93ImWuy7yOFhUKtwDbg_jtju53XSg1UcSEqL50ojnZVMg6zEMUfT8fU-79Z_M4TB_5TUERhOXeiAhgqhW-OLh65CoU-JoH-wJNhzFNQM4_-ymRSCvvXfT5MHmVzk3oUmPiw381nn_cqmi9y9hLbxHHYoIo5GMOZZf0vNjcbPqFHTgJ6j8Uqe_i2uWqNb9ZcXv066wAkPaFn0um3PsChQUSeC_Ng05n965RPn1soGd4AKU9Kv3gim6Z1RBg6-AnN19QsT2PJluy5CiNoxcchjdu3V_s3cTUCEAhYy9xcp04MqkgIjnLGHZFpQdfEckRbdnaLISJTXt09t7Ei1aNqvwW-5KS__obio2cX1Pnj7L5tl9UzBm55hCpR9loBeIsI2mbYxlHId1UO14Cc6CPFxbh7FMVNGbxuALMxmmrEEQe1JJy3nTMKLqdDOyihYkZnU_qpfzuR-rlgwQ4XGKWRx10JHVlXnrGAuak1P75Bhw_ZD0XxC9V6i_WsJOdCXj4hrBgHTdtGskX4SW4EUpmspOvWqovJbh2ick8yTcgU"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -20,
+        -360
+      ],
+      "id": "138cf526-7499-4f1f-b463-524c2762d539",
+      "name": "Extraer Metadata",
+      "alwaysOutputData": true,
+      "retryOnFail": true,
+      "waitBetweenTries": 4,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e7d0c77e-fae6-4b29-805b-2e9c971da027",
+              "leftValue": "={{ $json.data.phase}}",
+              "rightValue": 3,
+              "operator": {
+                "type": "number",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2000,
+        -465
+      ],
+      "id": "041380b2-b214-4c8a-945e-24c6c5fb17f2",
+      "name": "No es de Fase 3?"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9443d87c-5e58-4bf1-ae1a-294bb1351904",
+              "name": "stage_parameters",
+              "value": "={{ $('Split Out').item.json.metadata.stage_parameters }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -540,
+        -360
+      ],
+      "id": "2b3d00ae-e7ea-41fb-ab38-425f902deb44",
+      "name": "Obtener Parámetros"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "75156825-cf80-4008-86e9-7c21a5569013",
+              "leftValue": "={{ $json.stage_parameters.first().challenge_stage.documentId }}",
+              "rightValue": "={{ $('Escoger stage adecuado').item.json.documentId }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -320,
+        -360
+      ],
+      "id": "379d074b-78f8-4197-8d12-db8ddc5030dd",
+      "name": "Obtener Parámetro"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "882ec530-7ea4-4431-8228-b2ffbf62f1c0",
+              "leftValue": "={{ $('Extraer Parametros').item.json.data.maxDrawdown || 0}}",
+              "rightValue": "={{ $('Obtener Parámetro').item.json.stage_parameters.first().maximumTotalLoss}}",
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            },
+            {
+              "id": "026000fc-bd99-4fd6-92c1-76faf22fad4e",
+              "leftValue": "={{Math.abs(($('Extraer Parametros').item.json.data.today_profit || 0)\n     * 100 / $('Split Out').item.json.metadata.broker_account.balance\n)}}",
+              "rightValue": "={{ $('Obtener Parámetro').item.json.stage_parameters.first().maximumDailyLoss}}",
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1340,
+        -265
+      ],
+      "id": "52bcc17b-4152-442a-9c2d-cd8eb2251f2e",
+      "name": "Challenge Desaprobado?"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"data\":{\n    \"user_id\":\"{{ $('Split Out').item.json.user.documentId }}\",\n    \"challenge_id\":\"{{ $('Split Out').item.json.documentId }}\"\n  }\n}\n ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1560,
+        -265
+      ],
+      "id": "f11b7483-77e0-4d21-8964-92b057174b5f",
+      "name": "User y Relation"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"data\": {\n    \"metaId\":\"{{ $json.metaId }}\",\n    \"metrics\":{{ JSON.stringify($json.metrics) }},\n    \"equityChart\":{{ JSON.stringify($json.equityChart) }},\n      \"broker_account\":{{ JSON.stringify($('Split Out').item.json.broker_account )}},\n    \"challenge_stages\":{{ JSON.stringify($('Split Out').item.json.metadata.challenge_stages) }},\n    \"stage_parameters\":{{JSON.stringify($('Split Out').item.json.metadata.stage_parameters)}}\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2220,
+        -265
+      ],
+      "id": "73991368-b1b6-463a-84bb-7e87a468a593",
+      "name": "Construir Metadata"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/stage-parameters?populate=*&filters[challenge_stage][id]={{ $json.id }}&filters[challenge_relation][id]={{ $('Obtener Relation').item.json.data.id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1300,
+        -1505
+      ],
+      "id": "06c13c55-b29a-4820-a646-d4fae6ab4647",
+      "name": "Obtener Parametro ",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/stage-parameters?populate=*&filters[challenge_relation][id]={{ $('Obtener Relation').item.json.data.id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1300,
+        -2025
+      ],
+      "id": "66149574-7c95-4e5a-b9d7-ca7197e481c8",
+      "name": "Obtener Parametros",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "53897b41-c793-4115-a23c-94d31d2ba702",
+              "leftValue": "={{ $('Loop Over Items').item.json.dynamicstatus}}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "bd2ac945-8aa0-4f45-b2e0-594c2db0e53d",
+              "leftValue": "={{ $('Loop Over Items').item.json.dynamicstatus}}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1300,
+        -725
+      ],
+      "id": "909797f1-0042-478a-884d-2aa9f1f6b0bf",
+      "name": "Balance Dinamico menor?",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "ZZBdu3roYQXptW6g",
+          "mode": "list",
+          "cachedResultName": "App: Pasar entre Challenges Aprobados"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "output": "={{ $json.data }}"
+          },
+          "matchingColumns": [
+            "output"
+          ],
+          "schema": [
+            {
+              "id": "output",
+              "displayName": "output",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "object",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -1300,
+        -985
+      ],
+      "id": "d36dabcf-7b63-4fdd-a169-e54109cbbb86",
+      "name": "Manejar Cambio de challenge"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/challenge-relations/{{ $json.challenge_relation.documentId }}?populate=challenge_stages",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1300,
+        -1765
+      ],
+      "id": "dc59ece5-f92f-45db-beeb-0eb3d45d75c9",
+      "name": "Obtener Relation",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "url": "=https://risk-management-api-v1.new-york.agiliumtrade.ai/users/current/accounts/{{ $('Loop Over Items').item.json.broker_account.idMeta }}/trackers/{{ $('Loop Over Items').item.json.challengeId }}/statistics",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "realTime",
+              "value": "true"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "auth-token",
+              "value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsImFjY2Vzc1J1bGVzIjpbeyJpZCI6InRyYWRpbmctYWNjb3VudC1tYW5hZ2VtZW50LWFwaSIsIm1ldGhvZHMiOlsidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcmVzdC1hcGkiLCJtZXRob2RzIjpbIm1ldGFhcGktYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcnBjLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcmVhbC10aW1lLXN0cmVhbWluZy1hcGkiLCJtZXRob2RzIjpbIm1ldGFhcGktYXBpOndzOnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJtZXRhc3RhdHMtYXBpIiwibWV0aG9kcyI6WyJtZXRhc3RhdHMtYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6InJpc2stbWFuYWdlbWVudC1hcGkiLCJtZXRob2RzIjpbInJpc2stbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoiY29weWZhY3RvcnktYXBpIiwibWV0aG9kcyI6WyJjb3B5ZmFjdG9yeS1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibXQtbWFuYWdlci1hcGkiLCJtZXRob2RzIjpbIm10LW1hbmFnZXItYXBpOnJlc3Q6ZGVhbGluZzoqOioiLCJtdC1tYW5hZ2VyLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJiaWxsaW5nLWFwaSIsIm1ldGhvZHMiOlsiYmlsbGluZy1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfV0sImlnbm9yZVJhdGVMaW1pdHMiOmZhbHNlLCJ0b2tlbklkIjoiMjAyMTAyMTMiLCJpbXBlcnNvbmF0ZWQiOmZhbHNlLCJyZWFsVXNlcklkIjoiN2FiNTA2ODg5M2JhMzA3MWI3YWMxNDMyOWM0ZDVkN2YiLCJpYXQiOjE3NDE4MjI0ODF9.EgWgpWVf0qW52Q-HpUX2P130Su9h9Q7fLScrIqlstCPrArykyOdvoNlHlWLRKcb5zb2fxMt5X4E2WiVucbcVKhLsIBii-yMcLUUSSlk_Hi-_Pffgna0_wLf_J_ETC5IaKdbF7ttx-YBeFz4usGnEiYZF-JC-HGrYqG32h0My_Xo2c884TRSCJYr9CIe0eTU9T2C7jo5H1XHREVprXpWld6VLlzqRbrYI5V6PbTNs3nmn-g1sTRCSR6D3VAmrOydeWliIKPll3ONULHURoVq2Ii0VJiqXsE5BGvciU_p9DvyPnIkKwQubf6CXQahNjYhj8eUaccWXw9aW3i8Gv8h9VTDBc3xVOwxIDqJ7c3TwlKrXZrOD41NquRUuMY-xO-TJyPwloHKt-ZKWPcV-l6b-Zyv0w0Ng9Riv0bFQdHldpnXjh7bkzBs2W7AFj9naVcYpSlFqWcc5M86LgQbC6P3Ps8Le0vFsGidhFvcpb9oRQBaweEv0LgXgq_oRNKh4P7aCEPI3ngKN1diDvYKIQ68Pd0CqEF0BwNgRt-G31DY9nOhquhEXqJ208JEVO0teVeqm9JfOzfQsN69AWuxFoPLYy5HVQ53NRUDzgI7gpGRORkOPJmpQGud39oXE_Thqa-wQdGLyxsS2sQVEoU1z1K45eTz9FPzMTj_a3MoxZ45HRTA"
+            },
+            {
+              "name": "api-version",
+              "value": "1"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1300,
+        -1245
+      ],
+      "id": "e43fcb7b-ba7e-403e-b23a-bd3f0f444d6f",
+      "name": "Obtener datos Meta",
+      "notesInFlow": false,
+      "executeOnce": false,
+      "alwaysOutputData": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Obtener la data original\nconst originalData = $('Escoger Metadata').item.json.data;\n\n// Verificar el tipo de datos y procesarlos adecuadamente\nlet result;\n\nif (Array.isArray(originalData)) {\n  // Si es un array, usamos map\n  result = originalData.map(item => {return {\n    daysSinceTradingStarted: item.daysSinceTradingStarted\n  };});\n} else if (originalData && typeof originalData === 'object') {\n  // Si es un objeto (no array), extraemos directamente la propiedad\n  result = {\"daysSinceTradingStarted\":Math.floor(originalData.daysSinceTradingStarted||0),\n           \"maxDrawdown\":originalData.maxDrawdown || 0,\n           \"profit\":originalData.profit || 0,\n            \"today_profit\":$json.data.periods.today?.profit || 0\n}} else {\n  // Si no es ni array ni objeto, devolvemos un mensaje de error\n  result = { error: 'La estructura de datos no es la esperada' };\n}\n\n// Para debugging: ver qué tipo de dato estamos manejando\nconsole.log('Tipo de originalData:', typeof originalData);\nconsole.log('Es array?', Array.isArray(originalData));\nconsole.log('Valor de originalData:', JSON.stringify(originalData).substring(0, 200) + '...');\n\nreturn ({\"data\":result});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        900,
+        -365
+      ],
+      "id": "c4b3ccdb-1b8b-41a8-866f-ac9aba68c302",
+      "name": "Extraer Parametros"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/challenges?filters[result][$eq]=progress&filters[isactive][$eq]=true&populate=*",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "pagination[page]",
+              "value": "={{ $json.page }}"
+            },
+            {
+              "name": "pagination[pageSize]",
+              "value": "25"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1080,
+        520
+      ],
+      "id": "5400c46d-ac2c-4289-b1c2-afc0f596139d",
+      "name": "Obtener Challenges activos",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "915bbcec-f6a7-4fce-9704-165d884a9f05",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "array",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -860,
+        520
+      ],
+      "id": "2fb06fc9-7ded-4bee-9119-e09a8c493c40",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "915bbcec-f6a7-4fce-9704-165d884a9f05",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "array",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -860,
+        -5
+      ],
+      "id": "ede2eed6-505e-43a7-8a88-b8015e079622",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/challenges?populate=*&filters[phase][$eq]=3&filters[result][$eq]=approved&filters[isactive][$eq]=true",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "pagination[page]",
+              "value": "={{ $json.page }}"
+            },
+            {
+              "name": "pagination[pageSize]",
+              "value": "25"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1080,
+        -5
+      ],
+      "id": "884b2de8-6a3d-4f52-87f9-53f9a9bb7e39",
+      "name": "Challenges en Fase 3",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0b888805-fc15-4169-bd0f-22b0d6011781",
+              "name": "page",
+              "value": "={{ $json.page || 1}}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1300,
+        45
+      ],
+      "id": "e37401df-0c7a-489c-ac29-f513ecdea2a0",
+      "name": "page_1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1632edcb-f8a0-438b-8196-ef006011535a",
+              "name": "page",
+              "value": "={{ $json.meta.pagination.page + 1}}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -640,
+        20
+      ],
+      "id": "96ddc03a-181c-4d52-9cc4-2dd3a0471d1a",
+      "name": "page_2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0b888805-fc15-4169-bd0f-22b0d6011781",
+              "name": "page",
+              "value": "={{ $json.page || 1}}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1300,
+        595
+      ],
+      "id": "0088a680-069f-4e4a-abe9-e593e9d271df",
+      "name": "page_3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1632edcb-f8a0-438b-8196-ef006011535a",
+              "name": "page",
+              "value": "={{ $json.meta.pagination.page + 1}}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -640,
+        695
+      ],
+      "id": "e0e6437a-a449-45cf-9c27-ba0f5b65a9a0",
+      "name": "page_4"
+    },
+    {
+      "parameters": {
+        "jsCode": "const allData = [];\nlet counter = 0;\ndo {\n  try {\n    // Obtener los items del nodo de n8n\n    const items = $(\"Obtener Challenges activos\").all(0, counter);\n    \n    // Si no hay items, salir del bucle\n    if (!items || items.length === 0) {\n      break;\n    }\n    \n    // Extraer los datos del array 'data' dentro de json de cada item\n    const extractedData = items.map(item => item.json.data).flat();\n    \n    // Agregar los datos extraídos al array final\n    allData.push.apply(allData, extractedData);\n  } catch (error) {\n    // Devolver los datos recolectados hasta ahora\n    return ({\"data\":allData});\n  }\n  counter++;\n} while(true);\n\nreturn ({\"data\":allData});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -640,
+        470
+      ],
+      "id": "6db67060-a19e-49aa-af4f-2562e9789532",
+      "name": "Combinar en Progreso"
+    },
+    {
+      "parameters": {
+        "jsCode": "const allData = [];\nlet counter = 0;\ndo {\n  try {\n    // Obtener los items del nodo de n8n\n    const items = $(\"Challenges en Fase 3\").all(0, counter);\n    \n    // Si no hay items, salir del bucle\n    if (!items || items.length === 0) {\n      break;\n    }\n    \n    // Extraer los datos del array 'data' dentro de json de cada item\n    const extractedData = items.map(item => item.json.data).flat();\n    \n    // Agregar los datos extraídos al array final\n    allData.push.apply(allData, extractedData);\n  } catch (error) {\n    // Devolver los datos recolectados hasta ahora\n    return ({\"data\":allData});\n  }\n  counter++;\n} while(true);\n\nreturn ({\"data\":allData});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -640,
+        220
+      ],
+      "id": "0ab14f79-f2b8-499e-9dd7-8e2180e3ddf8",
+      "name": "Combinar Aprobados"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        -420,
+        345
+      ],
+      "id": "f96d20c0-0ad9-417c-88fe-23916f265674",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "authentication": "token",
+        "operation": "getAll",
+        "contentType": "challenges?populate=*&filters[$or][0][result][$eq]=progress&filters[$or][1][$and][0][result][$eq]=approved&filters[$or][1][$and][1][phase][$eq]=3",
+        "returnAll": true,
+        "options": {
+          "sort": []
+        }
+      },
+      "type": "n8n-nodes-base.strapi",
+      "typeVersion": 1,
+      "position": [
+        -980,
+        -360
+      ],
+      "id": "f212d5e9-5e58-49a7-b907-d4fcc12609b1",
+      "name": "Split Out",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "Challenges Progreso y Aprobados fase 3",
+        "height": 80
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        580,
+        -880
+      ],
+      "id": "e9f47c04-f379-4855-804e-84eca0d071f3",
+      "name": "Challenges Progreso y Aprobados fase 3"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"data\":{\n    \"user_id\":\"{{ $('Split Out').item.json.user.documentId }}\",\n    \"challenge_id\":\"{{ $('Split Out').item.json.documentId }}\"\n  }\n}\n ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1340,
+        -465
+      ],
+      "id": "00080dc2-9e64-4523-ab03-f31a92600bd2",
+      "name": "User y Relation1"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n_workflows",
+  "repo_owner": "EliteCodeDev",
+  "repo_path": "workflows/zeven/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-05-23T21:32:56.000Z",
+  "versionId": "da1087ed-759f-4d7c-adb7-364f3ead023c"
+}
