@@ -1,0 +1,271 @@
+{
+  "active": false,
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Global Constants",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Validate Required Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Global Constants": {
+      "main": [
+        [
+          {
+            "node": "Switch (Email Type)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch (Email Type)": {
+      "main": [
+        [
+          {
+            "node": "Ticket Purchase Email",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Contract Approved Email",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Contract Rejected Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate Required Fields": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Log Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-28T23:15:02.556Z",
+  "id": "IKh13o6QsNbuzbCV",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Email Sender",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -520,
+        160
+      ],
+      "id": "74ba16b2-109f-4ae5-a695-403df1e15b7d",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-globals.globalConstants",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        160
+      ],
+      "id": "3d5063c5-abfd-4d0c-9a6f-f639bb07aaac",
+      "name": "Global Constants",
+      "credentials": {
+        "globalConstantsApi": {
+          "id": "xD5yrF0WiFvNSDFv",
+          "name": "Global Constants account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json.emailId }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "ticket_purchase"
+            },
+            {
+              "value2": "contract_approved"
+            },
+            {
+              "value2": "contract_rejected"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        140
+      ],
+      "id": "2f8e5311-2d81-4092-a7ea-4ac8257b5857",
+      "name": "Switch (Email Type)"
+    },
+    {
+      "parameters": {
+        "fromEmail": "={{ $('Global Constants').item.json.constants.EMAIL }}",
+        "toEmail": "={{ $json.toEmail }}",
+        "subject": "Ticket Purchase",
+        "html": "TICKET_PURCHASE_EMAIL_TEMPLATE",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        60,
+        -140
+      ],
+      "id": "3f1237d2-d0b2-43bd-97b1-cd2a76a6f18e",
+      "name": "Ticket Purchase Email",
+      "webhookId": "c8ebac81-b8dc-4a78-9d0c-aeabfff22221",
+      "credentials": {
+        "smtp": {
+          "id": "ZS9NhafTpi5LRpMH",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "={{ $('Global Constants').item.json.constants.EMAIL }}",
+        "toEmail": "={{ $json.toEmail }}",
+        "subject": "Your contract request has been approved",
+        "html": "CONTRACT_APPROVED_EMAIL_TEMPLATE",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        60,
+        20
+      ],
+      "id": "8b2419c3-517e-4acf-8240-ee0c7bd0ca9e",
+      "name": "Contract Approved Email",
+      "webhookId": "9d60cdf6-da5b-43a1-b43c-5c8083d366ed",
+      "credentials": {
+        "smtp": {
+          "id": "ZS9NhafTpi5LRpMH",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "={{ $('Global Constants').item.json.constants.EMAIL }}",
+        "toEmail": "={{ $json.toEmail }}",
+        "subject": "Your contract request has been rejected",
+        "html": "CONTRACT_REJECTED_EMAIL_TEMPLATE",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        60,
+        160
+      ],
+      "id": "1d7ff025-518c-4a4e-933b-6f189eafa245",
+      "name": "Contract Rejected Email",
+      "webhookId": "4f5ed05e-94aa-474a-8703-511aafc8ecd1",
+      "credentials": {
+        "smtp": {
+          "id": "ZS9NhafTpi5LRpMH",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "123456",
+              "leftValue": "={{ $json.emailId === undefined || $json.toEmail === undefined }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -340,
+        360
+      ],
+      "id": "768eff12-bcab-4b09-8b3e-18e11f71df08",
+      "name": "Validate Required Fields"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Global Constants').item.json.constants.ERROR_LOGGING_URL || 'http://example.com/log' }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={ \"error\": \"Missing required field in Email Sender\", \"data\": $json }",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -140,
+        380
+      ],
+      "id": "3d25c305-0bfc-4757-9e17-6d448383817e",
+      "name": "Log Error"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n_workflows",
+  "repo_owner": "EliteCodeDev",
+  "repo_path": "workflows/zeven/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-03T17:07:43.000Z",
+  "versionId": "4a60df70-060e-4e65-8148-11e61d6ad0f5"
+}
