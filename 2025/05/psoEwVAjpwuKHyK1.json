@@ -1,0 +1,153 @@
+{
+  "active": false,
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Obtener dia actual",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crear mensaje": {
+      "main": [
+        [
+          {
+            "node": "Wazend API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener dia actual": {
+      "main": [
+        [
+          {
+            "node": "Crear mensaje",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-20T15:03:14.130Z",
+  "id": "psoEwVAjpwuKHyK1",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Error Trigger",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "58309d18-c026-4c8c-b391-66c47bfcb5f2",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "resource": "messages-api",
+        "instanceName": "T305",
+        "remoteJid": "120363402017620986@g.us",
+        "messageText": "={{ $json.mensaje }}",
+        "options_message": {}
+      },
+      "type": "n8n-nodes-wazend.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        800,
+        0
+      ],
+      "id": "a148df78-71ae-43ab-a520-c96d330b4ca7",
+      "name": "Wazend API",
+      "credentials": {
+        "evolutionApi": {
+          "id": "ONJhseOAHnVcircE",
+          "name": "Wazend account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c6d50ce0-6f8f-4e10-92f4-ab0e7a750542",
+              "name": "mensaje",
+              "value": "=--- ZEVENGLOBAL ---\nError en el flujo: {{ $('Error Trigger').item.json.workflow.name }}\nUrl de ejecución: {{ $('Error Trigger').item.json.execution.url }}\nUltimo nodo ejecutado: {{ $('Error Trigger').item.json.execution.lastNodeExecuted }}\nFecha: {{ $json.currentDate.toDateTime().format('dd-MM-yyyy, HH:mm')}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        560,
+        0
+      ],
+      "id": "d1a2f513-e584-4a30-af3f-f2a47a35a514",
+      "name": "Crear mensaje"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        280,
+        0
+      ],
+      "id": "ce495027-07c9-4dbc-8b97-65302323014d",
+      "name": "Obtener dia actual"
+    }
+  ],
+  "pinData": {
+    "Error Trigger": [
+      {
+        "json": {
+          "execution": {
+            "id": 231,
+            "url": "https://n8n.zevenglobalfunding.com/execution/workflow/1/231",
+            "retryOf": "34",
+            "error": {
+              "message": "Example Error Message",
+              "stack": "Stacktrace"
+            },
+            "lastNodeExecuted": "Node With Error",
+            "mode": "manual"
+          },
+          "workflow": {
+            "id": "1",
+            "name": "Example Workflow"
+          }
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n_workflows",
+  "repo_owner": "EliteCodeDev",
+  "repo_path": "https://github.com/EliteCodeDev/n8n_workflows/",
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "timezone": "America/Lima"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-21T15:30:21.000Z",
+  "versionId": "adf9d08c-7487-48ca-8112-a819733ec738"
+}
