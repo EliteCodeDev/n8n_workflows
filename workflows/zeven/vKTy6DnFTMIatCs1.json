@@ -1,0 +1,323 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Global Constants1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Global Constants1": {
+      "main": [
+        [
+          {
+            "node": "META ZEVEN",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Strapi1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Strapi1": {
+      "main": [
+        [
+          {
+            "node": "Filter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "META ZEVEN": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-22T22:31:41.143Z",
+  "id": "vKTy6DnFTMIatCs1",
+  "isArchived": false,
+  "meta": null,
+  "name": "Apagado Automático copy",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                5
+              ],
+              "triggerAtHour": 16
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -720,
+        -40
+      ],
+      "id": "7dbaaa10-aab1-4152-be89-a594f027f683",
+      "name": "Schedule Trigger1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-globals.globalConstants",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        -40
+      ],
+      "id": "01a5e1de-8857-4f8f-8e31-419c23b837c9",
+      "name": "Global Constants1",
+      "credentials": {
+        "globalConstantsApi": {
+          "id": "xD5yrF0WiFvNSDFv",
+          "name": "Global Constants account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "token",
+        "operation": "getAll",
+        "contentType": "challenges?populate=*&filters[isactive]=true",
+        "returnAll": true,
+        "options": {
+          "sort": []
+        }
+      },
+      "type": "n8n-nodes-base.strapi",
+      "typeVersion": 1,
+      "position": [
+        200,
+        -160
+      ],
+      "id": "0d1bc63a-a20e-45f4-baf2-a2249eace924",
+      "name": "Strapi1",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://mt-provisioning-api-v1.agiliumtrade.agiliumtrade.ai/users/current/accounts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        60,
+        60
+      ],
+      "id": "e82cf9e4-045f-415f-be87-cb52201a9a32",
+      "name": "META ZEVEN",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "8u20dlP7ndo4urwE",
+          "name": "META API TOKEN ZEVEN"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "7d6893e1-3383-48ab-8547-95a637b43dea",
+              "leftValue": "={{ $json.state }}",
+              "rightValue": "DEPLOYED",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        460,
+        60
+      ],
+      "id": "9ac29c2c-1348-4ba9-8703-aec9e7ba9e2d",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "jsCode": "const strapi_data = \nconst meta_accounts ="
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1560,
+        -60
+      ],
+      "id": "f0295241-9a93-4df3-8da6-34fae2f3cfd8",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "89937d5e-e764-41df-9694-56fa9488c3d0",
+              "leftValue": "={{ $json.metadata.metaId }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "82317331-6a1b-4560-9970-1c2c34adbda3",
+              "leftValue": "={{ $json.broker_account.idMeta }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        420,
+        -160
+      ],
+      "id": "d66d3af4-a84d-4981-8fdf-324b5cb2e195",
+      "name": "Filter1"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        820,
+        -160
+      ],
+      "id": "a719c138-7ce4-49fc-afb8-70ac8fcf9353",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        820,
+        60
+      ],
+      "id": "f3c82802-5684-49f6-83ed-1c5bc6a0977b",
+      "name": "Aggregate1"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n_workflows",
+  "repo_owner": "EliteCodeDev",
+  "repo_path": "workflows/zeven/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-23T05:01:05.000Z",
+  "versionId": "248c7fa0-b890-4390-a9ee-9060da5e2f60"
+}
