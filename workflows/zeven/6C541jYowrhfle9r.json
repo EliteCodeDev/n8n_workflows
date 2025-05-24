@@ -1,0 +1,1069 @@
+{
+  "active": true,
+  "connections": {
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Chequear Orden1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chequear Orden1": {
+      "main": [
+        [
+          {
+            "node": "Compra Rechazada?2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fue Aprobada?1": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compra Rechazada?2": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Fue Aprobada?1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Iterations1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "30 Veces1": {
+      "main": [
+        [
+          {
+            "node": "Split Iterations1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compra aprobada?": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "30 Veces1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Compra aprobada?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Envia a Skale",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets1": {
+      "main": [
+        [
+          {
+            "node": "Envia a Skale",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-07T14:13:05.239Z",
+  "id": "6C541jYowrhfle9r",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "ZEVEN GLOBAL BROKER (NOBORRAR RONALD)",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "11sO7b6HQSDE_wbF7nvY1BhALddBU4vpMeuKbtvJooIg",
+          "mode": "list",
+          "cachedResultName": "Zeven Global Payments Cards",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/11sO7b6HQSDE_wbF7nvY1BhALddBU4vpMeuKbtvJooIg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/11sO7b6HQSDE_wbF7nvY1BhALddBU4vpMeuKbtvJooIg/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "document_id": "={{ $('Edit Fields').item.json.document_id }}",
+            "order_id": "={{ $('Edit Fields').item.json.body.id }}",
+            "email": "={{ $('Edit Fields').item.json.body.billing.email }}",
+            "amount": "={{ $('Edit Fields').item.json.body.total }}",
+            "status": "={{ $('Edit Fields').item.json.body.status }}"
+          },
+          "matchingColumns": [
+            "order_id"
+          ],
+          "schema": [
+            {
+              "id": "document_id",
+              "displayName": "document_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "order_id",
+              "displayName": "order_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "amount",
+              "displayName": "amount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1100,
+        -120
+      ],
+      "id": "699d57e3-1b7d-4b57-8542-2b1f71336a1b",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8uKLZOB4uOI3C7GA",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## ZEVEN GLOBAL CARD\nNO BORRAR"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1220,
+        300
+      ],
+      "typeVersion": 1,
+      "id": "add39d1a-efc6-401f-af31-cdb74f0b2b37",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1280,
+        460
+      ],
+      "id": "c04f8e17-0955-4cd5-8d3f-fd4250047fa6",
+      "name": "Wait1",
+      "webhookId": "3910e1e8-50f2-4d67-a717-effe2745d563"
+    },
+    {
+      "parameters": {
+        "url": "=https://funding.zevenglobal.com/wp-json/wc/v3/orders/{{ $('Edit Fields').item.json.body.id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wooCommerceApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1500,
+        460
+      ],
+      "id": "b0fdbf2e-d46e-4d66-84db-b7be88f24b20",
+      "name": "Chequear Orden1",
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "6Kb9lwMY8NDVFSSe",
+          "name": "WooCommerce account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1040,
+        440
+      ],
+      "id": "3f74c809-da52-4ce3-b7d7-448781338183",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "75231d79-294d-4ef4-9a99-104a8f76cbba",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "processing",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        760,
+        480
+      ],
+      "id": "68379721-c73e-4cfa-83fb-1dc57e726b35",
+      "name": "Fue Aprobada?1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a5362dba-8914-4574-b390-2e35683cba9b",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "failed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1760,
+        460
+      ],
+      "id": "bd6f8f64-c33d-4243-a93e-32290277cd23",
+      "name": "Compra Rechazada?2"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "iterations",
+        "options": {
+          "destinationFieldName": "iteration"
+        }
+      },
+      "id": "4b08fe8c-db14-460f-8c29-77b653f76f2b",
+      "name": "Split Iterations1",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        560,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const count = 30;\nconst fillers = Array.from({ length: count }, (_, index) => index);\n\n$input.item.json.iterations = fillers;\n\nreturn $input.item;"
+      },
+      "id": "fd741647-368a-4206-80e1-3e5abb035158",
+      "name": "30 Veces1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        360,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ddba9a70-fc31-454a-8baf-611c2aa01f0e",
+              "leftValue": "={{ $json.body.status }}",
+              "rightValue": "processing2",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -60,
+        80
+      ],
+      "id": "629c1380-f288-44ca-afd0-aa56c7bef232",
+      "name": "Compra aprobada?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e9d550c4-ede7-444e-b40d-d1f1f105ec50",
+              "leftValue": "={{ $json.product_id }}",
+              "rightValue": 11789,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -320,
+        80
+      ],
+      "id": "e7b8727e-339f-4fb2-b7b5-6af0898b8312",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "order-zeven",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1400,
+        80
+      ],
+      "id": "63d0c883-1eac-46c7-83f2-25ca5b6e7762",
+      "name": "Webhook",
+      "webhookId": "80d3512f-9f3a-4fc1-ba40-b9489cee7179"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f054f8aa-e740-446f-9bb6-9cc4a0bffaa6",
+              "name": "body.id",
+              "value": "={{ $json.body.id }}",
+              "type": "number"
+            },
+            {
+              "id": "57ff7ae5-0ab4-4b4c-b6bf-836a8a8048f5",
+              "name": "body.status",
+              "value": "={{ $json.body.status }}",
+              "type": "string"
+            },
+            {
+              "id": "1ece566e-53ea-4eb3-8b28-3a048a09757d",
+              "name": "product_id",
+              "value": "={{ $json.body.line_items[0].product_id }}",
+              "type": "number"
+            },
+            {
+              "id": "15a967ea-c864-41a8-9325-2c976e03f569",
+              "name": "body.total",
+              "value": "={{ $json.body.total }}",
+              "type": "string"
+            },
+            {
+              "id": "9953e795-8e08-49e6-a4d5-4ceea2321648",
+              "name": "body.billing.email",
+              "value": "={{ $json.body.billing.email }}",
+              "type": "string"
+            },
+            {
+              "id": "febe2b13-88bd-49d0-bd74-be198d1159b5",
+              "name": "document_id",
+              "value": "={{ $json.body.meta_data\n       .find(el => el.key === '_document_id')\n       ?.value || '' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -860,
+        100
+      ],
+      "id": "121aec4b-3011-43c4-a1c7-8bc38d37d306",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "11sO7b6HQSDE_wbF7nvY1BhALddBU4vpMeuKbtvJooIg",
+          "mode": "list",
+          "cachedResultName": "Zeven Global Payments Cards",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/11sO7b6HQSDE_wbF7nvY1BhALddBU4vpMeuKbtvJooIg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/11sO7b6HQSDE_wbF7nvY1BhALddBU4vpMeuKbtvJooIg/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "document_id": "={{ $('Edit Fields').item.json.document_id }}",
+            "order_id": "={{ $('Edit Fields').item.json.body.id }}",
+            "email": "={{ $('Edit Fields').item.json.body.billing.email }}",
+            "amount": "={{ $('Edit Fields').item.json.body.total }}",
+            "status": "={{ $json.status }}"
+          },
+          "matchingColumns": [
+            "order_id"
+          ],
+          "schema": [
+            {
+              "id": "document_id",
+              "displayName": "document_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "order_id",
+              "displayName": "order_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "amount",
+              "displayName": "amount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1120,
+        120
+      ],
+      "id": "30a398bb-9171-42db-9c5c-8c5e6c533572",
+      "name": "Google Sheets1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8uKLZOB4uOI3C7GA",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://fbom.dev.skaleapps.io/psp-response/179/692?redirect-status=notification",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "api_key",
+              "value": "emV2ZW5fNDVmOGEyYjEtZTNjOS00N2QyLThhMWYtM2IyYzZkN2U4ZjlnX2FwaV8="
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "=document_id",
+              "value": "={{ $json.document_id }}"
+            },
+            {
+              "name": "=order_id",
+              "value": "={{ $json.order_id }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $json.email }}"
+            },
+            {
+              "name": "amount",
+              "value": "={{ $json.amount }}"
+            },
+            {
+              "name": "=status",
+              "value": "={{ $json.status }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1500,
+        -20
+      ],
+      "id": "f8a18a66-03b1-4870-965d-3befeb056f33",
+      "name": "Envia a Skale"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.zevenglobalfunding.com",
+            "user-agent": "WooCommerce/9.8.5 Hookshot (WordPress/6.8.1)",
+            "content-length": "5497",
+            "accept": "*/*",
+            "accept-encoding": "gzip, br",
+            "cdn-loop": "cloudflare; loops=1",
+            "cf-connecting-ip": "154.38.184.175",
+            "cf-ipcountry": "US",
+            "cf-ray": "9432f1b35bdd426a-EWR",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/json",
+            "x-forwarded-for": "154.38.184.175, 162.158.158.229",
+            "x-forwarded-host": "n8n.zevenglobalfunding.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "e6c05b0fe480",
+            "x-real-ip": "162.158.158.229",
+            "x-wc-webhook-delivery-id": "9e0f3728d7b9908640fcbaf5e5c74323",
+            "x-wc-webhook-event": "created",
+            "x-wc-webhook-id": "152",
+            "x-wc-webhook-resource": "order",
+            "x-wc-webhook-signature": "D3hVWQ2WeGcl7K/SrxxJTf6v7vkHLCzYMb+Dqyx5GyI=",
+            "x-wc-webhook-source": "https://funding.zevenglobal.com/",
+            "x-wc-webhook-topic": "order.created"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "id": 11877,
+            "parent_id": 0,
+            "status": "pending",
+            "currency": "USD",
+            "version": "9.8.5",
+            "prices_include_tax": false,
+            "date_created": "2025-05-21T04:10:47",
+            "date_modified": "2025-05-21T04:10:47",
+            "discount_total": "0.00",
+            "discount_tax": "0.00",
+            "shipping_total": "0.00",
+            "shipping_tax": "0.00",
+            "cart_tax": "0.00",
+            "total": "100.00",
+            "total_tax": "0.00",
+            "customer_id": 1,
+            "order_key": "wc_order_uG8QTZ31UeoM2",
+            "billing": {
+              "first_name": "Juan David",
+              "last_name": "Arango",
+              "company": "",
+              "address_1": "Trujillo",
+              "address_2": "",
+              "city": "Trujillo",
+              "state": "LAL",
+              "postcode": "13007",
+              "country": "PE",
+              "email": "juandavidarangov@gmail.com",
+              "phone": "924079149"
+            },
+            "shipping": {
+              "first_name": "",
+              "last_name": "",
+              "company": "",
+              "address_1": "",
+              "address_2": "",
+              "city": "",
+              "state": "LAL",
+              "postcode": "",
+              "country": "PE",
+              "phone": "924079149"
+            },
+            "payment_method": "micuentawebstd",
+            "payment_method_title": "Payment by credit & debit card",
+            "transaction_id": "",
+            "customer_ip_address": "38.25.50.115",
+            "customer_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+            "created_via": "checkout",
+            "customer_note": "",
+            "date_completed": null,
+            "date_paid": null,
+            "cart_hash": "5d4b7de5605652e4cec671735b28a410",
+            "number": "11877",
+            "meta_data": [
+              {
+                "id": 15073,
+                "key": "_billing_wc_custom_field",
+                "value": ""
+              },
+              {
+                "id": 15075,
+                "key": "_document_id",
+                "value": "83406-00202"
+              },
+              {
+                "id": 15091,
+                "key": "_wc_order_attribution_device_type",
+                "value": "Desktop"
+              },
+              {
+                "id": 15082,
+                "key": "_wc_order_attribution_referrer",
+                "value": "https://my.zevenglobal.com/"
+              },
+              {
+                "id": 15089,
+                "key": "_wc_order_attribution_session_count",
+                "value": "4"
+              },
+              {
+                "id": 15086,
+                "key": "_wc_order_attribution_session_entry",
+                "value": "https://funding.zevenglobal.com/checkouts/zeven-checkout/?aero-add-to-checkout=11789&aero-qty=30&document_id=83406-67633"
+              },
+              {
+                "id": 15088,
+                "key": "_wc_order_attribution_session_pages",
+                "value": "22"
+              },
+              {
+                "id": 15087,
+                "key": "_wc_order_attribution_session_start_time",
+                "value": "2025-05-21 08:23:23"
+              },
+              {
+                "id": 15081,
+                "key": "_wc_order_attribution_source_type",
+                "value": "referral"
+              },
+              {
+                "id": 15090,
+                "key": "_wc_order_attribution_user_agent",
+                "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"
+              },
+              {
+                "id": 15085,
+                "key": "_wc_order_attribution_utm_content",
+                "value": "/"
+              },
+              {
+                "id": 15084,
+                "key": "_wc_order_attribution_utm_medium",
+                "value": "referral"
+              },
+              {
+                "id": 15083,
+                "key": "_wc_order_attribution_utm_source",
+                "value": "my.zevenglobal.com"
+              },
+              {
+                "id": 15093,
+                "key": "_wfacp_post_id",
+                "value": "11790"
+              },
+              {
+                "id": 15077,
+                "key": "_wfacp_report_data",
+                "value": {
+                  "wfacp_total": "100.00",
+                  "funnel_id": "3"
+                }
+              },
+              {
+                "id": 15094,
+                "key": "_wfacp_source",
+                "value": "https://funding.zevenglobal.com/checkouts/zeven-checkout/"
+              },
+              {
+                "id": 15095,
+                "key": "_wfacp_timezone",
+                "value": "America/Lima"
+              },
+              {
+                "id": 15080,
+                "key": "_wffn_tracking_data",
+                "value": {
+                  "utm_source": "",
+                  "utm_medium": "",
+                  "utm_campaign": "",
+                  "utm_term": "",
+                  "utm_content": "",
+                  "first_landing_url": "/",
+                  "browser": "Chrome",
+                  "first_click": "2025-5-21 01:33:06",
+                  "device": "desktop",
+                  "click_id": "",
+                  "referrer": "my.zevenglobal.com",
+                  "journey": "",
+                  "source_id": 0
+                }
+              },
+              {
+                "id": 15076,
+                "key": "_wfob_report_data",
+                "value": []
+              },
+              {
+                "id": 15092,
+                "key": "_woofunnel_cid",
+                "value": "1"
+              },
+              {
+                "id": 15074,
+                "key": "is_vat_exempt",
+                "value": "no"
+              }
+            ],
+            "line_items": [
+              {
+                "id": 803,
+                "name": "Deposit Balance",
+                "product_id": 11789,
+                "variation_id": 0,
+                "quantity": 100,
+                "tax_class": "",
+                "subtotal": "100.00",
+                "subtotal_tax": "0.00",
+                "total": "100.00",
+                "total_tax": "0.00",
+                "taxes": [],
+                "meta_data": [
+                  {
+                    "id": 7383,
+                    "key": "_wfacp_product",
+                    "value": "1",
+                    "display_key": "_wfacp_product",
+                    "display_value": "1"
+                  },
+                  {
+                    "id": 7384,
+                    "key": "_wfacp_product_key",
+                    "value": "wfacp_682d988d255db",
+                    "display_key": "_wfacp_product_key",
+                    "display_value": "wfacp_682d988d255db"
+                  },
+                  {
+                    "id": 7385,
+                    "key": "_wfacp_options",
+                    "value": {
+                      "title": "Deposit Balance",
+                      "discount_type": "percent_discount_sale",
+                      "discount_amount": 0,
+                      "discount_price": 0,
+                      "quantity": "100",
+                      "type": "simple",
+                      "id": 11789,
+                      "parent_product_id": 0,
+                      "org_quantity": 1,
+                      "is_default": true,
+                      "not_existing_product": true,
+                      "add_to_cart_via_url_quantity": "100",
+                      "add_to_cart_via_url": true,
+                      "whats_included": "",
+                      "item_key": "wfacp_682d988d255db"
+                    },
+                    "display_key": "_wfacp_options",
+                    "display_value": {
+                      "title": "Deposit Balance",
+                      "discount_type": "percent_discount_sale",
+                      "discount_amount": 0,
+                      "discount_price": 0,
+                      "quantity": "100",
+                      "type": "simple",
+                      "id": 11789,
+                      "parent_product_id": 0,
+                      "org_quantity": 1,
+                      "is_default": true,
+                      "not_existing_product": true,
+                      "add_to_cart_via_url_quantity": "100",
+                      "add_to_cart_via_url": true,
+                      "whats_included": "",
+                      "item_key": "wfacp_682d988d255db"
+                    }
+                  }
+                ],
+                "sku": "",
+                "price": 1,
+                "image": {
+                  "id": "11393",
+                  "src": "https://funding.zevenglobal.com/wp-content/uploads/2025/04/Sin-titulo-1-4.png"
+                },
+                "parent_name": null
+              }
+            ],
+            "tax_lines": [],
+            "shipping_lines": [],
+            "fee_lines": [],
+            "coupon_lines": [],
+            "refunds": [],
+            "payment_url": "https://funding.zevenglobal.com/checkout/order-pay/11877/?pay_for_order=true&key=wc_order_uG8QTZ31UeoM2",
+            "is_editable": true,
+            "needs_payment": true,
+            "needs_processing": true,
+            "date_created_gmt": "2025-05-21T09:10:47",
+            "date_modified_gmt": "2025-05-21T09:10:47",
+            "date_completed_gmt": null,
+            "date_paid_gmt": null,
+            "currency_symbol": "$",
+            "_links": {
+              "self": [
+                {
+                  "href": "https://funding.zevenglobal.com/wp-json/wc/v3/orders/11877",
+                  "targetHints": {
+                    "allow": [
+                      "GET",
+                      "POST",
+                      "PUT",
+                      "PATCH",
+                      "DELETE"
+                    ]
+                  }
+                }
+              ],
+              "collection": [
+                {
+                  "href": "https://funding.zevenglobal.com/wp-json/wc/v3/orders"
+                }
+              ],
+              "email_templates": [
+                {
+                  "embeddable": true,
+                  "href": "https://funding.zevenglobal.com/wp-json/wc/v3/orders/11877/actions/email_templates"
+                }
+              ],
+              "customer": [
+                {
+                  "href": "https://funding.zevenglobal.com/wp-json/wc/v3/customers/1"
+                }
+              ]
+            },
+            "document_id": "83406-00202"
+          },
+          "webhookUrl": "https://n8n.zevenglobalfunding.com/webhook/order-zeven",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n_workflows",
+  "repo_owner": "EliteCodeDev",
+  "repo_path": "workflows/zeven/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:WooCommerce Trigger": {}
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-05-22T10:23:58.000Z",
+  "versionId": "43c6ec2b-f6f6-47fd-a683-ab4d4d27e75b"
+}
