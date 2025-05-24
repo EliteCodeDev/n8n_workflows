@@ -1,0 +1,379 @@
+{
+  "active": false,
+  "connections": {
+    "Global Constants": {
+      "main": [
+        [
+          {
+            "node": "Obtener Broker Accounts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Global Constants",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crea cuenta demo": {
+      "main": [
+        [
+          {
+            "node": "Crear Broker Account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener Broker Accounts": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [],
+        [
+          {
+            "node": "100 Veces",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "100 Veces": {
+      "main": [
+        [
+          {
+            "node": "Split Iterations",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Iterations": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Crea cuenta demo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crear Broker Account": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-04-10T17:59:23.157Z",
+  "id": "ChmACtxroRFcqmw1",
+  "isArchived": false,
+  "meta": null,
+  "name": "EJECUTAR: Creador de Cuentas Zeven",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-globals.globalConstants",
+      "typeVersion": 1,
+      "position": [
+        400,
+        0
+      ],
+      "id": "13eb571b-2c7a-4819-be6e-ba16a76c1038",
+      "name": "Global Constants",
+      "credentials": {
+        "globalConstantsApi": {
+          "id": "xD5yrF0WiFvNSDFv",
+          "name": "Global Constants account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://mt-manager-api-v1.new-york.agiliumtrade.ai/users/current/mt5/provisioning-profiles/d15b3921-8075-41fb-9f7c-a57b470a2ab6/accounts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "auth-token",
+              "value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsImFjY2Vzc1J1bGVzIjpbeyJpZCI6InRyYWRpbmctYWNjb3VudC1tYW5hZ2VtZW50LWFwaSIsIm1ldGhvZHMiOlsidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcmVzdC1hcGkiLCJtZXRob2RzIjpbIm1ldGFhcGktYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcnBjLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcmVhbC10aW1lLXN0cmVhbWluZy1hcGkiLCJtZXRob2RzIjpbIm1ldGFhcGktYXBpOndzOnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJtZXRhc3RhdHMtYXBpIiwibWV0aG9kcyI6WyJtZXRhc3RhdHMtYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6InJpc2stbWFuYWdlbWVudC1hcGkiLCJtZXRob2RzIjpbInJpc2stbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoiY29weWZhY3RvcnktYXBpIiwibWV0aG9kcyI6WyJjb3B5ZmFjdG9yeS1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibXQtbWFuYWdlci1hcGkiLCJtZXRob2RzIjpbIm10LW1hbmFnZXItYXBpOnJlc3Q6ZGVhbGluZzoqOioiLCJtdC1tYW5hZ2VyLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJiaWxsaW5nLWFwaSIsIm1ldGhvZHMiOlsiYmlsbGluZy1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfV0sImlnbm9yZVJhdGVMaW1pdHMiOmZhbHNlLCJ0b2tlbklkIjoiMjAyMTAyMTMiLCJpbXBlcnNvbmF0ZWQiOmZhbHNlLCJyZWFsVXNlcklkIjoiN2FiNTA2ODg5M2JhMzA3MWI3YWMxNDMyOWM0ZDVkN2YiLCJpYXQiOjE3NDQzMDQxNDYsImV4cCI6MTc1MjA4MDE0Nn0.Xu5y75qDYBewKFs483fLtxXabUFuFpLe-HtMS1JRdUo-GkKUdBFugCNiltwRbAOdY5PozQWWIhfaDLXD-5xW2gV04zCPcQohgj5nSWhkWcufv5P2Qre7SQoinPXIb6ZCV7PxpEtOgCf6sxrlKTjLoiJghrsUXJ66fWkC_CGxrrPrbe-tWYC7WlLPth9ec0q_K5x7BPKO5tJr1YqaLQYs-TJZkdRU2yzbyzvuKg-bK59G59iHSLlt6tECJ997MGr6Fj0u-zCFrQgrfaHE5n9l0BwKkK8jgatVsI23eRrJmV8ZVs7NFpnLs5GjnIwExZt8M8dBXJIp5UMfbj5eesdCwPWxfrASpy5C-6X8dHtmjto6pY9Jt7rhv23OESuXUFAx5FclAY3o9eeIR3Cfx9L14rYWoSkddux9aaGOe2BO9oq2pq4vSKFGC0s1Uy2ToLHin57HKedMDfKRKr267AgEAegKRz5e0iZDm9If1LoAExSFu4RI9IzKsF5b1CVAdpDC1WIuZPEek2Wt3C_puiVNkDWfcgCLB0i40YtpWWtoLC2pQ96ILyhMO3AOFDLU64BORVhd0GjUn91v_Ixg1Ojr08pBUUGTERWTqGK-KD7NPoWM2BrE1BptzvxkRV_-Z4IUMuWuW_EwmspG5SKQK8zLxD4qlmsMSgynYsn4No1uZb4"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n\"email\":\"support@zevenglobalfunding.com\",\n\"group\":\"demo\\\\ZevenF\\\\S1-G1-SN-USD\",\n\"leverage\":100,\n\"firstName\":\"ZevenGlobal\"\n}",
+        "options": {}
+      },
+      "id": "10c0c01b-b903-46de-916b-a4e6cc15cca1",
+      "name": "Crea cuenta demo",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2080,
+        540
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 10
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        140,
+        0
+      ],
+      "id": "900fac2b-f113-4fcf-aa62-c0c87f507090",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Global Constants').item.json.constants.STRAPI_URL }}/broker-accounts",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"data\": {\n    \"login\": \"{{ $json.login }}\",\n    \"password\": \"{{ $json.password }}\",\n    \"inversorPass\": \"{{ $json.investorPassword }}\",\n    \"server\": \"ZevenGlobal-Live\",\n    \"platform\": \"mt5\",\n    \"used\": false\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2440,
+        520
+      ],
+      "id": "09e87476-afaf-49ec-8b4f-cf60b146d68d",
+      "name": "Crear Broker Account",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a103cac6-617a-49ad-b418-bae49fbf7577",
+              "name": "cantidad",
+              "value": "={{ $json.data.length }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        840,
+        0
+      ],
+      "id": "aacaa072-7be1-4380-bb5e-0247e776eb5f",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.STRAPI_URL }}/broker-accounts?filters[used][eq]=false",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        620,
+        0
+      ],
+      "id": "f1efb796-b2bf-461b-afc0-2b9235b66da3",
+      "name": "Obtener Broker Accounts",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ebc02763-c888-4afb-bcb1-ebd44a4785fa",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": 100,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1060,
+        0
+      ],
+      "id": "9050683a-ab5c-44db-904a-8427a8826130",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "iterations",
+        "options": {
+          "destinationFieldName": "iteration"
+        }
+      },
+      "id": "26b0f05b-6bad-499b-b145-a0c21a04b02c",
+      "name": "Split Iterations",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        1760,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const count = 100;\nconst fillers = Array.from({ length: count }, (_, index) => index);\n\n$input.item.json.iterations = fillers;\n\nreturn $input.item;"
+      },
+      "id": "59659266-16d5-424a-bd56-939835c0362b",
+      "name": "100 Veces",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1360,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1980,
+        200
+      ],
+      "id": "ea2d0209-75e8-41c5-8541-6ac04aeac04d",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2460,
+        320
+      ],
+      "id": "03327c18-8fb3-4164-a3d1-40485ac965f2",
+      "name": "Wait",
+      "webhookId": "603cacc5-fb8a-479c-8b14-a0cbb8b76e8e"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n_workflows",
+  "repo_owner": "EliteCodeDev",
+  "repo_path": "workflows/zeven/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-05-08T03:26:25.000Z",
+  "versionId": "02bb9e4a-5206-419d-bc68-f97c0cf61ab3"
+}
