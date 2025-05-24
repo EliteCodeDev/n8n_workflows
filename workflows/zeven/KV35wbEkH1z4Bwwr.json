@@ -1,0 +1,229 @@
+{
+  "active": false,
+  "connections": {
+    "API DE AFILIADOS": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "API DE AFILIADOS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-01T05:48:50.899Z",
+  "id": "KV35wbEkH1z4Bwwr",
+  "isArchived": false,
+  "meta": null,
+  "name": "PROBANDO AFILIADOS (NO BORRAR RONALD)",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://zevenglobalfunding.com//wp-json/affwp/v1/referrals",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "100"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -780,
+        -100
+      ],
+      "id": "c55c368d-7aaf-4257-b468-1cad780d4378",
+      "name": "API DE AFILIADOS",
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "ezRwqbSJ1fRwt0Cx",
+          "name": "Afiliados"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4e031b8e-f4bd-42cf-b9a1-dc65c330a787",
+              "name": "status",
+              "value": "={{ $json.status }}",
+              "type": "string"
+            },
+            {
+              "id": "6f469c9c-bfd1-4999-b2dc-cb1ff1df9716",
+              "name": "reference",
+              "value": "={{ $json.reference }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -560,
+        -280
+      ],
+      "id": "5a530310-e39d-4caa-8416-ed3828ffa474",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1020,
+        -80
+      ],
+      "id": "61a306c3-8ac3-464c-a030-32455d6610e2",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "65cafd56-1582-482e-8fa0-aadd4f8a5da3",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "unpaid",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -380,
+        -200
+      ],
+      "id": "203c7236-109c-4830-b65f-28c0cfe3f8b3",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "url": "=http://zevenglobal_backend:1337/api/challenges?filters[wc_order][$eq]={{ $json.reference }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -180,
+        -160
+      ],
+      "id": "2e770be7-558d-460c-89f6-69f06112dbd1",
+      "name": "HTTP Request",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0ad0df9e-21fc-46dd-82e8-cf2a56841317",
+              "name": "data[0].id",
+              "value": "={{ $json.data[0].id }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        60,
+        -120
+      ],
+      "id": "299e6716-c4cf-4613-abb0-5c74a6ad4e3f",
+      "name": "Edit Fields1"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "n8n_workflows",
+  "repo_owner": "EliteCodeDev",
+  "repo_path": "workflows/zeven/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-03T17:07:21.000Z",
+  "versionId": "3343a885-b641-40b4-a799-2695a8cf7699"
+}
