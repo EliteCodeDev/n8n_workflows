@@ -1,0 +1,1209 @@
+{
+  "active": false,
+  "connections": {
+    "Global Constants": {
+      "main": [
+        [
+          {
+            "node": "Buscar el usuario de la compra",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buscar el usuario de la compra": {
+      "main": [
+        [
+          {
+            "node": "Parsear el Producto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crea challenge Con todas sus relaciones": {
+      "main": [
+        [
+          {
+            "node": "Colocar Parent ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar Email de creacion exitosa": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Notificar Broker Faltante",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Comprobar Balance",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parsear el Producto": {
+      "main": [
+        [
+          {
+            "node": "obtener broker disponible",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Actualizar broker": {
+      "main": [
+        [
+          {
+            "node": "Crea challenge Con todas sus relaciones",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Colocar Parent ID": {
+      "main": [
+        [
+          {
+            "node": "Enviar Email de creacion exitosa",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notificar Broker Faltante": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener Relation": {
+      "main": [
+        [
+          {
+            "node": "Definir phase",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Definir phase": {
+      "main": [
+        [
+          {
+            "node": "Actualizar broker",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Chequear Orden",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chequear Orden": {
+      "main": [
+        [
+          {
+            "node": "Compra Rechazada?1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compra Rechazada?": {
+      "main": [
+        [],
+        [
+          {
+            "node": "30 Veces",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Producto o Ticket?": {
+      "main": [
+        [
+          {
+            "node": "Compra Aprobada?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compra Aprobada?": {
+      "main": [
+        [
+          {
+            "node": "Global Constants",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Compra Rechazada?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Iterations": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "30 Veces": {
+      "main": [
+        [
+          {
+            "node": "Split Iterations",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fue Aprobada?": {
+      "main": [
+        [
+          {
+            "node": "Global Constants",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "obtener broker disponible": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Asignar Balance": {
+      "main": [
+        [
+          {
+            "node": "Obtener Relation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Comprobar Balance": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Obtener Relation",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Asignar Balance",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compra Rechazada?1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Fue Aprobada?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Producto o Ticket?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-05T21:48:37.708Z",
+  "id": "7Xvzchtowd48lAIk",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "compra individual",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-globals.globalConstants",
+      "typeVersion": 1,
+      "position": [
+        1860,
+        1000
+      ],
+      "id": "c9737dca-53f7-430b-bb34-49497d65d9f5",
+      "name": "Global Constants",
+      "credentials": {
+        "globalConstantsApi": {
+          "id": "xD5yrF0WiFvNSDFv",
+          "name": "Global Constants account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.constants.STRAPI_URL }}/users?filters[documentId][$eq]={{ $('Webhook').item.json.body.user_id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "options": {}
+      },
+      "id": "38695c66-5009-47b1-bd92-407f05a4c20d",
+      "name": "Buscar el usuario de la compra",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2100,
+        1000
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Global Constants').item.json.constants.STRAPI_URL }}/challenges",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "= {\n  \"data\": {\n    \"phase\": {{ $('Definir phase').item.json.fase }},\n    \"result\": \"init\",\n    \"user\": {{ $('Buscar el usuario de la compra').item.json.id }},\n    \"broker_account\":\"{{ $json.data.documentId }}\",\n    \"challenge_relation\":\"{{ $('Webhook').item.json.body.document_id }}\",\n    \"wc_order\":\"{{ $('Webhook').item.json.body.id }}\"\n  }\n}",
+        "options": {}
+      },
+      "id": "ddc73487-51d6-461e-a608-fe7fc5f42796",
+      "name": "Crea challenge Con todas sus relaciones",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4420,
+        1020
+      ],
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Datos recibidos\n- Email del comprador\n- Producto comprado \n- precio\n### viene de checkout de woo"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        460,
+        400
+      ],
+      "id": "2f1f4153-e827-4bf9-b00b-91198cca6fef",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "fromEmail": "ZevenGlobal <support@zevenglobalfunding.com>",
+        "toEmail": "={{ $('Webhook').item.json.body.billing.email }}",
+        "subject": " Your challenge is ready to use",
+        "html": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Your Challenge is Ready to Use - ZevenGlobal</title>\n    <style>\n        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');\n        \n        * {\n            margin: 0;\n            padding: 0;\n            box-sizing: border-box;\n            font-family: 'Montserrat', sans-serif;\n        }\n        \n        body {\n            background-color: #f0f5ff;\n            padding: 40px 20px;\n        }\n        \n        .email-container {\n            max-width: 650px;\n            margin: 0 auto;\n            background: #0a1a35;\n            border-radius: 16px;\n            overflow: hidden;\n            box-shadow: 0 12px 30px rgba(0, 65, 158, 0.2);\n        }\n        \n        .top-header {\n            background-color: #0a1730;\n            padding: 15px 0;\n            text-align: center;\n            border-bottom: 1px solid rgba(100, 150, 255, 0.2);\n        }\n        \n        .top-header img {\n            max-width: 120px;\n            height: auto;\n        }\n        \n        .hero-section {\n            background-color: #101f3d;\n            padding: 30px 20px;\n            text-align: center;\n            color: white;\n        }\n        \n        .hero-section h1 {\n            font-size: 24px;\n            margin-bottom: 10px;\n            color: #27ae60;\n            font-weight: 700;\n        }\n        \n        .hero-section p {\n            font-size: 15px;\n            line-height: 1.5;\n            max-width: 450px;\n            margin: 0 auto;\n            color: #b4c9ff;\n        }\n        \n        .content {\n            padding: 30px 25px;\n            position: relative;\n        }\n        \n        .notification-icon {\n            text-align: center;\n            margin-bottom: 15px;\n        }\n        \n        .notification-icon svg {\n            width: 40px;\n            height: 40px;\n            fill: #27ae60;\n        }\n        \n        .notification-card {\n            position: relative;\n            z-index: 1;\n            background: rgba(18, 37, 73, 0.9);\n            border-radius: 10px;\n            padding: 25px 20px;\n            margin-bottom: 25px;\n            border: 1px solid rgba(39, 174, 96, 0.3);\n            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);\n        }\n        \n        .notification-card h2 {\n            color: white;\n            font-size: 20px;\n            margin-bottom: 15px;\n            padding-bottom: 12px;\n            border-bottom: 1px solid rgba(39, 174, 96, 0.2);\n            text-align: center;\n        }\n        \n        .notification-message {\n            color: white;\n            text-align: center;\n            margin-bottom: 20px;\n            font-size: 15px;\n            line-height: 1.5;\n        }\n        \n        .info-item {\n            display: flex;\n            align-items: center;\n            padding: 12px 0;\n            border-bottom: 1px solid rgba(100, 150, 255, 0.1);\n        }\n        \n        .info-item:last-child {\n            border-bottom: none;\n        }\n        \n        .info-label {\n            color: #7e9bff;\n            font-weight: 500;\n            font-size: 14px;\n            width: 40%;\n            padding-right: 15px;\n        }\n        \n        .info-value {\n            color: white;\n            font-weight: 600;\n            font-size: 15px;\n            background-color: rgba(39, 174, 96, 0.1);\n            padding: 8px 12px;\n            border-radius: 4px;\n            border: 1px solid rgba(39, 174, 96, 0.2);\n            word-break: break-word;\n            width: 60%;\n            flex-grow: 1;\n        }\n        \n        .action-button {\n            display: block;\n            background-color: #27ae60;\n            color: white;\n            text-decoration: none;\n            padding: 14px 20px;\n            border-radius: 6px;\n            font-size: 16px;\n            font-weight: 600;\n            text-align: center;\n            margin: 20px auto 10px;\n            max-width: 250px;\n            transition: all 0.3s ease;\n            box-shadow: 0 4px 8px rgba(39, 174, 96, 0.3);\n        }\n        \n        .action-button:hover {\n            background-color: #219a52;\n        }\n        \n        .footer {\n            background-color: #0a1730;\n            padding: 20px;\n            text-align: center;\n            color: #7e9bff;\n            font-size: 13px;\n            border-top: 1px solid rgba(100, 150, 255, 0.2);\n        }\n        \n        .social-links {\n            margin: 12px 0;\n        }\n        \n        .social-links a {\n            display: inline-block;\n            width: 30px;\n            height: 30px;\n            background-color: rgba(100, 150, 255, 0.15);\n            border-radius: 50%;\n            margin: 0 5px;\n            line-height: 30px;\n            color: #7e9bff;\n            text-align: center;\n        }\n        \n        .social-icon {\n            width: 16px;\n            height: 16px;\n            vertical-align: middle;\n        }\n        \n        @media (max-width: 480px) {\n            .email-container {\n                border-radius: 10px;\n            }\n            \n            .top-header img {\n                max-width: 100px;\n            }\n            \n            .hero-section h1 {\n                font-size: 20px;\n            }\n            \n            .hero-section p {\n                font-size: 14px;\n            }\n            \n            .notification-card {\n                padding: 20px 15px;\n            }\n            \n            .info-item {\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            \n            .info-label {\n                width: 100%;\n                margin-bottom: 6px;\n            }\n            \n            .info-value {\n                width: 100%;\n            }\n            \n            .action-button {\n                width: 100%;\n                padding: 12px 15px;\n                font-size: 15px;\n            }\n        }\n    </style>\n</head>\n<body>\n    <div class=\"email-container\">\n        <div class=\"top-header\">\n            <img src=\"{{ $('Global Constants').item.json.constants.IMAGE_URL}}\" alt=\"ZevenGlobal Logo\">\n        </div>\n        \n        <div class=\"hero-section\">\n            <h1>Your Challenge is Ready to Use</h1>\n            <p>We have configured your challenge and you can now start trading. Here are your access credentials.</p>\n        </div>\n        \n        <div class=\"content\">\n            <div class=\"notification-icon\">\n                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\">\n                    <path d=\"M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm-30.7 258.7L158.6 368l30.2 30.2L256 330.9l67.2 67.2 30.2-30.2-97.9-97.9-30.2 30.7zm4.9-117.9v29l22.8-22.8 22.8 22.8v-29h38.9v-30.8h-38.9l-22.8-22.8-22.8 22.8h-38.9v30.8h38.9z\"/>\n                </svg>\n            </div>\n            \n            <div class=\"notification-card\">\n                <h2>Access Credentials</h2>\n                \n                <div class=\"notification-message\">\n                    <p>Use these credentials to log in to the trading platform and start your challenge.</p>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Login</span>\n                    <span class=\"info-value\">{{ $('obtener broker disponible').item.json.data[0].login }}</span>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Password</span>\n                    <span class=\"info-value\">{{ $('obtener broker disponible').item.json.data[0].password }}</span>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Server</span>\n                    <span class=\"info-value\">{{ $('obtener broker disponible').item.json.data[0].server }}</span>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Platform</span>\n                    <span class=\"info-value\">{{ $('obtener broker disponible').item.json.data[0].platform }}</span>\n                </div>\n            </div>\n            \n            <p style=\"color: white; text-align: center; margin-bottom: 15px; font-size: 14px;\">To see more details about your challenge and begin trading, please log in to your dashboard.</p>\n            \n            <a href=\"{{ $('Global Constants').item.json.constants.WEBAPP_URL}}\" target=\"_blank\" class=\"action-button\">VIEW DASHBOARD</a>\n        </div>\n        \n        <div class=\"footer\">\n            <p>© 2025 ZevenGlobal - All rights reserved</p>\n            <div class=\"social-links\">\n                <a href=\"#\">\n                    <img class=\"social-icon\" src=\"https://cdn-icons-png.flaticon.com/512/124/124010.png\" alt=\"Facebook\">\n                </a>\n                <a href=\"#\">\n                    <img class=\"social-icon\" src=\"https://cdn-icons-png.flaticon.com/512/124/124021.png\" alt=\"Twitter\">\n                </a>\n                <a href=\"#\">\n                    <img class=\"social-icon\" src=\"https://cdn-icons-png.flaticon.com/512/174/174855.png\" alt=\"Instagram\">\n                </a>\n            </div>\n            <p>If you have any questions, contact us at <a href=\"mailto:{{ $('Global Constants').item.json.constants.EMAIL }}\" style=\"color: #3a9fff; text-decoration: none;\">{{ $('Global Constants').item.json.constants.EMAIL }}</a></p>\n        </div>\n    </div>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "46ba1e63-52b0-4305-ad57-2bf14ad07c1c",
+      "name": "Enviar Email de creacion exitosa",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        4900,
+        1020
+      ],
+      "webhookId": "eb35dcb9-add9-4ca2-a93d-70fbdbc31cb5",
+      "credentials": {
+        "smtp": {
+          "id": "ZS9NhafTpi5LRpMH",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Relation\n- Usar el step y subcategory del woo product\n- buscar el relation que coincida",
+        "width": 160
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        400
+      ],
+      "id": "477c8871-0233-41e2-adc3-d975d6c387f3",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Challenge\n- Usuario que compró\n- Relations con los parametros\n- Broker con las credenciales",
+        "height": 140
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2320,
+        400
+      ],
+      "id": "8c86438a-33f7-4cc1-8ac1-6086e262d210",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Broken\n- pasar NK a un numero\n- buscar una broker account aleatoria con ese balance",
+        "width": 150
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1620,
+        400
+      ],
+      "id": "0e315151-f178-4087-a0bb-1ec4e82023cb",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Usuario \n\n- En base al email del comprador"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        920,
+        400
+      ],
+      "id": "34d4a374-7c2f-4d8e-a876-0026ba942adf",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "6590589c-d497-461a-800e-b8a255984dd3",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "array",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2860,
+        1000
+      ],
+      "id": "f4a92d57-d976-4a67-91bd-78b45ea2bdd2",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function convertBalance(balanceStr) {\n  // Convertir la cadena a minúsculas y quitar espacios al inicio y final\n  const s = balanceStr.trim().toLowerCase();\n  \n  // Expresión regular para capturar la parte numérica y el sufijo \"k\" (si existe)\n  const match = s.match(/^(\\d+(?:\\.\\d+)?)(k)?/);\n  if (!match) {\n    throw new Error('Valor inválido');\n  }\n  \n  // Convertir la parte numérica a un número\n  const numberValue = parseFloat(match[1]);\n  if (isNaN(numberValue)) {\n    throw new Error('Valor inválido');\n  }\n  \n  // Si se encontró \"k\", establecer el multiplicador en 1000\n  const multiplier = match[2] === 'k' ? 1000 : 1;\n  \n  return numberValue * multiplier;\n}\n\nreturn ({\"balance\": convertBalance($('Webhook').item.json.body.line_items[0].sku )})"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2340,
+        1000
+      ],
+      "id": "6c8a11e7-7fed-417e-ba67-9dd942d55181",
+      "name": "Parsear el Producto"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $('Global Constants').item.json.constants.STRAPI_URL }}/broker-accounts/{{ $('obtener broker disponible').item.json.data[0].documentId }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "=  {\n  \"data\":{\n  \"used\":true,\n  \"balance\":\"{{ $('Parsear el Producto').item.json.balance }}\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4100,
+        1020
+      ],
+      "id": "c4a7fce2-6de3-468f-87ef-9f16d10a9e4f",
+      "name": "Actualizar broker",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $('Global Constants').item.json.constants.STRAPI_URL }}/challenges/{{ $json.data.documentId }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"data\":{\n    \"parentId\":\"{{ $json.data.documentId }}\"\n  }\n} ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4680,
+        1020
+      ],
+      "id": "78be0a21-7107-4735-9993-c2182e59e886",
+      "name": "Colocar Parent ID",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "={{ $('Global Constants').item.json.constants.EMAIL }}",
+        "toEmail": "={{ $('Global Constants').item.json.constants.EMAIL }}",
+        "subject": " Missing Broker Account",
+        "html": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Missing Broker Account - ZevenGlobal</title>\n    <style>\n        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');\n        \n        * {\n            margin: 0;\n            padding: 0;\n            box-sizing: border-box;\n            font-family: 'Montserrat', sans-serif;\n        }\n        \n        body {\n            background-color: #f0f5ff;\n            padding: 40px 20px;\n        }\n        \n        .email-container {\n            max-width: 650px;\n            margin: 0 auto;\n            background: #0a1a35;\n            border-radius: 16px;\n            overflow: hidden;\n            box-shadow: 0 12px 30px rgba(0, 65, 158, 0.2);\n        }\n        \n        .top-header {\n            background-color: #0a1730;\n            padding: 15px 0;\n            text-align: center;\n            border-bottom: 1px solid rgba(100, 150, 255, 0.2);\n        }\n        \n        .top-header img {\n            max-width: 120px;\n            height: auto;\n        }\n        \n        .hero-section {\n            background-color: #101f3d;\n            padding: 30px 20px;\n            text-align: center;\n            color: white;\n        }\n        \n        .hero-section h1 {\n            font-size: 24px;\n            margin-bottom: 10px;\n            color: #f39c12;\n            font-weight: 700;\n        }\n        \n        .hero-section p {\n            font-size: 15px;\n            line-height: 1.5;\n            max-width: 450px;\n            margin: 0 auto;\n            color: #b4c9ff;\n        }\n        \n        .content {\n            padding: 30px 25px;\n            position: relative;\n        }\n        \n        .notification-icon {\n            text-align: center;\n            margin-bottom: 15px;\n        }\n        \n        .notification-icon svg {\n            width: 40px;\n            height: 40px;\n            fill: #f39c12;\n        }\n        \n        .notification-card {\n            position: relative;\n            z-index: 1;\n            background: rgba(18, 37, 73, 0.9);\n            border-radius: 10px;\n            padding: 25px 20px;\n            margin-bottom: 25px;\n            border: 1px solid rgba(243, 156, 18, 0.3);\n            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);\n        }\n        \n        .notification-card h2 {\n            color: white;\n            font-size: 20px;\n            margin-bottom: 15px;\n            padding-bottom: 12px;\n            border-bottom: 1px solid rgba(243, 156, 18, 0.2);\n            text-align: center;\n        }\n        \n        .notification-message {\n            color: white;\n            text-align: center;\n            margin-bottom: 20px;\n            font-size: 15px;\n            line-height: 1.5;\n        }\n        \n        .info-item {\n            display: flex;\n            align-items: center;\n            padding: 12px 0;\n            border-bottom: 1px solid rgba(100, 150, 255, 0.1);\n        }\n        \n        .info-item:last-child {\n            border-bottom: none;\n        }\n        \n        .info-label {\n            color: #7e9bff;\n            font-weight: 500;\n            font-size: 14px;\n            width: 40%;\n            padding-right: 15px;\n        }\n        \n        .info-value {\n            color: white;\n            font-weight: 600;\n            font-size: 15px;\n            background-color: rgba(243, 156, 18, 0.1);\n            padding: 8px 12px;\n            border-radius: 4px;\n            border: 1px solid rgba(243, 156, 18, 0.2);\n            word-break: break-word;\n            width: 60%;\n            flex-grow: 1;\n        }\n        \n        .action-button {\n            display: block;\n            background-color: #f39c12;\n            color: white;\n            text-decoration: none;\n            padding: 14px 20px;\n            border-radius: 6px;\n            font-size: 16px;\n            font-weight: 600;\n            text-align: center;\n            margin: 20px auto 10px;\n            max-width: 250px;\n            transition: all 0.3s ease;\n            box-shadow: 0 4px 8px rgba(243, 156, 18, 0.3);\n        }\n        \n        .action-button:hover {\n            background-color: #e67e22;\n        }\n        \n        .footer {\n            background-color: #0a1730;\n            padding: 20px;\n            text-align: center;\n            color: #7e9bff;\n            font-size: 13px;\n            border-top: 1px solid rgba(100, 150, 255, 0.2);\n        }\n        \n        .social-links {\n            margin: 12px 0;\n        }\n        \n        .social-links a {\n            display: inline-block;\n            width: 30px;\n            height: 30px;\n            background-color: rgba(100, 150, 255, 0.15);\n            border-radius: 50%;\n            margin: 0 5px;\n            line-height: 30px;\n            color: #7e9bff;\n            text-align: center;\n        }\n        \n        .social-icon {\n            width: 16px;\n            height: 16px;\n            vertical-align: middle;\n        }\n        \n        @media (max-width: 480px) {\n            .email-container {\n                border-radius: 10px;\n            }\n            \n            .top-header img {\n                max-width: 100px;\n            }\n            \n            .hero-section h1 {\n                font-size: 20px;\n            }\n            \n            .hero-section p {\n                font-size: 14px;\n            }\n            \n            .notification-card {\n                padding: 20px 15px;\n            }\n            \n            .info-item {\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            \n            .info-label {\n                width: 100%;\n                margin-bottom: 6px;\n            }\n            \n            .info-value {\n                width: 100%;\n            }\n            \n            .action-button {\n                width: 100%;\n                padding: 12px 15px;\n                font-size: 15px;\n            }\n        }\n    </style>\n</head>\n<body>\n    <div class=\"email-container\">\n        <div class=\"top-header\">\n            <img src=\"{{ $('Global Constants').item.json.constants.IMAGE_URL}}\" alt=\"ZevenGlobal Logo\">\n        </div>\n        \n        <div class=\"hero-section\">\n            <h1>Missing Broker Account</h1>\n            <p>A broker account is required for the creation of a new challenge.</p>\n        </div>\n        \n        <div class=\"content\">\n            <div class=\"notification-icon\">\n                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\">\n                    <path d=\"M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm0 319.9c-20.2 0-36.5-16.4-36.5-36.5s16.4-36.5 36.5-36.5 36.5 16.4 36.5 36.5-16.3 36.5-36.5 36.5zm37.5-186.2l-6.8 136c-.9 16.9-29.7 17.4-31.6.5l-6.8-135.9v-.6c0-16.9 46.6-16.9 45.2 0z\"/>\n                </svg>\n            </div>\n            \n            <div class=\"notification-card\">\n                <h2>Notification Details</h2>\n                \n                <div class=\"notification-message\">\n                    <p>A required broker account for creating a challenge is missing. Please assign an account as soon as possible.</p>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">User ID</span>\n                    <span class=\"info-value\">{{ $('Buscar el usuario de la compra').item.json.documentId }}</span>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Email</span>\n                    <span class=\"info-value\">{{ $('Buscar el usuario de la compra').item.json.email }}</span>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Order</span>\n                    <span class=\"info-value\">{{ $('Webhook1').item.json.body.id }}</span>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Product</span>\n                    <span class=\"info-value\">{{ $('Webhook1').item.json.body.number }}</span>\n                </div>\n            </div>\n            \n            <p style=\"color: white; text-align: center; margin-bottom: 15px; font-size: 14px;\">To manage this request, please access the administrative dashboard and assign a broker account.</p>\n            \n            <a href=\"{{ $('Global Constants').item.json.constants.WEBAPP_URL }}\" target=\"_blank\" class=\"action-button\">VIEW DASHBOARD</a>\n        </div>\n        \n        <div class=\"footer\">\n            <p>© 2025 ZevenGlobal - All rights reserved</p>\n            <div class=\"social-links\">\n                <a href=\"#\">\n                    <img class=\"social-icon\" src=\"https://cdn-icons-png.flaticon.com/512/124/124010.png\" alt=\"Facebook\">\n                </a>\n                <a href=\"#\">\n                    <img class=\"social-icon\" src=\"https://cdn-icons-png.flaticon.com/512/124/124021.png\" alt=\"Twitter\">\n                </a>\n                <a href=\"#\">\n                    <img class=\"social-icon\" src=\"https://cdn-icons-png.flaticon.com/512/174/174855.png\" alt=\"Instagram\">\n                </a>\n            </div>\n            <p>If you have any questions, contact us at <a href=\"mailto:{{ $('Global Constants').item.json.constants.EMAIL }}\" style=\"color: #3a9fff; text-decoration: none;\">{{ $('Global Constants').item.json.constants.EMAIL }}</a></p>\n        </div>\n    </div>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "85c869b0-368e-4294-86c4-6fa9a6396c39",
+      "name": "Notificar Broker Faltante",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        4100,
+        760
+      ],
+      "webhookId": "e81ac631-68a6-442c-89ad-07585fa1dd77",
+      "credentials": {
+        "smtp": {
+          "id": "ZS9NhafTpi5LRpMH",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"ok\": true\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        5280,
+        920
+      ],
+      "id": "cba405ea-6577-404f-af28-7a9a22a60468",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "url": "=https://risk-management-api-v1.new-york.agiliumtrade.ai/users/current/accounts/{{ $('obtener broker disponible').item.json.data[0].idMeta }}/trackers",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "auth-token",
+              "value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsImFjY2Vzc1J1bGVzIjpbeyJpZCI6InRyYWRpbmctYWNjb3VudC1tYW5hZ2VtZW50LWFwaSIsIm1ldGhvZHMiOlsidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcmVzdC1hcGkiLCJtZXRob2RzIjpbIm1ldGFhcGktYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcnBjLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcmVhbC10aW1lLXN0cmVhbWluZy1hcGkiLCJtZXRob2RzIjpbIm1ldGFhcGktYXBpOndzOnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJtZXRhc3RhdHMtYXBpIiwibWV0aG9kcyI6WyJtZXRhc3RhdHMtYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6InJpc2stbWFuYWdlbWVudC1hcGkiLCJtZXRob2RzIjpbInJpc2stbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoiY29weWZhY3RvcnktYXBpIiwibWV0aG9kcyI6WyJjb3B5ZmFjdG9yeS1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibXQtbWFuYWdlci1hcGkiLCJtZXRob2RzIjpbIm10LW1hbmFnZXItYXBpOnJlc3Q6ZGVhbGluZzoqOioiLCJtdC1tYW5hZ2VyLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJiaWxsaW5nLWFwaSIsIm1ldGhvZHMiOlsiYmlsbGluZy1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfV0sImlnbm9yZVJhdGVMaW1pdHMiOmZhbHNlLCJ0b2tlbklkIjoiMjAyMTAyMTMiLCJpbXBlcnNvbmF0ZWQiOmZhbHNlLCJyZWFsVXNlcklkIjoiN2FiNTA2ODg5M2JhMzA3MWI3YWMxNDMyOWM0ZDVkN2YiLCJpYXQiOjE3NDE4MjI0ODF9.EgWgpWVf0qW52Q-HpUX2P130Su9h9Q7fLScrIqlstCPrArykyOdvoNlHlWLRKcb5zb2fxMt5X4E2WiVucbcVKhLsIBii-yMcLUUSSlk_Hi-_Pffgna0_wLf_J_ETC5IaKdbF7ttx-YBeFz4usGnEiYZF-JC-HGrYqG32h0My_Xo2c884TRSCJYr9CIe0eTU9T2C7jo5H1XHREVprXpWld6VLlzqRbrYI5V6PbTNs3nmn-g1sTRCSR6D3VAmrOydeWliIKPll3ONULHURoVq2Ii0VJiqXsE5BGvciU_p9DvyPnIkKwQubf6CXQahNjYhj8eUaccWXw9aW3i8Gv8h9VTDBc3xVOwxIDqJ7c3TwlKrXZrOD41NquRUuMY-xO-TJyPwloHKt-ZKWPcV-l6b-Zyv0w0Ng9Riv0bFQdHldpnXjh7bkzBs2W7AFj9naVcYpSlFqWcc5M86LgQbC6P3Ps8Le0vFsGidhFvcpb9oRQBaweEv0LgXgq_oRNKh4P7aCEPI3ngKN1diDvYKIQ68Pd0CqEF0BwNgRt-G31DY9nOhquhEXqJ208JEVO0teVeqm9JfOzfQsN69AWuxFoPLYy5HVQ53NRUDzgI7gpGRORkOPJmpQGud39oXE_Thqa-wQdGLyxsS2sQVEoU1z1K45eTz9FPzMTj_a3MoxZ45HRTA"
+            },
+            {
+              "name": "api-version",
+              "value": "1"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2880,
+        1520
+      ],
+      "id": "c990cd9a-f41c-40b5-a8c5-ba1536ae601a",
+      "name": "Llama a MetaAPI",
+      "notesInFlow": false,
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.STRAPI_URL }}/challenge-relations/{{ $('Webhook1').item.json.output.body.document_id }}?populate=challenge_stages",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3660,
+        1020
+      ],
+      "id": "39a00db7-8ed7-4594-a641-000a038a98b2",
+      "name": "Obtener Relation",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "function countStagesAndReturnPhase(jsonData) {\n  // Accedemos al array challenge_stages\n  const stages = jsonData.challenge_stages;\n  \n  // Contamos el número de stages\n  const stageCount = stages.length;\n  \n  // Determinamos la fase basada en el número de stages\n  let phase;\n  if (stageCount === 3) {\n    phase = 1; // Si tiene 3 stages, retorna 1\n  } else if (stageCount === 2) {\n    phase = 2; // Si tiene 2 stages, retorna 2\n  } else if (stageCount === 1) {\n    phase = 3; // Si tiene 1 stage, retorna 3\n  } else {\n    phase = 0; // Valor por defecto para otros casos\n  }\n  \n  // Retornamos el objeto resultado\n   return  phase ;\n}\nreturn ({\"fase\": countStagesAndReturnPhase($input.first().json.data)});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3880,
+        1020
+      ],
+      "id": "725c8860-83ec-4f57-b2e5-8231b4700462",
+      "name": "Definir phase"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://mt-provisioning-api-v1.agiliumtrade.agiliumtrade.ai/users/current/provisioning-profiles/default/mt4-demo-accounts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "auth-token",
+              "value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsInBlcm1pc3Npb25zIjpbXSwiYWNjZXNzUnVsZXMiOlt7ImlkIjoidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpIiwibWV0aG9kcyI6WyJ0cmFkaW5nLWFjY291bnQtbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZXN0LWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1ycGMtYXBpIiwibWV0aG9kcyI6WyJtZXRhYXBpLWFwaTp3czpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZWFsLXRpbWUtc3RyZWFtaW5nLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFzdGF0cy1hcGkiLCJtZXRob2RzIjpbIm1ldGFzdGF0cy1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoicmlzay1tYW5hZ2VtZW50LWFwaSIsIm1ldGhvZHMiOlsicmlzay1tYW5hZ2VtZW50LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJjb3B5ZmFjdG9yeS1hcGkiLCJtZXRob2RzIjpbImNvcHlmYWN0b3J5LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJtdC1tYW5hZ2VyLWFwaSIsIm1ldGhvZHMiOlsibXQtbWFuYWdlci1hcGk6cmVzdDpkZWFsaW5nOio6KiIsIm10LW1hbmFnZXItYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6ImJpbGxpbmctYXBpIiwibWV0aG9kcyI6WyJiaWxsaW5nLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19XSwiaWdub3JlUmF0ZUxpbWl0cyI6ZmFsc2UsInRva2VuSWQiOiIyMDIxMDIxMyIsImltcGVyc29uYXRlZCI6ZmFsc2UsInJlYWxVc2VySWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsImlhdCI6MTczNzc2MTAzNn0.JxymmDtZAD6n-IB-BwwZH4aNJbW9S9g_ksrpKfyOFfRXR2-vP1DzkTq6i0fqopgxfLNSJDFgPCX6EJhoQFWSSb85TWIEatwgNSBczhTk-CM5q1zylPv_r2zKLmyPIJs1Juav93ImWuy7yOFhUKtwDbg_jtju53XSg1UcSEqL50ojnZVMg6zEMUfT8fU-79Z_M4TB_5TUERhOXeiAhgqhW-OLh65CoU-JoH-wJNhzFNQM4_-ymRSCvvXfT5MHmVzk3oUmPiw381nn_cqmi9y9hLbxHHYoIo5GMOZZf0vNjcbPqFHTgJ6j8Uqe_i2uWqNb9ZcXv066wAkPaFn0um3PsChQUSeC_Ng05n965RPn1soGd4AKU9Kv3gim6Z1RBg6-AnN19QsT2PJluy5CiNoxcchjdu3V_s3cTUCEAhYy9xcp04MqkgIjnLGHZFpQdfEckRbdnaLISJTXt09t7Ei1aNqvwW-5KS__obio2cX1Pnj7L5tl9UzBm55hCpR9loBeIsI2mbYxlHId1UO14Cc6CPFxbh7FMVNGbxuALMxmmrEEQe1JJy3nTMKLqdDOyihYkZnU_qpfzuR-rlgwQ4XGKWRx10JHVlXnrGAuak1P75Bhw_ZD0XxC9V6i_WsJOdCXj4hrBgHTdtGskX4SW4EUpmspOvWqovJbh2ick8yTcgU"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"balance\": 5000,\n  \"leverage\": 100,\n  \"serverName\": \"Axi-US03-Demo\",\n  \"accountType\": \"USDSTANDARD\",\n  \"name\": \"Neo Capital\",\n  \"email\": \"soporte@neocapitalfunding.com\",\n  \"phone\": \"+51925079147\"\n}",
+        "options": {}
+      },
+      "id": "8dbe660d-1a00-4443-bcd2-d0e53d69541a",
+      "name": "Crea cuenta demo",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2700,
+        1680
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "amount": 1,
+        "unit": "minutes"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1960,
+        1300
+      ],
+      "id": "535e8384-e9cb-4367-9b3f-46e3f6a1eb2a",
+      "name": "Wait",
+      "webhookId": "730a9ddd-4503-471a-9aa4-308d39ec0a72"
+    },
+    {
+      "parameters": {
+        "url": "=https://zevenglobalfunding.com/wp-json/wc/v3/orders/{{ $('Webhook').item.json.body.id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wooCommerceApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2200,
+        1300
+      ],
+      "id": "4ca085a2-ce8a-44be-9097-861d5a6c6c5b",
+      "name": "Chequear Orden",
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "6Kb9lwMY8NDVFSSe",
+          "name": "WooCommerce account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a5362dba-8914-4574-b390-2e35683cba9b",
+              "leftValue": "={{ $('Webhook1').item.json.output.body.status }}",
+              "rightValue": "failed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        860,
+        1040
+      ],
+      "id": "0b973dae-6283-4b88-9347-202620d61619",
+      "name": "Compra Rechazada?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "c69dfa62-333a-4ffa-8942-f216ff6af540",
+              "leftValue": "={{ $json.body.document_id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        420,
+        900
+      ],
+      "id": "52114ccc-006c-46ff-af0a-765aa478cefa",
+      "name": "Producto o Ticket?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a5362dba-8914-4574-b390-2e35683cba9b",
+              "leftValue": "={{ $json.body.status }}",
+              "rightValue": "processing",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        680,
+        860
+      ],
+      "id": "40fd4697-1494-4f8f-a2d9-4b1689ee21ca",
+      "name": "Compra Aprobada?"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "iterations",
+        "options": {
+          "destinationFieldName": "iteration"
+        }
+      },
+      "id": "5c58189d-11e6-4633-91c0-1b1a20ae104f",
+      "name": "Split Iterations",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        1380,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const count = 30;\nconst fillers = Array.from({ length: count }, (_, index) => index);\n\n$input.item.json.iterations = fillers;\n\nreturn $input.item;"
+      },
+      "id": "e69324c4-b9fd-443c-b110-4e744fa34f90",
+      "name": "30 Veces",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1580,
+        1300
+      ],
+      "id": "62dc7078-b875-415e-9fc7-57b20006eb67",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "75231d79-294d-4ef4-9a99-104a8f76cbba",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "processing",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1300,
+        1280
+      ],
+      "id": "df71b591-48c9-49c7-8dce-7b71277156fd",
+      "name": "Fue Aprobada?"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.STRAPI_URL }}/broker-accounts?filters[used][$eq]=false&pagination[limit]=1",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2600,
+        1000
+      ],
+      "id": "ba505ee9-62a4-4da3-a411-3207ba6adf80",
+      "name": "obtener broker disponible",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://mt-manager-api-v1.new-york.agiliumtrade.ai/users/current/mt5/provisioning-profiles/d15b3921-8075-41fb-9f7c-a57b470a2ab6/accounts/{{ $json.login }}/balance-transactions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "auth-token",
+              "value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsImFjY2Vzc1J1bGVzIjpbeyJpZCI6InRyYWRpbmctYWNjb3VudC1tYW5hZ2VtZW50LWFwaSIsIm1ldGhvZHMiOlsidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcmVzdC1hcGkiLCJtZXRob2RzIjpbIm1ldGFhcGktYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcnBjLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcmVhbC10aW1lLXN0cmVhbWluZy1hcGkiLCJtZXRob2RzIjpbIm1ldGFhcGktYXBpOndzOnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJtZXRhc3RhdHMtYXBpIiwibWV0aG9kcyI6WyJtZXRhc3RhdHMtYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6InJpc2stbWFuYWdlbWVudC1hcGkiLCJtZXRob2RzIjpbInJpc2stbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoiY29weWZhY3RvcnktYXBpIiwibWV0aG9kcyI6WyJjb3B5ZmFjdG9yeS1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibXQtbWFuYWdlci1hcGkiLCJtZXRob2RzIjpbIm10LW1hbmFnZXItYXBpOnJlc3Q6ZGVhbGluZzoqOioiLCJtdC1tYW5hZ2VyLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJiaWxsaW5nLWFwaSIsIm1ldGhvZHMiOlsiYmlsbGluZy1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfV0sImlnbm9yZVJhdGVMaW1pdHMiOmZhbHNlLCJ0b2tlbklkIjoiMjAyMTAyMTMiLCJpbXBlcnNvbmF0ZWQiOmZhbHNlLCJyZWFsVXNlcklkIjoiN2FiNTA2ODg5M2JhMzA3MWI3YWMxNDMyOWM0ZDVkN2YiLCJpYXQiOjE3NDQzMDQxNDYsImV4cCI6MTc1MjA4MDE0Nn0.Xu5y75qDYBewKFs483fLtxXabUFuFpLe-HtMS1JRdUo-GkKUdBFugCNiltwRbAOdY5PozQWWIhfaDLXD-5xW2gV04zCPcQohgj5nSWhkWcufv5P2Qre7SQoinPXIb6ZCV7PxpEtOgCf6sxrlKTjLoiJghrsUXJ66fWkC_CGxrrPrbe-tWYC7WlLPth9ec0q_K5x7BPKO5tJr1YqaLQYs-TJZkdRU2yzbyzvuKg-bK59G59iHSLlt6tECJ997MGr6Fj0u-zCFrQgrfaHE5n9l0BwKkK8jgatVsI23eRrJmV8ZVs7NFpnLs5GjnIwExZt8M8dBXJIp5UMfbj5eesdCwPWxfrASpy5C-6X8dHtmjto6pY9Jt7rhv23OESuXUFAx5FclAY3o9eeIR3Cfx9L14rYWoSkddux9aaGOe2BO9oq2pq4vSKFGC0s1Uy2ToLHin57HKedMDfKRKr267AgEAegKRz5e0iZDm9If1LoAExSFu4RI9IzKsF5b1CVAdpDC1WIuZPEek2Wt3C_puiVNkDWfcgCLB0i40YtpWWtoLC2pQ96ILyhMO3AOFDLU64BORVhd0GjUn91v_Ixg1Ojr08pBUUGTERWTqGK-KD7NPoWM2BrE1BptzvxkRV_-Z4IUMuWuW_EwmspG5SKQK8zLxD4qlmsMSgynYsn4No1uZb4"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"amount\":{{ $('Parsear el Producto').item.json.balance }},\n  \"type\":\"DEAL_BALANCE\",\n  \"comment\":\"innitial balance\"\n}",
+        "options": {}
+      },
+      "id": "ef775e1f-3caf-4cc0-8361-12defaab3473",
+      "name": "Asignar Balance",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3500,
+        1180
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "=https://mt-manager-api-v1.new-york.agiliumtrade.ai/users/current/mt5/provisioning-profiles/d15b3921-8075-41fb-9f7c-a57b470a2ab6/users/{{ $json.data[0].login }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "auth-token",
+              "value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsImFjY2Vzc1J1bGVzIjpbeyJpZCI6InRyYWRpbmctYWNjb3VudC1tYW5hZ2VtZW50LWFwaSIsIm1ldGhvZHMiOlsidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcmVzdC1hcGkiLCJtZXRob2RzIjpbIm1ldGFhcGktYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcnBjLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcmVhbC10aW1lLXN0cmVhbWluZy1hcGkiLCJtZXRob2RzIjpbIm1ldGFhcGktYXBpOndzOnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJtZXRhc3RhdHMtYXBpIiwibWV0aG9kcyI6WyJtZXRhc3RhdHMtYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6InJpc2stbWFuYWdlbWVudC1hcGkiLCJtZXRob2RzIjpbInJpc2stbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoiY29weWZhY3RvcnktYXBpIiwibWV0aG9kcyI6WyJjb3B5ZmFjdG9yeS1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibXQtbWFuYWdlci1hcGkiLCJtZXRob2RzIjpbIm10LW1hbmFnZXItYXBpOnJlc3Q6ZGVhbGluZzoqOioiLCJtdC1tYW5hZ2VyLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJiaWxsaW5nLWFwaSIsIm1ldGhvZHMiOlsiYmlsbGluZy1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfV0sImlnbm9yZVJhdGVMaW1pdHMiOmZhbHNlLCJ0b2tlbklkIjoiMjAyMTAyMTMiLCJpbXBlcnNvbmF0ZWQiOmZhbHNlLCJyZWFsVXNlcklkIjoiN2FiNTA2ODg5M2JhMzA3MWI3YWMxNDMyOWM0ZDVkN2YiLCJpYXQiOjE3NDQzMDQxNDYsImV4cCI6MTc1MjA4MDE0Nn0.Xu5y75qDYBewKFs483fLtxXabUFuFpLe-HtMS1JRdUo-GkKUdBFugCNiltwRbAOdY5PozQWWIhfaDLXD-5xW2gV04zCPcQohgj5nSWhkWcufv5P2Qre7SQoinPXIb6ZCV7PxpEtOgCf6sxrlKTjLoiJghrsUXJ66fWkC_CGxrrPrbe-tWYC7WlLPth9ec0q_K5x7BPKO5tJr1YqaLQYs-TJZkdRU2yzbyzvuKg-bK59G59iHSLlt6tECJ997MGr6Fj0u-zCFrQgrfaHE5n9l0BwKkK8jgatVsI23eRrJmV8ZVs7NFpnLs5GjnIwExZt8M8dBXJIp5UMfbj5eesdCwPWxfrASpy5C-6X8dHtmjto6pY9Jt7rhv23OESuXUFAx5FclAY3o9eeIR3Cfx9L14rYWoSkddux9aaGOe2BO9oq2pq4vSKFGC0s1Uy2ToLHin57HKedMDfKRKr267AgEAegKRz5e0iZDm9If1LoAExSFu4RI9IzKsF5b1CVAdpDC1WIuZPEek2Wt3C_puiVNkDWfcgCLB0i40YtpWWtoLC2pQ96ILyhMO3AOFDLU64BORVhd0GjUn91v_Ixg1Ojr08pBUUGTERWTqGK-KD7NPoWM2BrE1BptzvxkRV_-Z4IUMuWuW_EwmspG5SKQK8zLxD4qlmsMSgynYsn4No1uZb4"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c1dce21f-d785-466f-9260-82c1c7f54ab4",
+      "name": "Comprobar Balance",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3060,
+        1100
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "151a75e3-a311-48e4-b971-3d849215ede6",
+              "leftValue": "={{ $json.balance }}",
+              "rightValue": "={{ $('Parsear el Producto').item.json.balance }}",
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3260,
+        1100
+      ],
+      "id": "56c3cb35-beee-43ce-98d5-591def8955d8",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a5362dba-8914-4574-b390-2e35683cba9b",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "failed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2180,
+        1520
+      ],
+      "id": "535366b6-675a-4815-bd9f-f469f04741b5",
+      "name": "Compra Rechazada?1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "353cc265-ec7c-4ff2-972e-361ca3b942f5",
+              "name": "body",
+              "value": "={{ $json.output.body }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        180,
+        900
+      ],
+      "id": "001995cc-7131-4f6f-9c03-4e8ed9039a7b",
+      "name": "Webhook"
+    },
+    {
+      "parameters": {
+        "url": "https://zevenglobalfunding.com//wp-json/affwp/v1/referrals",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "100"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3200,
+        340
+      ],
+      "id": "5cba184b-4c1d-4081-8be8-d4b896061aeb",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "output",
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -120,
+        880
+      ],
+      "id": "e491d41d-735a-41de-938a-f56c7d3eeee0",
+      "name": "Webhook1"
+    }
+  ],
+  "pinData": {
+    "Crea cuenta demo": [
+      {
+        "json": {
+          "investorPassword": "rkl6zfi",
+          "login": 1246083897,
+          "password": "jw0mwqj",
+          "serverName": "Axi-US03-Demo"
+        }
+      }
+    ],
+    "Webhook1": [
+      {
+        "json": {
+          "output": {
+            "body": {
+              "id": 11782,
+              "status": "processing",
+              "document_id": "disj753qm2c72jfidilqo7us",
+              "user_id": "hs654xh0pg6liyv1m80idpok",
+              "line_items": [
+                {
+                  "sku": "100kproduct"
+                }
+              ],
+              "billing": {
+                "email": "benjaminvladd@gmail.com"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n_workflows",
+  "repo_owner": "EliteCodeDev",
+  "repo_path": "https://github.com/EliteCodeDev/n8n_workflows/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-05-08T03:27:35.000Z",
+  "versionId": "6133ce2a-45b2-4d40-8b52-55b79a32c5ef"
+}
