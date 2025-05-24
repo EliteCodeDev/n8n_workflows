@@ -1,0 +1,905 @@
+{
+  "active": false,
+  "connections": {
+    "fecha de asignacion ticket": {
+      "main": [
+        [
+          {
+            "node": "fecha expiracion ticket",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fecha expiracion ticket": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Global Constants": {
+      "main": [
+        [
+          {
+            "node": "Obtener producto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Crear ticket para el usuario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener el usuario": {
+      "main": [
+        [
+          {
+            "node": "fecha de asignacion ticket",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crear ticket para el usuario": {
+      "main": [
+        [
+          {
+            "node": "Notificar Compra",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Global Constants",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener producto": {
+      "main": [
+        [
+          {
+            "node": "Es Ticket?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Chequear Orden",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chequear Orden": {
+      "main": [
+        [
+          {
+            "node": "Compra Rechazada?1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Iterations": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "30 Veces": {
+      "main": [
+        [
+          {
+            "node": "Split Iterations",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fue Aprobada?": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compra Rechazada?": {
+      "main": [
+        [],
+        [
+          {
+            "node": "30 Veces",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compra Rechazada?1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Fue Aprobada?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Es Ticket?": {
+      "main": [
+        [
+          {
+            "node": "Compra Procesada?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compra Procesada?": {
+      "main": [
+        [
+          {
+            "node": "Obtener el usuario",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Compra Rechazada?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-01T15:00:43.918Z",
+  "id": "O5zYe4b20W7Guy9Z",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "APP: Comprar un Ticket",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "addToDate",
+        "magnitude": "={{ $json.currentDate }}",
+        "duration": 7,
+        "outputFieldName": "fechaExpiracionTicket",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1660,
+        0
+      ],
+      "id": "c7b2177b-f23d-470e-9e85-3f82ad843104",
+      "name": "fecha expiracion ticket"
+    },
+    {
+      "parameters": {
+        "outputFieldName": "fechaAsignacionTicket",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1440,
+        0
+      ],
+      "id": "26c44989-e180-499a-ae3b-fc4d3e1ac61d",
+      "name": "fecha de asignacion ticket"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-globals.globalConstants",
+      "typeVersion": 1,
+      "position": [
+        20,
+        20
+      ],
+      "id": "ccc6a12d-1c63-4348-b415-22451929f869",
+      "name": "Global Constants",
+      "credentials": {
+        "globalConstantsApi": {
+          "id": "xD5yrF0WiFvNSDFv",
+          "name": "Global Constants account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f0deaab7-50de-4708-b751-6735c12e7ec8",
+              "name": "fechaExpiracionTicket",
+              "value": "={{ $json.fechaExpiracionTicket }}",
+              "type": "string"
+            },
+            {
+              "id": "b3270320-3d99-4ea7-a8b6-9a35c9be33c0",
+              "name": "body.userId",
+              "value": "={{ $('Obtener el usuario').item.json.documentId }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1900,
+        0
+      ],
+      "id": "bf3f7dc3-3653-4f18-93cb-718de141889c",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.STRAPI_URL }}/users?populate=*&filters[documentId][$eq]={{ $('Webhook').item.json.body.user_id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1240,
+        0
+      ],
+      "id": "f3abfa33-f09e-4e95-8fc8-ac3a4416cd58",
+      "name": "Obtener el usuario"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Global Constants').item.json.constants.STRAPI_URL}}/tickets ",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"data\":{\n    \"fechaExpiracionTicket\":\"{{ $json.fechaExpiracionTicket }}\",\n    \"users_permissions_user\":\"{{ $json.body.userId }}\",\n    \"habilitado\": true\n  }\n} ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2120,
+        0
+      ],
+      "id": "e4af9fa4-39d4-4128-9ad5-183ce2026b86",
+      "name": "Crear ticket para el usuario",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "purcharse-ticket",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -180,
+        20
+      ],
+      "id": "cd5b36fd-3bcb-4645-a84a-cede261c7f5c",
+      "name": "Webhook",
+      "webhookId": "9a10d828-af89-4d76-aeb2-b0d59b663e2e"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.WOOCOMMERCE_URL }}products/{{ $('Webhook').item.json.body.line_items[0].product_id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wooCommerceApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        280,
+        20
+      ],
+      "id": "f3a096ca-bc60-4dc6-afe2-cb2162442574",
+      "name": "Obtener producto",
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "6Kb9lwMY8NDVFSSe",
+          "name": "WooCommerce account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "={{ $('Global Constants').item.json.constants.EMAIL }}",
+        "toEmail": "={{ $('Obtener el usuario').item.json.email }}",
+        "subject": " Ticket Purchase",
+        "html": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Purchase Successful - ZevenGlobal</title>\n    <style>\n        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');\n        \n        * {\n            margin: 0;\n            padding: 0;\n            box-sizing: border-box;\n            font-family: 'Montserrat', sans-serif;\n        }\n        \n        body {\n            background-color: #f0f5ff;\n            padding: 40px 20px;\n        }\n        \n        .email-container {\n            max-width: 650px;\n            margin: 0 auto;\n            background: #0a1a35;\n            border-radius: 16px;\n            overflow: hidden;\n            box-shadow: 0 12px 30px rgba(0, 65, 158, 0.2);\n        }\n        \n        .top-header {\n            background-color: #0a1730;\n            padding: 15px 0;\n            text-align: center;\n            border-bottom: 1px solid rgba(100, 150, 255, 0.2);\n        }\n        \n        .top-header img {\n            max-width: 120px;\n            height: auto;\n        }\n        \n        .hero-section {\n            background-color: #101f3d;\n            padding: 30px 20px;\n            text-align: center;\n            color: white;\n        }\n        \n        .hero-section h1 {\n            font-size: 24px;\n            margin-bottom: 10px;\n            color: #4CAF50;\n            font-weight: 700;\n        }\n        \n        .hero-section p {\n            font-size: 15px;\n            line-height: 1.5;\n            max-width: 450px;\n            margin: 0 auto;\n            color: #b4c9ff;\n        }\n        \n        .content {\n            padding: 30px 25px;\n            position: relative;\n        }\n        \n        .notification-icon {\n            text-align: center;\n            margin-bottom: 15px;\n        }\n        \n        .notification-icon svg {\n            width: 40px;\n            height: 40px;\n            fill: #4CAF50;\n        }\n        \n        .notification-card {\n            position: relative;\n            z-index: 1;\n            background: rgba(18, 37, 73, 0.9);\n            border-radius: 10px;\n            padding: 25px 20px;\n            margin-bottom: 25px;\n            border: 1px solid rgba(76, 175, 80, 0.3);\n            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);\n        }\n        \n        .notification-card h2 {\n            color: white;\n            font-size: 20px;\n            margin-bottom: 15px;\n            padding-bottom: 12px;\n            border-bottom: 1px solid rgba(76, 175, 80, 0.2);\n            text-align: center;\n        }\n        \n        .notification-message {\n            color: white;\n            text-align: center;\n            margin-bottom: 20px;\n            font-size: 15px;\n            line-height: 1.5;\n        }\n        \n        .info-item {\n            display: flex;\n            align-items: center;\n            padding: 12px 0;\n            border-bottom: 1px solid rgba(100, 150, 255, 0.1);\n        }\n        \n        .info-item:last-child {\n            border-bottom: none;\n        }\n        \n        .info-label {\n            color: #7e9bff;\n            font-weight: 500;\n            font-size: 14px;\n            width: 40%;\n            padding-right: 15px;\n        }\n        \n        .info-value {\n            color: white;\n            font-weight: 600;\n            font-size: 15px;\n            background-color: rgba(76, 175, 80, 0.1);\n            padding: 8px 12px;\n            border-radius: 4px;\n            border: 1px solid rgba(76, 175, 80, 0.2);\n            word-break: break-word;\n            width: 60%;\n            flex-grow: 1;\n        }\n        \n        .action-button {\n            display: block;\n            background-color: #4CAF50;\n            color: white;\n            text-decoration: none;\n            padding: 14px 20px;\n            border-radius: 6px;\n            font-size: 16px;\n            font-weight: 600;\n            text-align: center;\n            margin: 20px auto 10px;\n            max-width: 250px;\n            transition: all 0.3s ease;\n            box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);\n        }\n        \n        .action-button:hover {\n            background-color: #388E3C;\n        }\n        \n        .footer {\n            background-color: #0a1730;\n            padding: 20px;\n            text-align: center;\n            color: #7e9bff;\n            font-size: 13px;\n            border-top: 1px solid rgba(100, 150, 255, 0.2);\n        }\n        \n        .social-links {\n            margin: 12px 0;\n        }\n        \n        .social-links a {\n            display: inline-block;\n            width: 30px;\n            height: 30px;\n            background-color: rgba(100, 150, 255, 0.15);\n            border-radius: 50%;\n            margin: 0 5px;\n            line-height: 30px;\n            color: #7e9bff;\n            text-align: center;\n        }\n        \n        .social-icon {\n            width: 16px;\n            height: 16px;\n            vertical-align: middle;\n        }\n        \n        @media (max-width: 480px) {\n            .email-container {\n                border-radius: 10px;\n            }\n            \n            .top-header img {\n                max-width: 100px;\n            }\n            \n            .hero-section h1 {\n                font-size: 20px;\n            }\n            \n            .hero-section p {\n                font-size: 14px;\n            }\n            \n            .notification-card {\n                padding: 20px 15px;\n            }\n            \n            .info-item {\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            \n            .info-label {\n                width: 100%;\n                margin-bottom: 6px;\n            }\n            \n            .info-value {\n                width: 100%;\n            }\n            \n            .action-button {\n                width: 100%;\n                padding: 12px 15px;\n                font-size: 15px;\n            }\n        }\n    </style>\n</head>\n<body>\n    <div class=\"email-container\">\n        <div class=\"top-header\">\n            <img src=\"{{ $('Global Constants').item.json.constants.IMAGE_URL}}\" alt=\"ZevenGlobal Logo\">\n        </div>\n        \n        <div class=\"hero-section\">\n            <h1>Purchase Successful!</h1>\n            <p>Your purchase has been processed successfully. Below you will find the details of your transaction.</p>\n        </div>\n        \n        <div class=\"content\">\n            <div class=\"notification-icon\">\n                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\">\n                    <path d=\"M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm108.25 138.29l-134.4 160a16 16 0 01-12 5.71h-.27a16 16 0 01-11.89-5.3l-57.6-64a16 16 0 1123.78-21.4l45.29 50.32 122.59-145.91a16 16 0 0124.5 20.58z\"/>\n                </svg>\n            </div>\n            \n            <div class=\"notification-card\">\n                <h2>Purchase Details</h2>\n                \n                <div class=\"notification-message\">\n                    <p>Thank you for your purchase! We have received your payment and your ticket has been processed successfully.</p>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Purchase ID</span>\n                    <span class=\"info-value\">{{ $('Webhook').item.json.body.id }}</span>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Purchase Date</span>\n                    <span class=\"info-value\">{{ new Date($('Webhook').item.json.body.date_created).toLocaleDateString('es-ES') }}</span>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Product</span>\n                    <span class=\"info-value\">{{ $('Webhook').item.json.body.line_items[0].name }}</span>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Total</span>\n                    <span class=\"info-value\">{{ $('Webhook').item.json.body.total }} {{ $('Webhook').item.json.body.currency }}</span>\n                </div>\n            </div>\n            \n            <p style=\"color: white; text-align: center; margin-bottom: 15px; font-size: 14px;\">To access your ticket and see all the details of your purchase, visit your dashboard.</p>\n            \n            <a href=\"{{ $('Global Constants').item.json.constants.WEBAPP_URL }}\" target=\"_blank\" class=\"action-button\">GO TO MY DASHBOARD</a>\n        </div>\n        \n        <div class=\"footer\">\n            <p>© 2025 ZevenGlobal - All rights reserved</p>\n            <div class=\"social-links\">\n                <a href=\"#\">\n                    <img class=\"social-icon\" src=\"https://cdn-icons-png.flaticon.com/512/124/124010.png\" alt=\"Facebook\">\n                </a>\n                <a href=\"#\">\n                    <img class=\"social-icon\" src=\"https://cdn-icons-png.flaticon.com/512/124/124021.png\" alt=\"Twitter\">\n                </a>\n                <a href=\"#\">\n                    <img class=\"social-icon\" src=\"https://cdn-icons-png.flaticon.com/512/174/174855.png\" alt=\"Instagram\">\n                </a>\n            </div>\n            <p>If you have any questions, contact us at <a href=\"mailto:{{ $('Global Constants').item.json.constants.EMAIL }}\" style=\"color: #3a9fff; text-decoration: none;\">{{ $('Global Constants').item.json.constants.EMAIL }}</a></p>\n        </div>\n    </div>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        2300,
+        0
+      ],
+      "id": "7549dc45-cf76-43ef-a3af-de1c18ad91af",
+      "name": "Notificar Compra",
+      "webhookId": "0ae5a732-4f02-4c43-9610-342363016c72",
+      "credentials": {
+        "smtp": {
+          "id": "ZS9NhafTpi5LRpMH",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1980,
+        380
+      ],
+      "id": "9b839afc-e185-4822-bfff-0174c5736836",
+      "name": "Wait",
+      "webhookId": "3910e1e8-50f2-4d67-a717-effe2745d563"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.WOOCOMMERCE_URL }}orders/{{ $('Webhook').item.json.body.id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "wooCommerceApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2200,
+        380
+      ],
+      "id": "51b802cc-3609-4e31-b082-5b43759e40bf",
+      "name": "Chequear Orden",
+      "credentials": {
+        "wooCommerceApi": {
+          "id": "6Kb9lwMY8NDVFSSe",
+          "name": "WooCommerce account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "iterations",
+        "options": {
+          "destinationFieldName": "iteration"
+        }
+      },
+      "id": "c92e67da-36e0-4283-8e03-e411c620faf6",
+      "name": "Split Iterations",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        1380,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const count = 30;\nconst fillers = Array.from({ length: count }, (_, index) => index);\n\n$input.item.json.iterations = fillers;\n\nreturn $input.item;"
+      },
+      "id": "1de15e46-f4e2-4663-9bb6-95f7356076d4",
+      "name": "30 Veces",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1220,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1760,
+        360
+      ],
+      "id": "e488d115-b108-4d56-9f13-ea54719b571f",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "75231d79-294d-4ef4-9a99-104a8f76cbba",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "processing",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1380,
+        340
+      ],
+      "id": "909da7d5-8f09-4a6f-bd14-63e4f0e6268d",
+      "name": "Fue Aprobada?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a5362dba-8914-4574-b390-2e35683cba9b",
+              "leftValue": "={{ $('Webhook').item.json.body.status }}",
+              "rightValue": "failed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        960,
+        160
+      ],
+      "id": "3b7aa734-32b4-44ae-8e72-20f1b494e6a9",
+      "name": "Compra Rechazada?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a5362dba-8914-4574-b390-2e35683cba9b",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "failed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2200,
+        600
+      ],
+      "id": "45292314-e760-492c-92aa-125c66338761",
+      "name": "Compra Rechazada?1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "50987311-7158-4b2d-ba53-c40a11884ac5",
+              "leftValue": "={{ $json.slug }}",
+              "rightValue": "ticket",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        500,
+        20
+      ],
+      "id": "09598c78-d705-454d-8085-860d3d411679",
+      "name": "Es Ticket?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a5362dba-8914-4574-b390-2e35683cba9b",
+              "leftValue": "={{ $('Webhook').item.json.body.status }}",
+              "rightValue": "processing",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        740,
+        20
+      ],
+      "id": "a572dfb3-197c-4f69-bab3-fed001d59aef",
+      "name": "Compra Procesada?"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.neocapitalfunding.com",
+            "user-agent": "WooCommerce/9.7.1 Hookshot (WordPress/6.7.2)",
+            "content-length": "3633",
+            "accept": "*/*",
+            "accept-encoding": "deflate, gzip, br, zstd",
+            "content-type": "application/json",
+            "x-forwarded-for": "154.38.184.175",
+            "x-forwarded-host": "n8n.neocapitalfunding.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "ad54d64e3de5",
+            "x-real-ip": "154.38.184.175",
+            "x-wc-webhook-delivery-id": "410c37b803ec252ea40e3e43cf5c08f4",
+            "x-wc-webhook-event": "created",
+            "x-wc-webhook-id": "87",
+            "x-wc-webhook-resource": "order",
+            "x-wc-webhook-signature": "mFOQZBB5mUNUCYMpkeMmDQE9Y49vOCDFCv1nN6+/IHA=",
+            "x-wc-webhook-source": "https://neocapitalfunding.com/",
+            "x-wc-webhook-topic": "order.created"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "id": 11057,
+            "parent_id": 0,
+            "status": "processing",
+            "currency": "USD",
+            "version": "9.7.1",
+            "prices_include_tax": false,
+            "date_created": "2025-03-31T09:38:31",
+            "date_modified": "2025-03-31T09:38:34",
+            "discount_total": "0.00",
+            "discount_tax": "0.00",
+            "shipping_total": "0.00",
+            "shipping_tax": "0.00",
+            "cart_tax": "0.00",
+            "total": "50.00",
+            "total_tax": "0.00",
+            "customer_id": 1,
+            "order_key": "wc_order_JFetmd4GjQPp5",
+            "billing": {
+              "first_name": "Ronald",
+              "last_name": "Rangel",
+              "company": "",
+              "address_1": "Tomas Jefferson 289",
+              "address_2": "",
+              "city": "Trujillo",
+              "state": "LAL",
+              "postcode": "13007",
+              "country": "PE",
+              "email": "neocapital2025@gmail.com",
+              "phone": "+51924079149"
+            },
+            "shipping": {
+              "first_name": "",
+              "last_name": "",
+              "company": "",
+              "address_1": "",
+              "address_2": "",
+              "city": "",
+              "state": "LAL",
+              "postcode": "",
+              "country": "PE",
+              "phone": "+51924079149"
+            },
+            "payment_method": "cod",
+            "payment_method_title": "Contra reembolso",
+            "transaction_id": "",
+            "customer_ip_address": "179.6.166.135",
+            "customer_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+            "created_via": "checkout",
+            "customer_note": "",
+            "date_completed": null,
+            "date_paid": null,
+            "cart_hash": "6f152eac36c299697485a047e9b8f606",
+            "number": "11057",
+            "meta_data": [
+              {
+                "id": 9807,
+                "key": "_billing_wc_custom_field",
+                "value": ""
+              },
+              {
+                "id": 9809,
+                "key": "_document_id",
+                "value": "disj753qm2c72jfidilqo7us"
+              },
+              {
+                "id": 9810,
+                "key": "_user_id",
+                "value": "yjm50e86a7m45ovbssc4kfan"
+              },
+              {
+                "id": 9823,
+                "key": "_wc_order_attribution_device_type",
+                "value": "Desktop"
+              },
+              {
+                "id": 9821,
+                "key": "_wc_order_attribution_session_count",
+                "value": "2"
+              },
+              {
+                "id": 9818,
+                "key": "_wc_order_attribution_session_entry",
+                "value": "https://neocapitalfunding.com/"
+              },
+              {
+                "id": 9820,
+                "key": "_wc_order_attribution_session_pages",
+                "value": "3"
+              },
+              {
+                "id": 9819,
+                "key": "_wc_order_attribution_session_start_time",
+                "value": "2025-03-31 13:35:01"
+              },
+              {
+                "id": 9816,
+                "key": "_wc_order_attribution_source_type",
+                "value": "typein"
+              },
+              {
+                "id": 9822,
+                "key": "_wc_order_attribution_user_agent",
+                "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36"
+              },
+              {
+                "id": 9817,
+                "key": "_wc_order_attribution_utm_source",
+                "value": "(direct)"
+              },
+              {
+                "id": 9825,
+                "key": "_wfacp_post_id",
+                "value": "10343"
+              },
+              {
+                "id": 9826,
+                "key": "_wfacp_source",
+                "value": "https://neocapitalfunding.com/checkouts/checkout/"
+              },
+              {
+                "id": 9827,
+                "key": "_wfacp_timezone",
+                "value": "America/Lima"
+              },
+              {
+                "id": 9829,
+                "key": "_wfob_stats_ids",
+                "value": []
+              },
+              {
+                "id": 9824,
+                "key": "_woofunnel_cid",
+                "value": "1"
+              },
+              {
+                "id": 9828,
+                "key": "_woofunnel_custid",
+                "value": "1"
+              },
+              {
+                "id": 9808,
+                "key": "is_vat_exempt",
+                "value": "no"
+              }
+            ],
+            "line_items": [
+              {
+                "id": 459,
+                "name": "Ticket de Ruleta",
+                "product_id": 11056,
+                "variation_id": 0,
+                "quantity": 1,
+                "tax_class": "",
+                "subtotal": "50.00",
+                "subtotal_tax": "0.00",
+                "total": "50.00",
+                "total_tax": "0.00",
+                "taxes": [],
+                "meta_data": [],
+                "sku": "",
+                "price": 50,
+                "image": {
+                  "id": "",
+                  "src": ""
+                },
+                "parent_name": null
+              }
+            ],
+            "tax_lines": [],
+            "shipping_lines": [],
+            "fee_lines": [],
+            "coupon_lines": [],
+            "refunds": [],
+            "payment_url": "https://neocapitalfunding.com/checkout/order-pay/11057/?pay_for_order=true&key=wc_order_JFetmd4GjQPp5",
+            "is_editable": false,
+            "needs_payment": false,
+            "needs_processing": true,
+            "date_created_gmt": "2025-03-31T14:38:31",
+            "date_modified_gmt": "2025-03-31T14:38:34",
+            "date_completed_gmt": null,
+            "date_paid_gmt": null,
+            "currency_symbol": "$",
+            "_links": {
+              "self": [
+                {
+                  "href": "https://neocapitalfunding.com/wp-json/wc/v3/orders/11057",
+                  "targetHints": {
+                    "allow": [
+                      "GET",
+                      "POST",
+                      "PUT",
+                      "PATCH",
+                      "DELETE"
+                    ]
+                  }
+                }
+              ],
+              "collection": [
+                {
+                  "href": "https://neocapitalfunding.com/wp-json/wc/v3/orders"
+                }
+              ],
+              "customer": [
+                {
+                  "href": "https://neocapitalfunding.com/wp-json/wc/v3/customers/1"
+                }
+              ]
+            },
+            "document_id": "disj753qm2c72jfidilqo7us",
+            "user_id": "yjm50e86a7m45ovbssc4kfan"
+          },
+          "webhookUrl": "https://n8n.neocapitalfunding.com/webhook-test/purcharse-ticket",
+          "executionMode": "test"
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n_workflows",
+  "repo_owner": "EliteCodeDev",
+  "repo_path": "https://github.com/EliteCodeDev/n8n_workflows/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-05-12T20:05:46.000Z",
+  "versionId": "ecde04a2-87f3-4bdd-8bdb-e8d24042e078"
+}
