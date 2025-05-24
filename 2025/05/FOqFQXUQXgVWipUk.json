@@ -1,0 +1,1127 @@
+{
+  "active": true,
+  "connections": {
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Buscar el usuario de la compra1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buscar el usuario de la compra1": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Global Constants",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Compra Aprobada?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Global Constants": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buscar el usuario de la compra": {
+      "main": [
+        [
+          {
+            "node": "Parsear el Producto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crea challenge Con todas sus relaciones": {
+      "main": [
+        [
+          {
+            "node": "Colocar Parent ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar Email de creacion exitosa": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Comprobar Balance",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parsear el Producto": {
+      "main": [
+        [
+          {
+            "node": "obtener broker disponible",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Actualizar broker": {
+      "main": [
+        [
+          {
+            "node": "Crea challenge Con todas sus relaciones",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Colocar Parent ID": {
+      "main": [
+        [
+          {
+            "node": "Enviar Email de creacion exitosa",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener Relation": {
+      "main": [
+        [
+          {
+            "node": "Definir phase1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compra Aprobada?": {
+      "main": [
+        [
+          {
+            "node": "Buscar el usuario de la compra",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Buscar el usuario de la compra",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "obtener broker disponible": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Asignar Balance": {
+      "main": [
+        [
+          {
+            "node": "Obtener Relation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Comprobar Balance": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Obtener Relation",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Asignar Balance",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Definir phase1": {
+      "main": [
+        [
+          {
+            "node": "Actualizar broker",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-05-01T01:48:47.667Z",
+  "id": "FOqFQXUQXgVWipUk",
+  "isArchived": false,
+  "meta": null,
+  "name": "APP: Compra individual",
+  "nodes": [
+    {
+      "parameters": {
+        "jsCode": "// src/nodes/YourFunctionNode/uniqueOrdersByEmail.js\n\n// 1. Extraemos todas las órdenes desde el campo `body` de cada ítem entrante\nconst orders = $input.all().map(item => item.json.body);\n\n// 2. Map para almacenar órdenes únicas por email\nconst uniqueOrdersByEmail = new Map();\n\n// 3. Función para extraer parámetros de una URL\nconst extractParamFromUrl = (url, paramName) => {\n  try {\n    if (!url) return null;\n    const urlObj = new URL(url);\n    return urlObj.searchParams.get(paramName);\n  } catch (error) {\n    return null;\n  }\n};\n\n// 4. Función para encontrar un valor en meta_data por key\nconst findMetaDataValue = (metaData, key) => {\n  const item = metaData.find(item => item.key === key);\n  return item ? item.value : null;\n};\n\n// 5. Recorrer todas las órdenes y conservar sólo la primera de cada email\norders.forEach(order => {\n  const email = order.billing.email;\n  \n  if (!uniqueOrdersByEmail.has(email)) {\n    // Buscar document_id y user_id en meta_data\n    const documentId = findMetaDataValue(order.meta_data, \"_document_id\");\n    const userId     = findMetaDataValue(order.meta_data, \"_user_id\");\n    \n    // Buscar URL de origen en meta_data\n    const sourceUrl = findMetaDataValue(order.meta_data, \"_wfacp_source\");\n    \n    // Extraer valores de la URL si existen, si no usar los del meta_data\n    const documentIdFromUrl = extractParamFromUrl(sourceUrl, \"document_id\") || documentId;\n    const userIdFromUrl     = extractParamFromUrl(sourceUrl, \"user_id\")     || userId;\n\n    // Construir la orden simplificada\n    const simplifiedOrder = {\n      data: {\n        user: {\n          firstName:  order.billing.first_name,\n          lastName:   order.billing.last_name,\n          email:      order.billing.email,\n          phone:      order.billing.phone,\n          country:    order.billing.country,\n          address:    order.billing.address_1,\n          city:       order.billing.city,\n          state:      order.billing.state,\n          postcode:   order.billing.postcode,\n          documentId: documentIdFromUrl,\n          userId:     userIdFromUrl,\n        },\n        order: {\n          id:             order.id,\n          number:         order.number,\n          status:         order.status,\n          dateCreated:    order.date_created,\n          total:          order.total,\n          discount_total: order.discount_total,\n          currency:       order.currency,\n          currencySymbol: order.currency_symbol,\n        },\n        products: order.line_items.map(item => ({\n          id:           item.product_id,\n          variationId:  item.variation_id,\n          name:         item.name,\n          sku:          item.sku,\n          price:        item.price,\n          subtotal:     item.subtotal,\n          total:        item.total,\n          quantity:     item.quantity,\n          imageUrl:     item.image?.src,\n          metaData:     item.meta_data,\n          parentName:   item.parent_name,\n        }))\n      }\n    };\n\n    uniqueOrdersByEmail.set(email, simplifiedOrder);\n  }\n});\n\n// 6. Devolver el array de órdenes únicas\nreturn {\n  list: Array.from(uniqueOrdersByEmail.values())\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2600,
+        620
+      ],
+      "id": "778097c1-3dbd-42d6-b769-8d0880444217",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.STRAPI_URL }}/users?filters[email][$eq]={{ $json.list[0].data.user.email }}&populate=challenges",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "options": {}
+      },
+      "id": "4164bb98-078c-4de1-b09b-28407a5c3c32",
+      "name": "Buscar el usuario de la compra1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2820,
+        620
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "6ef1aa92-4aff-413b-b40c-850ebeae8f05",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        2160,
+        620
+      ],
+      "id": "27a47465-ce34-405c-867d-76274b4480a4",
+      "name": "Webhook",
+      "webhookId": "6ef1aa92-4aff-413b-b40c-850ebeae8f05"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "fd16eaba-d6c7-4811-8531-af1f0049b201",
+              "leftValue": "={{ $json.documentId }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        3040,
+        620
+      ],
+      "id": "eeef103f-b7c5-42e6-95fd-02495ee874dd",
+      "name": "Filter",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f0a0346c-bfc7-41cd-a8ab-f8c17baf95fe",
+              "name": "list[0].data.user",
+              "value": "={{ $('Code1').item.json.list[0].data.user }}",
+              "type": "object"
+            },
+            {
+              "id": "4e44eae0-cc10-4ba2-8c8a-0307b7eb692f",
+              "name": "list[0].data.order",
+              "value": "={{ $('Code1').item.json.list[0].data.order }}",
+              "type": "object"
+            },
+            {
+              "id": "7ce58fd4-0edc-4c86-8238-8cf8fbef611d",
+              "name": "list[0].data.products",
+              "value": "={{ $('Code1').item.json.list[0].data.products }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3260,
+        620
+      ],
+      "id": "59ec3a4d-617a-482b-8b88-e66136f951f8",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-globals.globalConstants",
+      "typeVersion": 1,
+      "position": [
+        2380,
+        620
+      ],
+      "id": "7228f4cc-4e67-4454-957b-cce8d6d3c4f8",
+      "name": "Global Constants",
+      "credentials": {
+        "globalConstantsApi": {
+          "id": "xD5yrF0WiFvNSDFv",
+          "name": "Global Constants account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.STRAPI_URL }}/users?filters[documentId][$eq]={{ $json.list[0].data.user.userId }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "options": {}
+      },
+      "id": "7d897522-1ef7-4d89-a65c-1d0288232fcd",
+      "name": "Buscar el usuario de la compra",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3700,
+        620
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Global Constants').item.json.constants.STRAPI_URL }}/challenges",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "= {\n  \"data\": {\n    \"phase\": {{ $('Definir phase1').item.json.fase }},\n    \"result\": \"init\",\n    \"user\": {{ $('Buscar el usuario de la compra').item.json.id }},\n    \"broker_account\":\"{{ $json.data.documentId }}\",\n    \"challenge_relation\":\"{{ $('Edit Fields').item.json.list[0].data.user.documentId }}\",\n    \"wc_order\":\"{{ $('Edit Fields').item.json.list[0].data.order.id }}\"\n  }\n}",
+        "options": {}
+      },
+      "id": "5b77ebc7-34a7-40a1-a38f-5278cb49f1b6",
+      "name": "Crea challenge Con todas sus relaciones",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        5900,
+        620
+      ],
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "={{ $('Global Constants').item.json.constants.EMAIL }}",
+        "toEmail": "={{ $('Edit Fields').item.json.list[0].data.user.email }}",
+        "subject": " Your challenge is ready to use",
+        "html": "=<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Your Challenge is Ready to Use - ZevenGlobal</title>\n    <style>\n        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');\n        \n        * {\n            margin: 0;\n            padding: 0;\n            box-sizing: border-box;\n            font-family: 'Montserrat', sans-serif;\n        }\n        \n        body {\n            background-color: #f0f5ff;\n            padding: 40px 20px;\n        }\n        \n        .email-container {\n            max-width: 650px;\n            margin: 0 auto;\n            background: #0a1a35;\n            border-radius: 16px;\n            overflow: hidden;\n            box-shadow: 0 12px 30px rgba(0, 65, 158, 0.2);\n        }\n        \n        .top-header {\n            background-color: #0a1730;\n            padding: 15px 0;\n            text-align: center;\n            border-bottom: 1px solid rgba(100, 150, 255, 0.2);\n        }\n        \n        .top-header img {\n            max-width: 120px;\n            height: auto;\n        }\n        \n        .hero-section {\n            background-color: #101f3d;\n            padding: 30px 20px;\n            text-align: center;\n            color: white;\n        }\n        \n        .hero-section h1 {\n            font-size: 24px;\n            margin-bottom: 10px;\n            color: #27ae60;\n            font-weight: 700;\n        }\n        \n        .hero-section p {\n            font-size: 15px;\n            line-height: 1.5;\n            max-width: 450px;\n            margin: 0 auto;\n            color: #b4c9ff;\n        }\n        \n        .content {\n            padding: 30px 25px;\n            position: relative;\n        }\n        \n        .notification-icon {\n            text-align: center;\n            margin-bottom: 15px;\n        }\n        \n        .notification-icon svg {\n            width: 40px;\n            height: 40px;\n            fill: #27ae60;\n        }\n        \n        .notification-card {\n            position: relative;\n            z-index: 1;\n            background: rgba(18, 37, 73, 0.9);\n            border-radius: 10px;\n            padding: 25px 20px;\n            margin-bottom: 25px;\n            border: 1px solid rgba(39, 174, 96, 0.3);\n            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);\n        }\n        \n        .notification-card h2 {\n            color: white;\n            font-size: 20px;\n            margin-bottom: 15px;\n            padding-bottom: 12px;\n            border-bottom: 1px solid rgba(39, 174, 96, 0.2);\n            text-align: center;\n        }\n        \n        .notification-message {\n            color: white;\n            text-align: center;\n            margin-bottom: 20px;\n            font-size: 15px;\n            line-height: 1.5;\n        }\n        \n        .info-item {\n            display: flex;\n            align-items: center;\n            padding: 12px 0;\n            border-bottom: 1px solid rgba(100, 150, 255, 0.1);\n        }\n        \n        .info-item:last-child {\n            border-bottom: none;\n        }\n        \n        .info-label {\n            color: #7e9bff;\n            font-weight: 500;\n            font-size: 14px;\n            width: 40%;\n            padding-right: 15px;\n        }\n        \n        .info-value {\n            color: white;\n            font-weight: 600;\n            font-size: 15px;\n            background-color: rgba(39, 174, 96, 0.1);\n            padding: 8px 12px;\n            border-radius: 4px;\n            border: 1px solid rgba(39, 174, 96, 0.2);\n            word-break: break-word;\n            width: 60%;\n            flex-grow: 1;\n        }\n        \n        .action-button {\n            display: block;\n            background-color: #27ae60;\n            color: white;\n            text-decoration: none;\n            padding: 14px 20px;\n            border-radius: 6px;\n            font-size: 16px;\n            font-weight: 600;\n            text-align: center;\n            margin: 20px auto 10px;\n            max-width: 250px;\n            transition: all 0.3s ease;\n            box-shadow: 0 4px 8px rgba(39, 174, 96, 0.3);\n        }\n        \n        .action-button:hover {\n            background-color: #219a52;\n        }\n        \n        .footer {\n            background-color: #0a1730;\n            padding: 20px;\n            text-align: center;\n            color: #7e9bff;\n            font-size: 13px;\n            border-top: 1px solid rgba(100, 150, 255, 0.2);\n        }\n        \n        .social-links {\n            margin: 12px 0;\n        }\n        \n        .social-links a {\n            display: inline-block;\n            width: 30px;\n            height: 30px;\n            background-color: rgba(100, 150, 255, 0.15);\n            border-radius: 50%;\n            margin: 0 5px;\n            line-height: 30px;\n            color: #7e9bff;\n            text-align: center;\n        }\n        \n        .social-icon {\n            width: 16px;\n            height: 16px;\n            vertical-align: middle;\n        }\n        \n        @media (max-width: 480px) {\n            .email-container {\n                border-radius: 10px;\n            }\n            \n            .top-header img {\n                max-width: 100px;\n            }\n            \n            .hero-section h1 {\n                font-size: 20px;\n            }\n            \n            .hero-section p {\n                font-size: 14px;\n            }\n            \n            .notification-card {\n                padding: 20px 15px;\n            }\n            \n            .info-item {\n                flex-direction: column;\n                align-items: flex-start;\n            }\n            \n            .info-label {\n                width: 100%;\n                margin-bottom: 6px;\n            }\n            \n            .info-value {\n                width: 100%;\n            }\n            \n            .action-button {\n                width: 100%;\n                padding: 12px 15px;\n                font-size: 15px;\n            }\n        }\n    </style>\n</head>\n<body>\n    <div class=\"email-container\">\n        <div class=\"top-header\">\n            <img src=\"{{ $('Global Constants').item.json.constants.IMAGE_URL}}\" alt=\"ZevenGlobal Logo\">\n        </div>\n        \n        <div class=\"hero-section\">\n            <h1>Your Challenge is Ready to Use</h1>\n            <p>We have configured your challenge and you can now start trading. Here are your access credentials.</p>\n        </div>\n        \n        <div class=\"content\">\n            <div class=\"notification-icon\">\n                <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\">\n                    <path d=\"M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm-30.7 258.7L158.6 368l30.2 30.2L256 330.9l67.2 67.2 30.2-30.2-97.9-97.9-30.2 30.7zm4.9-117.9v29l22.8-22.8 22.8 22.8v-29h38.9v-30.8h-38.9l-22.8-22.8-22.8 22.8h-38.9v30.8h38.9z\"/>\n                </svg>\n            </div>\n            \n            <div class=\"notification-card\">\n                <h2>Access Credentials</h2>\n                \n                <div class=\"notification-message\">\n                    <p>Use these credentials to log in to the trading platform and start your challenge.</p>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Login</span>\n                    <span class=\"info-value\">{{ $('obtener broker disponible').item.json.data[0].login }}</span>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Password</span>\n                    <span class=\"info-value\">{{ $('obtener broker disponible').item.json.data[0].password }}</span>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Server</span>\n                    <span class=\"info-value\">{{ $('obtener broker disponible').item.json.data[0].server }}</span>\n                </div>\n                \n                <div class=\"info-item\">\n                    <span class=\"info-label\">Platform</span>\n                    <span class=\"info-value\">{{ $('obtener broker disponible').item.json.data[0].platform }}</span>\n                </div>\n            </div>\n            \n            <p style=\"color: white; text-align: center; margin-bottom: 15px; font-size: 14px;\">To see more details about your challenge and begin trading, please log in to your dashboard.</p>\n            \n            <a href=\"{{ $('Global Constants').item.json.constants.WEBAPP_URL}}\" target=\"_blank\" class=\"action-button\">VIEW DASHBOARD</a>\n        </div>\n        \n        <div class=\"footer\">\n            <p>© 2025 ZevenGlobal - All rights reserved</p>\n            <div class=\"social-links\">\n                <a href=\"#\">\n                    <img class=\"social-icon\" src=\"https://cdn-icons-png.flaticon.com/512/124/124010.png\" alt=\"Facebook\">\n                </a>\n                <a href=\"#\">\n                    <img class=\"social-icon\" src=\"https://cdn-icons-png.flaticon.com/512/124/124021.png\" alt=\"Twitter\">\n                </a>\n                <a href=\"#\">\n                    <img class=\"social-icon\" src=\"https://cdn-icons-png.flaticon.com/512/174/174855.png\" alt=\"Instagram\">\n                </a>\n            </div>\n            <p>If you have any questions, contact us at <a href=\"mailto:{{ $('Global Constants').item.json.constants.EMAIL }}\" style=\"color: #3a9fff; text-decoration: none;\">{{ $('Global Constants').item.json.constants.EMAIL }}</a></p>\n        </div>\n    </div>\n</body>\n</html>\n",
+        "options": {}
+      },
+      "id": "fb7e2b76-c148-46ad-ad40-ae413e9b66f4",
+      "name": "Enviar Email de creacion exitosa",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        6340,
+        620
+      ],
+      "webhookId": "36ea56b3-a189-45eb-8afa-96dbb4a62b69",
+      "credentials": {
+        "smtp": {
+          "id": "ZS9NhafTpi5LRpMH",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "6590589c-d497-461a-800e-b8a255984dd3",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "",
+              "operator": {
+                "type": "array",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4360,
+        620
+      ],
+      "id": "5e1b7297-3bd2-46ff-94a5-a469fd94ddf2",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "jsCode": "function convertBalance(balanceStr) {\n  // Convertir la cadena a minúsculas y quitar espacios al inicio y final\n  const s = balanceStr.trim().toLowerCase();\n  \n  // Expresión regular para capturar la parte numérica y el sufijo \"k\" (si existe)\n  const match = s.match(/^(\\d+(?:\\.\\d+)?)(k)?/);\n  if (!match) {\n    throw new Error('Valor inválido');\n  }\n  \n  // Convertir la parte numérica a un número\n  const numberValue = parseFloat(match[1]);\n  if (isNaN(numberValue)) {\n    throw new Error('Valor inválido');\n  }\n  \n  // Si se encontró \"k\", establecer el multiplicador en 1000\n  const multiplier = match[2] === 'k' ? 1000 : 1;\n  \n  return numberValue * multiplier;\n}\n\nreturn ({\"balance\": convertBalance($('Edit Fields').first().json.list[0].data.products[0].sku)})"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3920,
+        620
+      ],
+      "id": "81587872-de5b-4aba-b2c0-f73a91f2bd6d",
+      "name": "Parsear el Producto"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $('Global Constants').item.json.constants.STRAPI_URL }}/broker-accounts/{{ $('obtener broker disponible').item.json.data[0].documentId }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "=  {\n  \"data\":{\n  \"used\":true,\n  \"balance\":\"{{ $('Parsear el Producto').item.json.balance }}\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        5680,
+        620
+      ],
+      "id": "5ea88b25-65e5-4fe7-bbbf-d48236c41f8a",
+      "name": "Actualizar broker",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $('Global Constants').item.json.constants.STRAPI_URL }}/challenges/{{ $json.data.documentId }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"data\":{\n    \"parentId\":\"{{ $json.data.documentId }}\"\n  }\n} ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        6120,
+        620
+      ],
+      "id": "c27194fe-babe-46ac-97f9-2ac4d2500b5e",
+      "name": "Colocar Parent ID",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"ok\": true\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        6560,
+        620
+      ],
+      "id": "4ad89916-c355-4d7f-8a5a-800ec57694f4",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/challenge-relations/{{ $('Webhook').item.json.body.meta_data[0].value }}?populate=challenge_stages",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        5240,
+        620
+      ],
+      "id": "5fc8e746-be74-4362-9954-6f073a971f0e",
+      "name": "Obtener Relation",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// en un nodo Code de n8n\nconst dataArray = $input.first().json.data;\n\nconst outputItems = dataArray.map(entry => {\n  const stageCount = entry.challenge_stages?.length || 0;\n  let fase;\n  if (stageCount === 3)       fase = 1;\n  else if (stageCount === 2)  fase = 2;\n  else if (stageCount === 1)  fase = 3;\n  else                        fase = 0;\n\n  // Aquí decides si devuelves sólo la fase...\n  return { json: { id: entry.id, fase } };\n  // ...o bien incluyes todo el objeto:\n  // return { json: { ...entry, fase } };\n});\n\nreturn outputItems;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2160,
+        360
+      ],
+      "id": "9e53cd48-8f6d-4e12-ae85-843888714762",
+      "name": "Definir phase"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a5362dba-8914-4574-b390-2e35683cba9b",
+              "leftValue": "={{ $json.list[0].data.order.status }}",
+              "rightValue": "processing",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3480,
+        620
+      ],
+      "id": "f94a17b9-624f-4601-b6a4-ef47d45becd1",
+      "name": "Compra Aprobada?"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.STRAPI_URL }}/broker-accounts?filters[used][$eq]=false&pagination[limit]=1",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4140,
+        620
+      ],
+      "id": "961bbf26-18d3-4717-b75a-79540ea78985",
+      "name": "obtener broker disponible",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://mt-manager-api-v1.new-york.agiliumtrade.ai/users/current/mt5/provisioning-profiles/d15b3921-8075-41fb-9f7c-a57b470a2ab6/accounts/{{ $json.login }}/balance-transactions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "auth-token",
+              "value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsImFjY2Vzc1J1bGVzIjpbeyJpZCI6InRyYWRpbmctYWNjb3VudC1tYW5hZ2VtZW50LWFwaSIsIm1ldGhvZHMiOlsidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcmVzdC1hcGkiLCJtZXRob2RzIjpbIm1ldGFhcGktYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcnBjLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcmVhbC10aW1lLXN0cmVhbWluZy1hcGkiLCJtZXRob2RzIjpbIm1ldGFhcGktYXBpOndzOnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJtZXRhc3RhdHMtYXBpIiwibWV0aG9kcyI6WyJtZXRhc3RhdHMtYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6InJpc2stbWFuYWdlbWVudC1hcGkiLCJtZXRob2RzIjpbInJpc2stbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoiY29weWZhY3RvcnktYXBpIiwibWV0aG9kcyI6WyJjb3B5ZmFjdG9yeS1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibXQtbWFuYWdlci1hcGkiLCJtZXRob2RzIjpbIm10LW1hbmFnZXItYXBpOnJlc3Q6ZGVhbGluZzoqOioiLCJtdC1tYW5hZ2VyLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJiaWxsaW5nLWFwaSIsIm1ldGhvZHMiOlsiYmlsbGluZy1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfV0sImlnbm9yZVJhdGVMaW1pdHMiOmZhbHNlLCJ0b2tlbklkIjoiMjAyMTAyMTMiLCJpbXBlcnNvbmF0ZWQiOmZhbHNlLCJyZWFsVXNlcklkIjoiN2FiNTA2ODg5M2JhMzA3MWI3YWMxNDMyOWM0ZDVkN2YiLCJpYXQiOjE3NDQzMDQxNDYsImV4cCI6MTc1MjA4MDE0Nn0.Xu5y75qDYBewKFs483fLtxXabUFuFpLe-HtMS1JRdUo-GkKUdBFugCNiltwRbAOdY5PozQWWIhfaDLXD-5xW2gV04zCPcQohgj5nSWhkWcufv5P2Qre7SQoinPXIb6ZCV7PxpEtOgCf6sxrlKTjLoiJghrsUXJ66fWkC_CGxrrPrbe-tWYC7WlLPth9ec0q_K5x7BPKO5tJr1YqaLQYs-TJZkdRU2yzbyzvuKg-bK59G59iHSLlt6tECJ997MGr6Fj0u-zCFrQgrfaHE5n9l0BwKkK8jgatVsI23eRrJmV8ZVs7NFpnLs5GjnIwExZt8M8dBXJIp5UMfbj5eesdCwPWxfrASpy5C-6X8dHtmjto6pY9Jt7rhv23OESuXUFAx5FclAY3o9eeIR3Cfx9L14rYWoSkddux9aaGOe2BO9oq2pq4vSKFGC0s1Uy2ToLHin57HKedMDfKRKr267AgEAegKRz5e0iZDm9If1LoAExSFu4RI9IzKsF5b1CVAdpDC1WIuZPEek2Wt3C_puiVNkDWfcgCLB0i40YtpWWtoLC2pQ96ILyhMO3AOFDLU64BORVhd0GjUn91v_Ixg1Ojr08pBUUGTERWTqGK-KD7NPoWM2BrE1BptzvxkRV_-Z4IUMuWuW_EwmspG5SKQK8zLxD4qlmsMSgynYsn4No1uZb4"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"amount\":{{ $('Parsear el Producto').item.json.balance }},\n  \"type\":\"DEAL_BALANCE\",\n  \"comment\":\"innitial balance\"\n}",
+        "options": {}
+      },
+      "id": "ba703c6c-de89-4243-bffb-d29db7c355d0",
+      "name": "Asignar Balance",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        5020,
+        695
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "=https://mt-manager-api-v1.new-york.agiliumtrade.ai/users/current/mt5/provisioning-profiles/d15b3921-8075-41fb-9f7c-a57b470a2ab6/users/{{ $json.data[0].login }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "auth-token",
+              "value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsImFjY2Vzc1J1bGVzIjpbeyJpZCI6InRyYWRpbmctYWNjb3VudC1tYW5hZ2VtZW50LWFwaSIsIm1ldGhvZHMiOlsidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcmVzdC1hcGkiLCJtZXRob2RzIjpbIm1ldGFhcGktYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcnBjLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFhcGktcmVhbC10aW1lLXN0cmVhbWluZy1hcGkiLCJtZXRob2RzIjpbIm1ldGFhcGktYXBpOndzOnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJtZXRhc3RhdHMtYXBpIiwibWV0aG9kcyI6WyJtZXRhc3RhdHMtYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6InJpc2stbWFuYWdlbWVudC1hcGkiLCJtZXRob2RzIjpbInJpc2stbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoiY29weWZhY3RvcnktYXBpIiwibWV0aG9kcyI6WyJjb3B5ZmFjdG9yeS1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibXQtbWFuYWdlci1hcGkiLCJtZXRob2RzIjpbIm10LW1hbmFnZXItYXBpOnJlc3Q6ZGVhbGluZzoqOioiLCJtdC1tYW5hZ2VyLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJiaWxsaW5nLWFwaSIsIm1ldGhvZHMiOlsiYmlsbGluZy1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfV0sImlnbm9yZVJhdGVMaW1pdHMiOmZhbHNlLCJ0b2tlbklkIjoiMjAyMTAyMTMiLCJpbXBlcnNvbmF0ZWQiOmZhbHNlLCJyZWFsVXNlcklkIjoiN2FiNTA2ODg5M2JhMzA3MWI3YWMxNDMyOWM0ZDVkN2YiLCJpYXQiOjE3NDQzMDQxNDYsImV4cCI6MTc1MjA4MDE0Nn0.Xu5y75qDYBewKFs483fLtxXabUFuFpLe-HtMS1JRdUo-GkKUdBFugCNiltwRbAOdY5PozQWWIhfaDLXD-5xW2gV04zCPcQohgj5nSWhkWcufv5P2Qre7SQoinPXIb6ZCV7PxpEtOgCf6sxrlKTjLoiJghrsUXJ66fWkC_CGxrrPrbe-tWYC7WlLPth9ec0q_K5x7BPKO5tJr1YqaLQYs-TJZkdRU2yzbyzvuKg-bK59G59iHSLlt6tECJ997MGr6Fj0u-zCFrQgrfaHE5n9l0BwKkK8jgatVsI23eRrJmV8ZVs7NFpnLs5GjnIwExZt8M8dBXJIp5UMfbj5eesdCwPWxfrASpy5C-6X8dHtmjto6pY9Jt7rhv23OESuXUFAx5FclAY3o9eeIR3Cfx9L14rYWoSkddux9aaGOe2BO9oq2pq4vSKFGC0s1Uy2ToLHin57HKedMDfKRKr267AgEAegKRz5e0iZDm9If1LoAExSFu4RI9IzKsF5b1CVAdpDC1WIuZPEek2Wt3C_puiVNkDWfcgCLB0i40YtpWWtoLC2pQ96ILyhMO3AOFDLU64BORVhd0GjUn91v_Ixg1Ojr08pBUUGTERWTqGK-KD7NPoWM2BrE1BptzvxkRV_-Z4IUMuWuW_EwmspG5SKQK8zLxD4qlmsMSgynYsn4No1uZb4"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "338b1756-bed1-4a03-9858-2c91e690efd9",
+      "name": "Comprobar Balance",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4580,
+        620
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "151a75e3-a311-48e4-b971-3d849215ede6",
+              "leftValue": "={{ $json.balance }}",
+              "rightValue": "={{ $('Parsear el Producto').item.json.balance }}",
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4800,
+        620
+      ],
+      "id": "6ac74c0e-9109-4aff-a064-562ffa5d3602",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log(\"nododododo\")\nconsole.log($input.first().json.data)\nfunction countStagesAndReturnPhase(jsonData) {\n  // Accedemos al array challenge_stages\n  const stages = jsonData.challenge_stages;\n    console.log(\"stages\",stages);\n  // Contamos el número de stages\n  const stageCount = stages.length;\n  \n  // Determinamos la fase basada en el número de stages\n  let phase;\n  if (stageCount === 3) {\n    phase = 1; // Si tiene 3 stages, retorna 1\n  } else if (stageCount === 2) {\n    phase = 2; // Si tiene 2 stages, retorna 2\n  } else if (stageCount === 1) {\n    phase = 3; // Si tiene 1 stage, retorna 3\n  } else {\n    phase = 0; // Valor por defecto para otros casos\n  }\n  \n  // Retornamos el objeto resultado\n   return  phase ;\n}\nreturn ({\"fase\": countStagesAndReturnPhase($input.first().json.data)});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        5460,
+        620
+      ],
+      "id": "a7be95c0-a7e4-4c57-b783-ce2477296ecc",
+      "name": "Definir phase1"
+    }
+  ],
+  "pinData": {
+    "Definir phase": [
+      {
+        "json": {
+          "id": 141,
+          "fase": 3
+        }
+      },
+      {
+        "json": {
+          "id": 149,
+          "fase": 0
+        }
+      },
+      {
+        "json": {
+          "id": 138,
+          "fase": 1
+        }
+      },
+      {
+        "json": {
+          "id": 148,
+          "fase": 3
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.zevenglobalfunding.com",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+            "content-length": "4963",
+            "accept": "*/*",
+            "accept-encoding": "gzip, br",
+            "accept-language": "es-PE,es;q=0.9",
+            "cdn-loop": "cloudflare; loops=1",
+            "cf-connecting-ip": "190.239.208.3",
+            "cf-ipcountry": "PE",
+            "cf-ray": "9426df2b0c111927-GRU",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/json",
+            "origin": "https://funding-metrix.zevenglobal.com",
+            "priority": "u=1, i",
+            "referer": "https://funding-metrix.zevenglobal.com/",
+            "sec-ch-ua": "\"Chromium\";v=\"136\", \"Google Chrome\";v=\"136\", \"Not.A/Brand\";v=\"99\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "cross-site",
+            "x-forwarded-for": "190.239.208.3, 172.68.18.154",
+            "x-forwarded-host": "n8n.zevenglobalfunding.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "e6c05b0fe480",
+            "x-real-ip": "172.68.18.154"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "id": 11859,
+            "parent_id": 0,
+            "status": "pending",
+            "currency": "USD",
+            "version": "9.8.5",
+            "prices_include_tax": false,
+            "date_created": "2025-05-19T14:51:48",
+            "date_modified": "2025-05-19T14:51:49",
+            "discount_total": "18.80",
+            "discount_tax": "0.00",
+            "shipping_total": "0.00",
+            "shipping_tax": "0.00",
+            "cart_tax": "0.00",
+            "total": "75.20",
+            "total_tax": "0.00",
+            "customer_id": 0,
+            "order_key": "wc_order_Og3qJsTxq33wQ",
+            "billing": {
+              "first_name": "Kevin Camilo",
+              "last_name": "Quintero Ascanio",
+              "company": "",
+              "address_1": "Cra8#12a19",
+              "address_2": "",
+              "city": "Ocaña",
+              "state": "CO-NSA",
+              "postcode": "205057",
+              "country": "CO",
+              "email": "qcamilo895@gmail.com",
+              "phone": "+573117157101"
+            },
+            "shipping": {
+              "first_name": "",
+              "last_name": "",
+              "company": "",
+              "address_1": "",
+              "address_2": "",
+              "city": "",
+              "state": "CO-NSA",
+              "postcode": "",
+              "country": "CO",
+              "phone": "+573117157101"
+            },
+            "payment_method": "cryptocloud",
+            "payment_method_title": "Pay with cryptocurrency",
+            "transaction_id": "",
+            "customer_ip_address": "191.156.244.1",
+            "customer_user_agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+            "created_via": "checkout",
+            "customer_note": "",
+            "date_completed": null,
+            "date_paid": null,
+            "cart_hash": "9effb43fa196542138ce8e20b633f4a1",
+            "number": "11859",
+            "meta_data": [
+              {
+                "id": 14600,
+                "key": "_document_id",
+                "value": "disj753qm2c72jfidilqo7us"
+              },
+              {
+                "id": 14601,
+                "key": "_user_id",
+                "value": "wp2ztoage7rmx971lqxmecml"
+              },
+              {
+                "id": 14617,
+                "key": "_wc_order_attribution_device_type",
+                "value": "Mobile"
+              },
+              {
+                "id": 14608,
+                "key": "_wc_order_attribution_referrer",
+                "value": "https://funding-metrix.zevenglobal.com/"
+              },
+              {
+                "id": 14615,
+                "key": "_wc_order_attribution_session_count",
+                "value": "1"
+              },
+              {
+                "id": 14612,
+                "key": "_wc_order_attribution_session_entry",
+                "value": "https://funding.zevenglobal.com/checkout/?add-to-cart=11257&quantity=1&document_id=disj753qm2c72jfidilqo7us&user_id=wp2ztoage7rmx971lqxmecml&billing_email=qcamilo895@gmail.com"
+              },
+              {
+                "id": 14614,
+                "key": "_wc_order_attribution_session_pages",
+                "value": "1"
+              },
+              {
+                "id": 14613,
+                "key": "_wc_order_attribution_session_start_time",
+                "value": "2025-05-19 19:50:31"
+              },
+              {
+                "id": 14607,
+                "key": "_wc_order_attribution_source_type",
+                "value": "referral"
+              },
+              {
+                "id": 14616,
+                "key": "_wc_order_attribution_user_agent",
+                "value": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36"
+              },
+              {
+                "id": 14611,
+                "key": "_wc_order_attribution_utm_content",
+                "value": "/"
+              },
+              {
+                "id": 14610,
+                "key": "_wc_order_attribution_utm_medium",
+                "value": "referral"
+              },
+              {
+                "id": 14609,
+                "key": "_wc_order_attribution_utm_source",
+                "value": "funding-metrix.zevenglobal.com"
+              },
+              {
+                "id": 14619,
+                "key": "_wfacp_post_id",
+                "value": "10343"
+              },
+              {
+                "id": 14603,
+                "key": "_wfacp_report_data",
+                "value": {
+                  "wfacp_total": "75.20",
+                  "funnel_id": "2"
+                }
+              },
+              {
+                "id": 14620,
+                "key": "_wfacp_source",
+                "value": "https://funding.zevenglobal.com/checkouts/checkout/"
+              },
+              {
+                "id": 14621,
+                "key": "_wfacp_timezone",
+                "value": "America/Bogota"
+              },
+              {
+                "id": 14606,
+                "key": "_wffn_tracking_data",
+                "value": {
+                  "utm_source": "",
+                  "utm_medium": "",
+                  "utm_campaign": "",
+                  "utm_term": "",
+                  "utm_content": "",
+                  "first_landing_url": "/checkout/",
+                  "browser": "Chrome",
+                  "first_click": "2025-5-19 11:28:56",
+                  "device": "mobile",
+                  "click_id": "",
+                  "referrer": "funding-metrix.zevenglobal.com",
+                  "journey": "",
+                  "source_id": 0
+                }
+              },
+              {
+                "id": 14602,
+                "key": "_wfob_report_data",
+                "value": []
+              },
+              {
+                "id": 14618,
+                "key": "_woofunnel_cid",
+                "value": "92"
+              },
+              {
+                "id": 14599,
+                "key": "is_vat_exempt",
+                "value": "no"
+              }
+            ],
+            "line_items": [
+              {
+                "id": 781,
+                "name": "10,000 USD - Direct Funding, Regular",
+                "product_id": 11250,
+                "variation_id": 11257,
+                "quantity": 1,
+                "tax_class": "",
+                "subtotal": "94.00",
+                "subtotal_tax": "0.00",
+                "total": "75.20",
+                "total_tax": "0.00",
+                "taxes": [],
+                "meta_data": [
+                  {
+                    "id": 7167,
+                    "key": "step",
+                    "value": "Direct Funding",
+                    "display_key": "step",
+                    "display_value": "Direct Funding"
+                  },
+                  {
+                    "id": 7168,
+                    "key": "subcategory",
+                    "value": "Regular",
+                    "display_key": "subcategory",
+                    "display_value": "Regular"
+                  }
+                ],
+                "sku": "10kproduct",
+                "price": 75.2,
+                "image": {
+                  "id": 11393,
+                  "src": "https://funding.zevenglobal.com/wp-content/uploads/2025/04/Sin-titulo-1-4.png"
+                },
+                "parent_name": "10,000 USD"
+              }
+            ],
+            "tax_lines": [],
+            "shipping_lines": [],
+            "fee_lines": [],
+            "coupon_lines": [
+              {
+                "id": 782,
+                "code": "yepez21",
+                "discount": "18.8",
+                "discount_tax": "0",
+                "meta_data": [
+                  {
+                    "id": 7171,
+                    "key": "coupon_info",
+                    "value": "[11494,\"yepez21\",\"percent\",20]",
+                    "display_key": "coupon_info",
+                    "display_value": "[11494,\"yepez21\",\"percent\",20]"
+                  }
+                ],
+                "discount_type": "percent",
+                "nominal_amount": 20,
+                "free_shipping": false
+              }
+            ],
+            "refunds": [],
+            "payment_url": "https://funding.zevenglobal.com/checkout/order-pay/11859/?pay_for_order=true&key=wc_order_Og3qJsTxq33wQ",
+            "is_editable": true,
+            "needs_payment": true,
+            "needs_processing": true,
+            "date_created_gmt": "2025-05-19T19:51:48",
+            "date_modified_gmt": "2025-05-19T19:51:49",
+            "date_completed_gmt": null,
+            "date_paid_gmt": null,
+            "currency_symbol": "$",
+            "_links": {
+              "self": [
+                {
+                  "href": "https://funding.zevenglobal.com/wp-json/wc/v3/orders/11859",
+                  "targetHints": {
+                    "allow": [
+                      "GET",
+                      "POST",
+                      "PUT",
+                      "PATCH",
+                      "DELETE"
+                    ]
+                  }
+                }
+              ],
+              "collection": [
+                {
+                  "href": "https://funding.zevenglobal.com/wp-json/wc/v3/orders"
+                }
+              ],
+              "email_templates": [
+                {
+                  "embeddable": true,
+                  "href": "https://funding.zevenglobal.com/wp-json/wc/v3/orders/11859/actions/email_templates"
+                }
+              ]
+            }
+          },
+          "webhookUrl": "https://n8n.zevenglobalfunding.com/webhook/6ef1aa92-4aff-413b-b40c-850ebeae8f05",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n_workflows",
+  "repo_owner": "EliteCodeDev",
+  "repo_path": "https://github.com/EliteCodeDev/n8n_workflows/",
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "psoEwVAjpwuKHyK1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-05-21T15:22:50.000Z",
+  "versionId": "90cb03ba-525d-46fe-9bb0-49bf44462c41"
+}
