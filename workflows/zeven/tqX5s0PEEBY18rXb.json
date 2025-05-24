@@ -1,0 +1,1175 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Global Constants",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Global Constants": {
+      "main": [
+        [
+          {
+            "node": "Obtener Challenge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crear Tracker Meta": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener Challenge": {
+      "main": [
+        [
+          {
+            "node": "Obtener Parámetros",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Iniciar Challenge": {
+      "main": [
+        []
+      ]
+    },
+    "Crypto": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Esperar 60 segundos ": {
+      "main": [
+        [
+          {
+            "node": "Crear Cuenta Meta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retrazo en creación?": {
+      "main": [
+        [
+          {
+            "node": "Esperar 60 segundos ",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Actualizar Broker account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crear Cuenta Meta": {
+      "main": [
+        [
+          {
+            "node": "Retrazo en creación?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "deploy cuenta": {
+      "main": [
+        [
+          {
+            "node": "Escoger stage adecuado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Actualizar Broker account": {
+      "main": [
+        [
+          {
+            "node": "Escoger Broker",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Escoger stage adecuado": {
+      "main": [
+        [
+          {
+            "node": "Obtener Parámetro ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener Broker Account": {
+      "main": [
+        [
+          {
+            "node": "Crypto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verificamos estadisticas": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Iniciar Challenge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Crear Cuenta Meta",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Escoger Broker",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "verificamos estadisticas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Escoger Broker": {
+      "main": [
+        [
+          {
+            "node": "deploy cuenta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Iniciar Challenge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener Parámetro ": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Colocar Tracker": {
+      "main": [
+        [
+          {
+            "node": "Escoger Tracker",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Escoger Tracker": {
+      "main": [
+        [
+          {
+            "node": "verificamos estadisticas1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crear Tracker Meta1": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "verificamos estadisticas1": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Iniciar Challenge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Colocar Tracker",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Iniciar Challenge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Crear Tracker Meta1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Escoger Tracker",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener Parámetros": {
+      "main": [
+        [
+          {
+            "node": "Obtener Broker Account",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Iniciar Challenge1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-03-18T20:33:24.735Z",
+  "id": "tqX5s0PEEBY18rXb",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "APP: Iniciar Challenge",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "iniciar-challenge",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -620,
+        -20
+      ],
+      "id": "9e348b60-f207-4eb7-92a9-8fdfa618c412",
+      "name": "Webhook",
+      "webhookId": "c37dbff3-3d4a-4872-8f04-6df6badd7183"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-globals.globalConstants",
+      "typeVersion": 1,
+      "position": [
+        -360,
+        -20
+      ],
+      "id": "8eab5ce2-6bb0-4b47-8e44-0bd83390cf89",
+      "name": "Global Constants",
+      "credentials": {
+        "globalConstantsApi": {
+          "id": "xD5yrF0WiFvNSDFv",
+          "name": "Global Constants account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "noData",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        5680,
+        -20
+      ],
+      "id": "ec9e5ef8-e7e2-43a9-a713-3f7d60e2b696",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://risk-management-api-v1.new-york.agiliumtrade.ai/users/current/accounts/{{ $('Escoger Broker').item.json.data.idMeta }}/trackers",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "auth-token",
+              "value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsInBlcm1pc3Npb25zIjpbXSwiYWNjZXNzUnVsZXMiOlt7ImlkIjoidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpIiwibWV0aG9kcyI6WyJ0cmFkaW5nLWFjY291bnQtbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZXN0LWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1ycGMtYXBpIiwibWV0aG9kcyI6WyJtZXRhYXBpLWFwaTp3czpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZWFsLXRpbWUtc3RyZWFtaW5nLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFzdGF0cy1hcGkiLCJtZXRob2RzIjpbIm1ldGFzdGF0cy1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoicmlzay1tYW5hZ2VtZW50LWFwaSIsIm1ldGhvZHMiOlsicmlzay1tYW5hZ2VtZW50LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJjb3B5ZmFjdG9yeS1hcGkiLCJtZXRob2RzIjpbImNvcHlmYWN0b3J5LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJtdC1tYW5hZ2VyLWFwaSIsIm1ldGhvZHMiOlsibXQtbWFuYWdlci1hcGk6cmVzdDpkZWFsaW5nOio6KiIsIm10LW1hbmFnZXItYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6ImJpbGxpbmctYXBpIiwibWV0aG9kcyI6WyJiaWxsaW5nLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19XSwiaWdub3JlUmF0ZUxpbWl0cyI6ZmFsc2UsInRva2VuSWQiOiIyMDIxMDIxMyIsImltcGVyc29uYXRlZCI6ZmFsc2UsInJlYWxVc2VySWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsImlhdCI6MTczNzc2MTAzNn0.JxymmDtZAD6n-IB-BwwZH4aNJbW9S9g_ksrpKfyOFfRXR2-vP1DzkTq6i0fqopgxfLNSJDFgPCX6EJhoQFWSSb85TWIEatwgNSBczhTk-CM5q1zylPv_r2zKLmyPIJs1Juav93ImWuy7yOFhUKtwDbg_jtju53XSg1UcSEqL50ojnZVMg6zEMUfT8fU-79Z_M4TB_5TUERhOXeiAhgqhW-OLh65CoU-JoH-wJNhzFNQM4_-ymRSCvvXfT5MHmVzk3oUmPiw381nn_cqmi9y9hLbxHHYoIo5GMOZZf0vNjcbPqFHTgJ6j8Uqe_i2uWqNb9ZcXv066wAkPaFn0um3PsChQUSeC_Ng05n965RPn1soGd4AKU9Kv3gim6Z1RBg6-AnN19QsT2PJluy5CiNoxcchjdu3V_s3cTUCEAhYy9xcp04MqkgIjnLGHZFpQdfEckRbdnaLISJTXt09t7Ei1aNqvwW-5KS__obio2cX1Pnj7L5tl9UzBm55hCpR9loBeIsI2mbYxlHId1UO14Cc6CPFxbh7FMVNGbxuALMxmmrEEQe1JJy3nTMKLqdDOyihYkZnU_qpfzuR-rlgwQ4XGKWRx10JHVlXnrGAuak1P75Bhw_ZD0XxC9V6i_WsJOdCXj4hrBgHTdtGskX4SW4EUpmspOvWqovJbh2ick8yTcgU"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"name\": \"Tracker_{{ $('Obtener Challenge').item.json.data.documentId }}\",\n  \"startBrokerTime\": \"{{ new Date().toISOString().replace(\"T\", \" \").replace(\"Z\", \"\") }}\",\n  \"endBrokerTime\": \"{{ new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().replace(\"T\", \" \").replace(\"Z\", \"\") }}\",\n  \"period\": \"day\",\n  \"relativeDrawdownThreshold\": {{ $json.data[0].maximumTotalLoss/100}},\n  \"relativeProfitThreshold\": {{ $json.data[0].profitTarget/100 }}\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3820,
+        680
+      ],
+      "id": "a42dde86-cd1e-49c6-9131-614d5bc38455",
+      "name": "Crear Tracker Meta"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/challenges/{{ $json.body.documentId }}?populate[challenge_relation][populate]=*",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -100,
+        -20
+      ],
+      "id": "e976c5c5-f812-4345-98f3-8abfaaf8b9f0",
+      "name": "Obtener Challenge",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $('Global Constants').item.json.constants.STRAPI_URL }}/challenges/{{ $('Obtener Challenge').item.json.data.documentId }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "= {\n  \"data\": {\n    \"startDate\": \"{{ new Date().toISOString() }}\",\n    \"result\": \"progress\",\n    \"challengeId\": \"{{ $('Crear Tracker Meta').item.json.id }}\",\n      \"dynamic_balance\":{{ $('Escoger Broker').item.json.data.balance }},\n    \"metadata\":{{ JSON.stringify($('Edit Fields').item.json.data) || {} }}\n}\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        5520,
+        840
+      ],
+      "id": "f21ac195-3f65-4c61-aaca-6fd2625cc1bd",
+      "name": "Iniciar Challenge",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=  https://mt-provisioning-api-v1.agiliumtrade.agiliumtrade.ai/users/current/accounts/{{ $('Escoger Broker').item.json.data.idMeta }}/deploy",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "auth-token",
+              "value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsInBlcm1pc3Npb25zIjpbXSwiYWNjZXNzUnVsZXMiOlt7ImlkIjoidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpIiwibWV0aG9kcyI6WyJ0cmFkaW5nLWFjY291bnQtbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZXN0LWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1ycGMtYXBpIiwibWV0aG9kcyI6WyJtZXRhYXBpLWFwaTp3czpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZWFsLXRpbWUtc3RyZWFtaW5nLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFzdGF0cy1hcGkiLCJtZXRob2RzIjpbIm1ldGFzdGF0cy1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoicmlzay1tYW5hZ2VtZW50LWFwaSIsIm1ldGhvZHMiOlsicmlzay1tYW5hZ2VtZW50LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJjb3B5ZmFjdG9yeS1hcGkiLCJtZXRob2RzIjpbImNvcHlmYWN0b3J5LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJtdC1tYW5hZ2VyLWFwaSIsIm1ldGhvZHMiOlsibXQtbWFuYWdlci1hcGk6cmVzdDpkZWFsaW5nOio6KiIsIm10LW1hbmFnZXItYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6ImJpbGxpbmctYXBpIiwibWV0aG9kcyI6WyJiaWxsaW5nLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19XSwiaWdub3JlUmF0ZUxpbWl0cyI6ZmFsc2UsInRva2VuSWQiOiIyMDIxMDIxMyIsImltcGVyc29uYXRlZCI6ZmFsc2UsInJlYWxVc2VySWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsImlhdCI6MTczNzc2MTAzNn0.JxymmDtZAD6n-IB-BwwZH4aNJbW9S9g_ksrpKfyOFfRXR2-vP1DzkTq6i0fqopgxfLNSJDFgPCX6EJhoQFWSSb85TWIEatwgNSBczhTk-CM5q1zylPv_r2zKLmyPIJs1Juav93ImWuy7yOFhUKtwDbg_jtju53XSg1UcSEqL50ojnZVMg6zEMUfT8fU-79Z_M4TB_5TUERhOXeiAhgqhW-OLh65CoU-JoH-wJNhzFNQM4_-ymRSCvvXfT5MHmVzk3oUmPiw381nn_cqmi9y9hLbxHHYoIo5GMOZZf0vNjcbPqFHTgJ6j8Uqe_i2uWqNb9ZcXv066wAkPaFn0um3PsChQUSeC_Ng05n965RPn1soGd4AKU9Kv3gim6Z1RBg6-AnN19QsT2PJluy5CiNoxcchjdu3V_s3cTUCEAhYy9xcp04MqkgIjnLGHZFpQdfEckRbdnaLISJTXt09t7Ei1aNqvwW-5KS__obio2cX1Pnj7L5tl9UzBm55hCpR9loBeIsI2mbYxlHId1UO14Cc6CPFxbh7FMVNGbxuALMxmmrEEQe1JJy3nTMKLqdDOyihYkZnU_qpfzuR-rlgwQ4XGKWRx10JHVlXnrGAuak1P75Bhw_ZD0XxC9V6i_WsJOdCXj4hrBgHTdtGskX4SW4EUpmspOvWqovJbh2ick8yTcgU"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2500,
+        -20
+      ],
+      "id": "d2b62814-495d-41fe-a2e9-a6b6c0ba9119",
+      "name": "deploy cuenta"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://mt-provisioning-api-v1.agiliumtrade.agiliumtrade.ai/users/current/provisioning-profiles/default/mt4-demo-accounts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "auth-token",
+              "value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsInBlcm1pc3Npb25zIjpbXSwiYWNjZXNzUnVsZXMiOlt7ImlkIjoidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpIiwibWV0aG9kcyI6WyJ0cmFkaW5nLWFjY291bnQtbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZXN0LWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1ycGMtYXBpIiwibWV0aG9kcyI6WyJtZXRhYXBpLWFwaTp3czpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZWFsLXRpbWUtc3RyZWFtaW5nLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFzdGF0cy1hcGkiLCJtZXRob2RzIjpbIm1ldGFzdGF0cy1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoicmlzay1tYW5hZ2VtZW50LWFwaSIsIm1ldGhvZHMiOlsicmlzay1tYW5hZ2VtZW50LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJjb3B5ZmFjdG9yeS1hcGkiLCJtZXRob2RzIjpbImNvcHlmYWN0b3J5LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJtdC1tYW5hZ2VyLWFwaSIsIm1ldGhvZHMiOlsibXQtbWFuYWdlci1hcGk6cmVzdDpkZWFsaW5nOio6KiIsIm10LW1hbmFnZXItYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6ImJpbGxpbmctYXBpIiwibWV0aG9kcyI6WyJiaWxsaW5nLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19XSwiaWdub3JlUmF0ZUxpbWl0cyI6ZmFsc2UsInRva2VuSWQiOiIyMDIxMDIxMyIsImltcGVyc29uYXRlZCI6ZmFsc2UsInJlYWxVc2VySWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsImlhdCI6MTczNzc2MTAzNn0.JxymmDtZAD6n-IB-BwwZH4aNJbW9S9g_ksrpKfyOFfRXR2-vP1DzkTq6i0fqopgxfLNSJDFgPCX6EJhoQFWSSb85TWIEatwgNSBczhTk-CM5q1zylPv_r2zKLmyPIJs1Juav93ImWuy7yOFhUKtwDbg_jtju53XSg1UcSEqL50ojnZVMg6zEMUfT8fU-79Z_M4TB_5TUERhOXeiAhgqhW-OLh65CoU-JoH-wJNhzFNQM4_-ymRSCvvXfT5MHmVzk3oUmPiw381nn_cqmi9y9hLbxHHYoIo5GMOZZf0vNjcbPqFHTgJ6j8Uqe_i2uWqNb9ZcXv066wAkPaFn0um3PsChQUSeC_Ng05n965RPn1soGd4AKU9Kv3gim6Z1RBg6-AnN19QsT2PJluy5CiNoxcchjdu3V_s3cTUCEAhYy9xcp04MqkgIjnLGHZFpQdfEckRbdnaLISJTXt09t7Ei1aNqvwW-5KS__obio2cX1Pnj7L5tl9UzBm55hCpR9loBeIsI2mbYxlHId1UO14Cc6CPFxbh7FMVNGbxuALMxmmrEEQe1JJy3nTMKLqdDOyihYkZnU_qpfzuR-rlgwQ4XGKWRx10JHVlXnrGAuak1P75Bhw_ZD0XxC9V6i_WsJOdCXj4hrBgHTdtGskX4SW4EUpmspOvWqovJbh2ick8yTcgU"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"balance\": 10000,\n  \"leverage\": 100,\n  \"serverName\": \"Axi-US03-Demo\",\n  \"accountType\": \"USDSTANDARD\",\n  \"name\": \"Neo Capital\",\n  \"email\": \"soporte@neocapitalfunding.com\",\n  \"phone\": \"+51925079147\"\n} ",
+        "options": {}
+      },
+      "id": "1a029244-3ae7-43ec-9fd3-350c9c9f6ba2",
+      "name": "Crea cuenta demo",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2920,
+        480
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "action": "generate",
+        "encodingType": "base64"
+      },
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        940,
+        -20
+      ],
+      "id": "b753ba0f-57b9-4616-82b0-75ddeb179926",
+      "name": "Crypto"
+    },
+    {
+      "parameters": {
+        "amount": 60
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1860,
+        -220
+      ],
+      "id": "c020afdf-7370-4fdc-bf5a-dd8f1d8735cc",
+      "name": "Esperar 60 segundos ",
+      "webhookId": "5993560e-e583-49ba-8b7d-988c4f8129d4"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "432a586b-53ae-4882-a1b0-5f512086e0aa",
+              "leftValue": "={{ $json.message }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1860,
+        -400
+      ],
+      "id": "9465910f-8cd4-4ebf-b408-c38eeb64ef72",
+      "name": "Retrazo en creación?"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://mt-provisioning-api-v1.agiliumtrade.agiliumtrade.ai/users/current/accounts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "auth-token",
+              "value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsInBlcm1pc3Npb25zIjpbXSwiYWNjZXNzUnVsZXMiOlt7ImlkIjoidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpIiwibWV0aG9kcyI6WyJ0cmFkaW5nLWFjY291bnQtbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZXN0LWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1ycGMtYXBpIiwibWV0aG9kcyI6WyJtZXRhYXBpLWFwaTp3czpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZWFsLXRpbWUtc3RyZWFtaW5nLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFzdGF0cy1hcGkiLCJtZXRob2RzIjpbIm1ldGFzdGF0cy1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoicmlzay1tYW5hZ2VtZW50LWFwaSIsIm1ldGhvZHMiOlsicmlzay1tYW5hZ2VtZW50LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJjb3B5ZmFjdG9yeS1hcGkiLCJtZXRob2RzIjpbImNvcHlmYWN0b3J5LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJtdC1tYW5hZ2VyLWFwaSIsIm1ldGhvZHMiOlsibXQtbWFuYWdlci1hcGk6cmVzdDpkZWFsaW5nOio6KiIsIm10LW1hbmFnZXItYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6ImJpbGxpbmctYXBpIiwibWV0aG9kcyI6WyJiaWxsaW5nLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19XSwiaWdub3JlUmF0ZUxpbWl0cyI6ZmFsc2UsInRva2VuSWQiOiIyMDIxMDIxMyIsImltcGVyc29uYXRlZCI6ZmFsc2UsInJlYWxVc2VySWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsImlhdCI6MTczNzc2MTAzNn0.JxymmDtZAD6n-IB-BwwZH4aNJbW9S9g_ksrpKfyOFfRXR2-vP1DzkTq6i0fqopgxfLNSJDFgPCX6EJhoQFWSSb85TWIEatwgNSBczhTk-CM5q1zylPv_r2zKLmyPIJs1Juav93ImWuy7yOFhUKtwDbg_jtju53XSg1UcSEqL50ojnZVMg6zEMUfT8fU-79Z_M4TB_5TUERhOXeiAhgqhW-OLh65CoU-JoH-wJNhzFNQM4_-ymRSCvvXfT5MHmVzk3oUmPiw381nn_cqmi9y9hLbxHHYoIo5GMOZZf0vNjcbPqFHTgJ6j8Uqe_i2uWqNb9ZcXv066wAkPaFn0um3PsChQUSeC_Ng05n965RPn1soGd4AKU9Kv3gim6Z1RBg6-AnN19QsT2PJluy5CiNoxcchjdu3V_s3cTUCEAhYy9xcp04MqkgIjnLGHZFpQdfEckRbdnaLISJTXt09t7Ei1aNqvwW-5KS__obio2cX1Pnj7L5tl9UzBm55hCpR9loBeIsI2mbYxlHId1UO14Cc6CPFxbh7FMVNGbxuALMxmmrEEQe1JJy3nTMKLqdDOyihYkZnU_qpfzuR-rlgwQ4XGKWRx10JHVlXnrGAuak1P75Bhw_ZD0XxC9V6i_WsJOdCXj4hrBgHTdtGskX4SW4EUpmspOvWqovJbh2ick8yTcgU"
+            },
+            {
+              "name": "transaction-id",
+              "value": "={{ $json.data }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={ \n\"login\":\"{{ $('Obtener Broker Account').item.json.data.broker_account.login }}\",\n\"password\":\"{{ $('Obtener Broker Account').item.json.data.broker_account.password }}\",\n\"name\":\"challenge-{{ $('Obtener Broker Account').item.json.data.broker_account.login  }}\",\n\"server\":\"{{ $('Obtener Broker Account').item.json.data.broker_account.server }}\",\n\"platform\":\"{{ $('Obtener Broker Account').item.json.data.broker_account.platform }}\",\n\"magic\":123456,\n\"riskManagementApiEnabled\":true,\n\"metastatsApiEnabled\":true\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1640,
+        -400
+      ],
+      "id": "dbfb2614-15f3-4a77-8c07-ea92595d5330",
+      "name": "Crear Cuenta Meta"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/broker-accounts/{{ $('Obtener Broker Account').item.json.data.broker_account.documentId }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"data\":{\n    \"idMeta\":\"{{ $('Crear Cuenta Meta').item.json.id }}\"\n  }\n} ",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2140,
+        -380
+      ],
+      "id": "0ff0ce8b-e06e-4303-b1c8-c0615866656a",
+      "name": "Actualizar Broker account",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Obtenemos la fase actual del \"Loop Over Items\"\nconst currentPhase = $('Obtener Broker Account').first().json.data.phase;\n\n// Obtenemos los stages disponibles\nconst stages = $('Obtener Challenge').first().json.data.challenge_relation.challenge_stages;\nconst totalStages = stages.length;\n\nlet stageIndex = 0;\n\nif (totalStages === 1) {\n  // Si solo hay una fase, siempre es la primera (índice 0)\n  stageIndex = 0;\n} else if (totalStages === 2) {\n  // Si hay dos fases:\n  // - Si la fase actual es 1 o 2, usamos el índice 0\n  // - Si la fase actual es 3, usamos el índice 1\n  stageIndex = (currentPhase === 3 ? 1 : 0);\n} else if (totalStages === 3) {\n  // Si hay tres fases, el índice es la fase actual - 1\n  stageIndex = currentPhase - 1;\n} else {\n  // Para cualquier otro caso, aseguramos que no excedamos el total de fases disponibles\n  stageIndex = Math.min(currentPhase - 1, totalStages - 1);\n}\n\n// Devolvemos el stage correspondiente\nreturn stages[stageIndex];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2700,
+        -20
+      ],
+      "id": "bed186f3-03bb-4a40-9b08-3cb7342a80bd",
+      "name": "Escoger stage adecuado"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/challenges/{{ $('Obtener Challenge').item.json.data.documentId }}?populate=*",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        -20
+      ],
+      "id": "93f8bc56-0110-4afe-80a8-7388b1e3e951",
+      "name": "Obtener Broker Account",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://web.neocapitalfunding.com/api/meta-stats/{{ $('Escoger Broker').item.json.data.idMeta }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "auth-token",
+              "value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsInBlcm1pc3Npb25zIjpbXSwiYWNjZXNzUnVsZXMiOlt7ImlkIjoidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpIiwibWV0aG9kcyI6WyJ0cmFkaW5nLWFjY291bnQtbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZXN0LWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1ycGMtYXBpIiwibWV0aG9kcyI6WyJtZXRhYXBpLWFwaTp3czpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZWFsLXRpbWUtc3RyZWFtaW5nLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFzdGF0cy1hcGkiLCJtZXRob2RzIjpbIm1ldGFzdGF0cy1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoicmlzay1tYW5hZ2VtZW50LWFwaSIsIm1ldGhvZHMiOlsicmlzay1tYW5hZ2VtZW50LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJjb3B5ZmFjdG9yeS1hcGkiLCJtZXRob2RzIjpbImNvcHlmYWN0b3J5LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJtdC1tYW5hZ2VyLWFwaSIsIm1ldGhvZHMiOlsibXQtbWFuYWdlci1hcGk6cmVzdDpkZWFsaW5nOio6KiIsIm10LW1hbmFnZXItYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6ImJpbGxpbmctYXBpIiwibWV0aG9kcyI6WyJiaWxsaW5nLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19XSwiaWdub3JlUmF0ZUxpbWl0cyI6ZmFsc2UsInRva2VuSWQiOiIyMDIxMDIxMyIsImltcGVyc29uYXRlZCI6ZmFsc2UsInJlYWxVc2VySWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsImlhdCI6MTczNzc2MTAzNn0.JxymmDtZAD6n-IB-BwwZH4aNJbW9S9g_ksrpKfyOFfRXR2-vP1DzkTq6i0fqopgxfLNSJDFgPCX6EJhoQFWSSb85TWIEatwgNSBczhTk-CM5q1zylPv_r2zKLmyPIJs1Juav93ImWuy7yOFhUKtwDbg_jtju53XSg1UcSEqL50ojnZVMg6zEMUfT8fU-79Z_M4TB_5TUERhOXeiAhgqhW-OLh65CoU-JoH-wJNhzFNQM4_-ymRSCvvXfT5MHmVzk3oUmPiw381nn_cqmi9y9hLbxHHYoIo5GMOZZf0vNjcbPqFHTgJ6j8Uqe_i2uWqNb9ZcXv066wAkPaFn0um3PsChQUSeC_Ng05n965RPn1soGd4AKU9Kv3gim6Z1RBg6-AnN19QsT2PJluy5CiNoxcchjdu3V_s3cTUCEAhYy9xcp04MqkgIjnLGHZFpQdfEckRbdnaLISJTXt09t7Ei1aNqvwW-5KS__obio2cX1Pnj7L5tl9UzBm55hCpR9loBeIsI2mbYxlHId1UO14Cc6CPFxbh7FMVNGbxuALMxmmrEEQe1JJy3nTMKLqdDOyihYkZnU_qpfzuR-rlgwQ4XGKWRx10JHVlXnrGAuak1P75Bhw_ZD0XxC9V6i_WsJOdCXj4hrBgHTdtGskX4SW4EUpmspOvWqovJbh2ick8yTcgU"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4640,
+        760
+      ],
+      "id": "19a065a3-58dd-4734-8ccd-f120b1310416",
+      "name": "verificamos estadisticas",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"data\": {\n    \"metaId\":\"{{ $('Escoger Broker').item.json.data.idMeta }}\",\n    \"metrics\":{{ JSON.stringify($('verificamos estadisticas').item.json.metrics) }},\n    \"equityChart\":{{ JSON.stringify($('verificamos estadisticas').item.json.equityChart) }},\n    \"broker_account\":{{ JSON.stringify($('Escoger Broker').item.json.data) }},\n    \"challenge_stages\":{{ JSON.stringify($('Obtener Challenge').first().json.data.challenge_relation.challenge_stages) }}\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        5200,
+        640
+      ],
+      "id": "1673c5b5-1508-44cb-b367-2926aec833ad",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "fea6cb6c-ed97-4ff5-8a9f-b939dcb26dc0",
+              "leftValue": "={{ $('Obtener Broker Account').item.json.data.broker_account.idMeta }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1200,
+        -20
+      ],
+      "id": "862305e8-3af4-45b6-834e-5cdfc54db0a6",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "amount": 20
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        4440,
+        760
+      ],
+      "id": "28804ca8-8053-4eb6-bd63-4d2bc03c9d0a",
+      "name": "Wait",
+      "webhookId": "b1c13c1e-ff2e-4ed5-a173-272a77400b4b"
+    },
+    {
+      "parameters": {
+        "jsCode": "let data;\n\ntry {\n  // Intentamos leer del nodo \"Actualizar Broker account\"\n  const id1 = $(\"Actualizar Broker account\").first().json.data.idMeta;\n  // Si existe, guardamos esos datos\n  if (id1) {\n    data = $(\"Actualizar Broker account\").first().json.data;\n  }\n} catch (error) {\n  // Si falla, significa que no se ejecutó o no tenía esos datos\n  // Podemos dejarlo pasar o hacer un console.log(error)\n}\n\ntry {\n  // Intentamos leer del nodo \"Obtener Broker Account\"\n  const id2 = $(\"Obtener Broker Account\").first().json.data.broker_account.idMeta;\n  // Si existe, guardamos esos datos\n  if (id2) {\n    data = $('Obtener Broker Account').first().json.data.broker_account;\n  }\n} catch (error) {\n  // Igualmente, si falla, es porque no se ejecutó.\n}\n\n// Al final devolvemos lo que hayamos encontrado\nreturn { data };\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2300,
+        -20
+      ],
+      "id": "44c1b766-4b71-4782-813c-9768802c1e4d",
+      "name": "Escoger Broker"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "9360a5a0-0a8c-424b-b110-3a9b5247b3d7",
+              "leftValue": "={{$('verificamos estadisticas').item.json.success}}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4900,
+        760
+      ],
+      "id": "c972a3bc-c9f0-43ef-8c68-69d0a14255ea",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/stage-parameters?populate=*&filters[challenge_stage][id]={{ $json.id }}&filters[challenge_relation][documentId]={{ $('Obtener Broker Account').item.json.data.challenge_relation.documentId }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2900,
+        -20
+      ],
+      "id": "1f75b466-4dba-4109-a20e-207a75a90caf",
+      "name": "Obtener Parámetro ",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/challenges/{{ $('Obtener Challenge').item.json.data.documentId }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "= {\n  \"data\": {\n    \"challengeId\": \"{{ $('Crear Tracker Meta1').item.json.id }}\"\n}\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3880,
+        -160
+      ],
+      "id": "a5784e3e-d613-4848-bce0-07c0dbdc7324",
+      "name": "Colocar Tracker",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "let data;\n\ntry {\n  // Intentamos leer del nodo \"Actualizar Broker account\"\n  const id1 = $input.first().json.data.challengeId;\n  // Si existe, guardamos esos datos\n  if (id1) {\n    data = id1\n  }\n} catch (error) {\n  // Si falla, significa que no se ejecutó o no tenía esos datos\n  // Podemos dejarlo pasar o hacer un console.log(error)\n}\n\ntry {\n  // Intentamos leer del nodo \"Obtener Broker Account\"\n  const id2 = $('Obtener Challenge').first().json.data.challengeId \n  // Si existe, guardamos esos datos\n  if (id2) {\n    data = id2\n  }\n} catch (error) {\n  // Igualmente, si falla, es porque no se ejecutó.\n}\n\n// Al final devolvemos lo que hayamos encontrado\nreturn { data };\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        4200,
+        -40
+      ],
+      "id": "5b75f938-c0fd-4621-b0bb-e08aeb9d001b",
+      "name": "Escoger Tracker"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://risk-management-api-v1.new-york.agiliumtrade.ai/users/current/accounts/{{ $('Escoger Broker').item.json.data.idMeta }}/trackers",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "auth-token",
+              "value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsInBlcm1pc3Npb25zIjpbXSwiYWNjZXNzUnVsZXMiOlt7ImlkIjoidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpIiwibWV0aG9kcyI6WyJ0cmFkaW5nLWFjY291bnQtbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZXN0LWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1ycGMtYXBpIiwibWV0aG9kcyI6WyJtZXRhYXBpLWFwaTp3czpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZWFsLXRpbWUtc3RyZWFtaW5nLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFzdGF0cy1hcGkiLCJtZXRob2RzIjpbIm1ldGFzdGF0cy1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoicmlzay1tYW5hZ2VtZW50LWFwaSIsIm1ldGhvZHMiOlsicmlzay1tYW5hZ2VtZW50LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJjb3B5ZmFjdG9yeS1hcGkiLCJtZXRob2RzIjpbImNvcHlmYWN0b3J5LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJtdC1tYW5hZ2VyLWFwaSIsIm1ldGhvZHMiOlsibXQtbWFuYWdlci1hcGk6cmVzdDpkZWFsaW5nOio6KiIsIm10LW1hbmFnZXItYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6ImJpbGxpbmctYXBpIiwibWV0aG9kcyI6WyJiaWxsaW5nLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19XSwiaWdub3JlUmF0ZUxpbWl0cyI6ZmFsc2UsInRva2VuSWQiOiIyMDIxMDIxMyIsImltcGVyc29uYXRlZCI6ZmFsc2UsInJlYWxVc2VySWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsImlhdCI6MTczNzc2MTAzNn0.JxymmDtZAD6n-IB-BwwZH4aNJbW9S9g_ksrpKfyOFfRXR2-vP1DzkTq6i0fqopgxfLNSJDFgPCX6EJhoQFWSSb85TWIEatwgNSBczhTk-CM5q1zylPv_r2zKLmyPIJs1Juav93ImWuy7yOFhUKtwDbg_jtju53XSg1UcSEqL50ojnZVMg6zEMUfT8fU-79Z_M4TB_5TUERhOXeiAhgqhW-OLh65CoU-JoH-wJNhzFNQM4_-ymRSCvvXfT5MHmVzk3oUmPiw381nn_cqmi9y9hLbxHHYoIo5GMOZZf0vNjcbPqFHTgJ6j8Uqe_i2uWqNb9ZcXv066wAkPaFn0um3PsChQUSeC_Ng05n965RPn1soGd4AKU9Kv3gim6Z1RBg6-AnN19QsT2PJluy5CiNoxcchjdu3V_s3cTUCEAhYy9xcp04MqkgIjnLGHZFpQdfEckRbdnaLISJTXt09t7Ei1aNqvwW-5KS__obio2cX1Pnj7L5tl9UzBm55hCpR9loBeIsI2mbYxlHId1UO14Cc6CPFxbh7FMVNGbxuALMxmmrEEQe1JJy3nTMKLqdDOyihYkZnU_qpfzuR-rlgwQ4XGKWRx10JHVlXnrGAuak1P75Bhw_ZD0XxC9V6i_WsJOdCXj4hrBgHTdtGskX4SW4EUpmspOvWqovJbh2ick8yTcgU"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"name\": \"Tracker_{{ $('Obtener Challenge').item.json.data.documentId }}\",\n  \"startBrokerTime\": \"{{ new Date().toISOString().replace(\"T\", \" \").replace(\"Z\", \"\") }}\",\n  \"endBrokerTime\": \"{{ new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().replace(\"T\", \" \").replace(\"Z\", \"\") }}\",\n  \"period\": \"day\",\n  \"relativeDrawdownThreshold\": {{ $('Obtener Parámetro ').item.json.data[0].maximumTotalLoss/100}},\n  \"relativeProfitThreshold\": {{ $('Obtener Parámetro ').item.json.data[0].profitTarget/100 }}\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3500,
+        -160
+      ],
+      "id": "8fafd16f-3d99-4ae9-8f0b-f12f03b67e0b",
+      "name": "Crear Tracker Meta1"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $('Global Constants').item.json.constants.STRAPI_URL }}/challenges/{{ $('Obtener Challenge').item.json.data.documentId }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"data\": {\n    \"startDate\": \"{{ new Date().toISOString() }}\",\n    \"result\": \"progress\",\n    \"challengeId\": \"{{$('Escoger Tracker').item.json.data}}\",\n    \"dynamic_balance\": {{ $('Escoger Broker').item.json.data.balance ?? 0 }},\n    \"metadata\": {{ JSON.stringify($('Edit Fields1').item.json.data) || {} }}\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        5220,
+        -20
+      ],
+      "id": "8f5bf9a6-557c-4552-81d7-4c02ecf81d81",
+      "name": "Iniciar Challenge1",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.WEBAPP_URL }}api/meta-stats/{{ $('Escoger Broker').item.json.data.idMeta }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "auth-token",
+              "value": "eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsInBlcm1pc3Npb25zIjpbXSwiYWNjZXNzUnVsZXMiOlt7ImlkIjoidHJhZGluZy1hY2NvdW50LW1hbmFnZW1lbnQtYXBpIiwibWV0aG9kcyI6WyJ0cmFkaW5nLWFjY291bnQtbWFuYWdlbWVudC1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZXN0LWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1ycGMtYXBpIiwibWV0aG9kcyI6WyJtZXRhYXBpLWFwaTp3czpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoibWV0YWFwaS1yZWFsLXRpbWUtc3RyZWFtaW5nLWFwaSIsIm1ldGhvZHMiOlsibWV0YWFwaS1hcGk6d3M6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6Im1ldGFzdGF0cy1hcGkiLCJtZXRob2RzIjpbIm1ldGFzdGF0cy1hcGk6cmVzdDpwdWJsaWM6KjoqIl0sInJvbGVzIjpbInJlYWRlciIsIndyaXRlciJdLCJyZXNvdXJjZXMiOlsiKjokVVNFUl9JRCQ6KiJdfSx7ImlkIjoicmlzay1tYW5hZ2VtZW50LWFwaSIsIm1ldGhvZHMiOlsicmlzay1tYW5hZ2VtZW50LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJjb3B5ZmFjdG9yeS1hcGkiLCJtZXRob2RzIjpbImNvcHlmYWN0b3J5LWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIiwid3JpdGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19LHsiaWQiOiJtdC1tYW5hZ2VyLWFwaSIsIm1ldGhvZHMiOlsibXQtbWFuYWdlci1hcGk6cmVzdDpkZWFsaW5nOio6KiIsIm10LW1hbmFnZXItYXBpOnJlc3Q6cHVibGljOio6KiJdLCJyb2xlcyI6WyJyZWFkZXIiLCJ3cml0ZXIiXSwicmVzb3VyY2VzIjpbIio6JFVTRVJfSUQkOioiXX0seyJpZCI6ImJpbGxpbmctYXBpIiwibWV0aG9kcyI6WyJiaWxsaW5nLWFwaTpyZXN0OnB1YmxpYzoqOioiXSwicm9sZXMiOlsicmVhZGVyIl0sInJlc291cmNlcyI6WyIqOiRVU0VSX0lEJDoqIl19XSwiaWdub3JlUmF0ZUxpbWl0cyI6ZmFsc2UsInRva2VuSWQiOiIyMDIxMDIxMyIsImltcGVyc29uYXRlZCI6ZmFsc2UsInJlYWxVc2VySWQiOiI3YWI1MDY4ODkzYmEzMDcxYjdhYzE0MzI5YzRkNWQ3ZiIsImlhdCI6MTczNzc2MTAzNn0.JxymmDtZAD6n-IB-BwwZH4aNJbW9S9g_ksrpKfyOFfRXR2-vP1DzkTq6i0fqopgxfLNSJDFgPCX6EJhoQFWSSb85TWIEatwgNSBczhTk-CM5q1zylPv_r2zKLmyPIJs1Juav93ImWuy7yOFhUKtwDbg_jtju53XSg1UcSEqL50ojnZVMg6zEMUfT8fU-79Z_M4TB_5TUERhOXeiAhgqhW-OLh65CoU-JoH-wJNhzFNQM4_-ymRSCvvXfT5MHmVzk3oUmPiw381nn_cqmi9y9hLbxHHYoIo5GMOZZf0vNjcbPqFHTgJ6j8Uqe_i2uWqNb9ZcXv066wAkPaFn0um3PsChQUSeC_Ng05n965RPn1soGd4AKU9Kv3gim6Z1RBg6-AnN19QsT2PJluy5CiNoxcchjdu3V_s3cTUCEAhYy9xcp04MqkgIjnLGHZFpQdfEckRbdnaLISJTXt09t7Ei1aNqvwW-5KS__obio2cX1Pnj7L5tl9UzBm55hCpR9loBeIsI2mbYxlHId1UO14Cc6CPFxbh7FMVNGbxuALMxmmrEEQe1JJy3nTMKLqdDOyihYkZnU_qpfzuR-rlgwQ4XGKWRx10JHVlXnrGAuak1P75Bhw_ZD0XxC9V6i_WsJOdCXj4hrBgHTdtGskX4SW4EUpmspOvWqovJbh2ick8yTcgU"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4500,
+        -40
+      ],
+      "id": "ac63a7dc-6bd5-4c2f-b161-c884a6a5fd21",
+      "name": "verificamos estadisticas1",
+      "alwaysOutputData": true,
+      "retryOnFail": true,
+      "waitBetweenTries": 4
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"data\": {\n    \"metaId\":\"{{ $('Escoger Broker').item.json.data.idMeta }}\",\n    \"metrics\":{{ JSON.stringify($('verificamos estadisticas1').item.json.metrics) }},\n    \"equityChart\":{{ JSON.stringify($('verificamos estadisticas1').item.json.equityChart) }},\n    \"broker_account\":{{ JSON.stringify($('Escoger Broker').item.json.data) }},\n    \"challenge_stages\":{{ JSON.stringify($('Obtener Challenge').first().json.data.challenge_relation.challenge_stages) }},\n  \"stage_parameters\":{{ JSON.stringify($('Obtener Parámetros').item.json.data) }}\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4940,
+        -260
+      ],
+      "id": "d183f328-1fc2-4c75-8075-e90385a5f8e5",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "amount": 20
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3700,
+        -160
+      ],
+      "id": "d915d712-5a9e-4a12-959b-5c9824b85377",
+      "name": "Wait1",
+      "webhookId": "b1c13c1e-ff2e-4ed5-a173-272a77400b4b"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "9360a5a0-0a8c-424b-b110-3a9b5247b3d7",
+              "leftValue": "={{$('verificamos estadisticas1').item.json.success}}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        4780,
+        -40
+      ],
+      "id": "71a4800a-9d08-42d9-bf98-b0f82cd96db0",
+      "name": "If3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "0ff55346-b6b7-4057-b0fd-e86eeaf7f98c",
+              "leftValue": "={{ $('Obtener Challenge').item.json.data.challengeId }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3140,
+        -20
+      ],
+      "id": "8ba1b4b1-28fe-40d4-8e6f-7fde68c3ad0a",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Global Constants').item.json.constants.API_INTERNAL_URL }}/stage-parameters?populate=*&filters[challenge_relation][id]={{ $json.data.challenge_relation.id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "strapiTokenApi",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        340,
+        -20
+      ],
+      "id": "3e39a3a1-9932-43cc-8331-ab575b158ac4",
+      "name": "Obtener Parámetros",
+      "credentials": {
+        "strapiTokenApi": {
+          "id": "fdl2l1uCV5LNbN3K",
+          "name": "Strapi Token account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "deploy cuenta": [
+      {
+        "json": {}
+      }
+    ],
+    "Crear Tracker Meta": [
+      {
+        "json": {
+          "id": "Fv98sFJdW621LxFY12PP9ArEztvMTU7V"
+        }
+      }
+    ],
+    "Crear Tracker Meta1": [
+      {
+        "json": {
+          "id": "XTLHGqvr35yBG5keMMhOj6ANVRpLFSge"
+        }
+      }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.zevenglobalfunding.com",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
+            "content-length": "80",
+            "accept": "*/*",
+            "accept-encoding": "gzip, br",
+            "accept-language": "en-US,en;q=0.9",
+            "cdn-loop": "cloudflare; loops=1",
+            "cf-connecting-ip": "67.205.206.144",
+            "cf-ipcountry": "US",
+            "cf-ray": "938c46903b24a518-MIA",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/json",
+            "origin": "https://web.zevenglobalfunding.com",
+            "priority": "u=1, i",
+            "referer": "https://web.zevenglobalfunding.com/",
+            "sec-ch-ua": "\"Google Chrome\";v=\"135\", \"Not-A.Brand\";v=\"8\", \"Chromium\";v=\"135\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "same-site",
+            "x-forwarded-for": "67.205.206.144, 172.70.254.100",
+            "x-forwarded-host": "n8n.zevenglobalfunding.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "e6c05b0fe480",
+            "x-real-ip": "172.70.254.100"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "documentId": "wo9yt3959hnl2jq89889g4o5",
+            "timestamp": "2025-05-01T03:47:26.858Z"
+          },
+          "webhookUrl": "https://n8n.zevenglobalfunding.com/webhook/iniciar-challenge",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "repo_name": "n8n_workflows",
+  "repo_owner": "EliteCodeDev",
+  "repo_path": "workflows/zeven/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-05-03T17:05:28.000Z",
+  "versionId": "acc532cc-d6db-466f-b6dd-a4b666b7fb20"
+}
